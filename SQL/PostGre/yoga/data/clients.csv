@@ -1,4 +1,8 @@
 "id","name","email","phone","customer_type","created_at","city","country","username"
+4926,"Francesca Porras","francesca.porras@tarifa.es","","LOCAL","2026-09-19 20:33:15.468238+02","Tarifa","Spain",NULL
+4925,"Jose-Tomas Villena","jose-tomas.villena@tarifa.es","","LOCAL","2026-09-19 20:32:08.87126+02","Tarifa","Spain",NULL
+4924,"Yesenia Potter","yesenia.potter@tarifa.es","","LOCAL","2026-09-17 20:49:03.734571+02","Tarifa","Spain",NULL
+4923,"Rory Bishop","rory.bishop@tarifa.es","","LOCAL","2026-09-17 20:47:54.488438+02","Tarifa","Spain",NULL
 4922,"Emilia Miceli","emilia.meceli@tarifa.es","","LOCAL","2026-09-12 16:01:28.212008+02","Tarifa","Spain","Emilia_M"
 4921,"Oliver Kainz","oliver.kainz@tarifa.es","","LOCAL","2026-09-12 16:00:26.648041+02","Tarifa","Spain","Oliver_Kainz"
 4920,"Felicitas Bösch","felicitas.boesch@tarifa.es","","LOCAL","2026-09-12 15:59:10.467395+02","Tarifa","Spain","Felicitas B"
