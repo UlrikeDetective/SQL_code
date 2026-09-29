@@ -14,6 +14,34 @@ WHERE l.is_cancelled = FALSE
 GROUP BY TO_CHAR(l.date, 'Day'), EXTRACT(DOW FROM l.date)
 ORDER BY total_attendees DESC;
 
+SELECT 
+    TO_CHAR(l.date, 'Day') AS day_of_week,
+    l.time AS class_time,
+    COUNT(la.id) AS total_attendees
+FROM core_lesson l
+JOIN core_lesson_attendees la ON l.id = la.lesson_id
+WHERE l.is_cancelled = FALSE
+GROUP BY 
+    TO_CHAR(l.date, 'Day'), 
+    EXTRACT(DOW FROM l.date), 
+    l.time
+ORDER BY total_attendees DESC;
+
+SELECT 
+    TO_CHAR(l.date, 'Day') AS day_of_week,
+    l.time AS class_time,
+    COUNT(DISTINCT l.id) AS total_lessons_held,
+    COUNT(la.id) AS total_attendees,
+    ROUND(COUNT(la.id)::NUMERIC / COUNT(DISTINCT l.id), 2) AS avg_attendees_per_class
+FROM core_lesson l
+LEFT JOIN core_lesson_attendees la ON l.id = la.lesson_id
+WHERE l.is_cancelled = FALSE
+GROUP BY 
+    TO_CHAR(l.date, 'Day'), 
+    EXTRACT(DOW FROM l.date), 
+    l.time
+ORDER BY avg_attendees_per_class DESC;
+
 -- Most popular months
 SELECT 
     TO_CHAR(l.date, 'Month') AS month_name,
