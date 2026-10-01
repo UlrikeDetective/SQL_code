@@ -25,6 +25,9 @@ VALUES
 
 select * from customers;
 
+ALTER TABLE customers 
+ADD COLUMN gender VARCHAR(20);
+
 -- General Events June 2026 (Updated dates to avoid May and Sundays)
 INSERT INTO events (name, event_date, location, description) VALUES 
 ('Martial Arts & Mindfulness with Jet Li', '2026-06-02 19:00:00', 'Main Gallery', 'A deep dive into the philosophy of martial arts and true freedom, inspired by Jet Li''s memoir "Beyond Life and Death".'),
