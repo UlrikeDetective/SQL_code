@@ -247,20 +247,7 @@ WHERE b.hashtags LIKE '%tech%'
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 190
-  );
-
-SELECT DISTINCT c.first_name, c.last_name, c.email
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%Education%'
-  AND NOT EXISTS (
-      SELECT 1 
-      FROM event_registrations er 
-      WHERE er.customer_id = c.id 
-        AND er.event_id = 99
+        AND er.event_id = 92
   );
 
 SELECT DISTINCT c.first_name, c.last_name, c.email
@@ -277,23 +264,23 @@ WHERE b.title LIKE '%His Dark Materials%'
   );
 
   INSERT INTO event_registrations (event_id, customer_id, registered_at)
-WITH surfing_customers AS (
+WITH tech_customers AS (
     SELECT DISTINCT o.customer_id
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
-    WHERE b.hashtags ILIKE '%surfing%'
+    WHERE b.hashtags ILIKE '%tech%'
 )
 SELECT 
-    259 AS event_id,
+    92 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
-FROM surfing_customers sc
+FROM tech_customers sc
 LEFT JOIN event_registrations er 
-       ON er.event_id = 259 
+       ON er.event_id = 92 
       AND er.customer_id = sc.customer_id
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
-  AND RANDOM() < 0.5;         -- Pick roughly 50% of eligible customers
+  AND RANDOM() < 0.4;         -- Pick roughly 50% of eligible customers
 
 
  INSERT INTO event_registrations (event_id, customer_id, registered_at)
@@ -308,7 +295,7 @@ SELECT
     322 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
-FROM surfing_customers sc
+FROM tough_customers sc
 LEFT JOIN event_registrations er 
        ON er.event_id = 322 
       AND er.customer_id = sc.customer_id
