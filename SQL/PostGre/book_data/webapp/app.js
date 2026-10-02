@@ -425,6 +425,18 @@ app.get('/admin', async (req, res) => {
 // FINANCIALS DASHBOARD - Business Plan & Real-time tracking
 app.get('/admin/financials', async (req, res) => {
   try {
+    // --- ASSUMPTIONS: single source of truth for every number on this page ---
+    const BOOK_IVA = 0.04;        // Books: super-reduced Spanish IVA
+    const BOOK_MARGIN_PCT = 0.35; // Retail margin on the net (ex-IVA) book price
+    const EVENT_IVA = 0.10;       // Event tickets: reduced "cultural" IVA
+    const EVENT_PRICE = 15.00;    // Gross ticket price charged to the customer
+    const AVG_BOOK_PRICE = 15.00; // Gross price of a typical book (break-even maths)
+
+    // Profit kept per euro of gross book turnover, and per ticket sold
+    const bookProfitRate = BOOK_MARGIN_PCT / (1 + BOOK_IVA);        // ~0.3365
+    const profitPerTicket = EVENT_PRICE / (1 + EVENT_IVA);          // ~13.64 EUR
+    const profitPerBook = AVG_BOOK_PRICE * bookProfitRate;          // ~5.05 EUR
+
     // Current Month Totals
     const salesRes = await db.query(`
       SELECT COALESCE(SUM(total_amount), 0) as total FROM orders 
@@ -435,42 +447,92 @@ app.get('/admin/financials', async (req, res) => {
       WHERE registered_at >= date_trunc('month', current_date)
     `);
 
-    // Historical Performance (Last 6 Months) with dynamic costs
+    // Historical Performance (Last 12 Months): book sales + event tickets + dynamic costs
     const historyRes = await db.query(`
-      WITH monthly_sales AS (
+      WITH book_sales AS (
         SELECT date_trunc('month', order_date)::date as month, SUM(total_amount) as total
         FROM orders
-        WHERE order_date >= current_date - INTERVAL '6 months'
+        WHERE order_date >= date_trunc('month', current_date) - INTERVAL '11 months'
         GROUP BY month
+      ),
+      ticket_sales AS (
+        SELECT date_trunc('month', registered_at)::date as month, COUNT(*) as tickets
+        FROM event_registrations
+        WHERE registered_at >= date_trunc('month', current_date) - INTERVAL '11 months'
+        GROUP BY month
+      ),
+      months AS (
+        SELECT month FROM book_sales
+        UNION
+        SELECT month FROM ticket_sales
       )
-      SELECT ms.month, ms.total, 
+      SELECT m.month, bs.total, ts.tickets,
              bc.rent, bc.utilities, bc.helpers, bc.ss_helpers, bc.autonomo, bc.misc
-      FROM monthly_sales ms
-      LEFT JOIN business_costs bc ON ms.month = bc.month_year
-      ORDER BY ms.month DESC
+      FROM months m
+      LEFT JOIN book_sales bs ON bs.month = m.month
+      LEFT JOIN ticket_sales ts ON ts.month = m.month
+      LEFT JOIN business_costs bc ON bc.month_year = m.month
+      ORDER BY m.month DESC
     `);
 
     // Fetch the latest business costs from DB
     const costsRes = await db.query('SELECT * FROM business_costs ORDER BY month_year DESC LIMIT 1');
     const costs = costsRes.rows[0] || { rent: 200, utilities: 75, helpers: 1200, ss_helpers: 384, autonomo: 310, misc: 50 };
 
+    // Build one fully-derived row per month so the template only has to print values
+    const history = historyRes.rows.map(h => {
+      const bookSales = parseFloat(h.total) || 0;
+      const tickets = parseInt(h.tickets) || 0;
+      const ticketSales = tickets * EVENT_PRICE;
+
+      const rent = parseFloat(h.rent) || 200;
+      const utilities = parseFloat(h.utilities) || 75;
+      const helpers = parseFloat(h.helpers) || 1200;
+      const ss_helpers = parseFloat(h.ss_helpers) || 384;
+      const autonomo = parseFloat(h.autonomo) || 310;
+      const misc = parseFloat(h.misc) || 50;
+
+      const bookProfit = bookSales * bookProfitRate;
+      const eventProfit = tickets * profitPerTicket;
+      const burn = rent + utilities + helpers + ss_helpers + autonomo + misc;
+
+      return {
+        month: h.month || new Date(),
+        bookSales,
+        bookProfit,
+        tickets,
+        ticketSales,
+        eventProfit,
+        burn,
+        shopProfit: bookProfit + eventProfit - burn
+      };
+    });
+
+    // Roll the months up into calendar years (same columns, so the table can reuse them)
+    const yearMap = new Map();
+    history.forEach(h => {
+      const year = new Date(h.month).getFullYear();
+      const y = yearMap.get(year) || {
+        year, months: 0, bookSales: 0, bookProfit: 0,
+        tickets: 0, ticketSales: 0, eventProfit: 0, burn: 0, shopProfit: 0
+      };
+      y.months += 1;
+      y.bookSales += h.bookSales;
+      y.bookProfit += h.bookProfit;
+      y.tickets += h.tickets;
+      y.ticketSales += h.ticketSales;
+      y.eventProfit += h.eventProfit;
+      y.burn += h.burn;
+      y.shopProfit += h.shopProfit;
+      yearMap.set(year, y);
+    });
+    const yearly = Array.from(yearMap.values()).sort((a, b) => b.year - a.year);
+
     res.render('financials', {
       actualSales: parseFloat(salesRes.rows[0].total),
       actualTickets: parseInt(ticketsRes.rows[0].count),
-      history: historyRes.rows.map(h => {
-        const total = parseFloat(h.total) || 0;
-        const rent = parseFloat(h.rent) || 200;
-        const utilities = parseFloat(h.utilities) || 75;
-        const helpers = parseFloat(h.helpers) || 1200;
-        const ss_helpers = parseFloat(h.ss_helpers) || 384;
-        const autonomo = parseFloat(h.autonomo) || 310;
-        const misc = parseFloat(h.misc) || 50;
-        return {
-          month: h.month || new Date(),
-          total: total,
-          fixed: rent + utilities + helpers + ss_helpers + autonomo + misc
-        };
-      }),
+      history,
+      yearly,
       // High Tide Plan Assumptions
       plan: {
         rent: parseFloat(costs.rent),
@@ -479,9 +541,14 @@ app.get('/admin/financials', async (req, res) => {
         ss_helpers: parseFloat(costs.ss_helpers),
         autonomo: parseFloat(costs.autonomo),
         misc: parseFloat(costs.misc),
-        book_margin_pct: 0.35,
-        event_price: 15,
-        event_margin: 13.64 // After 10% IVA
+        book_iva: BOOK_IVA,
+        book_margin_pct: BOOK_MARGIN_PCT,
+        book_profit_rate: bookProfitRate,
+        avg_book_price: AVG_BOOK_PRICE,
+        profit_per_book: profitPerBook,
+        event_iva: EVENT_IVA,
+        event_price: EVENT_PRICE,
+        event_margin: profitPerTicket
       }
     });
   } catch (err) {

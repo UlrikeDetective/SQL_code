@@ -3,6 +3,17 @@
 <head>
     <title>High Tide Books // Financial Dashboard</title>
     <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Compact money tables: lots of columns, so tighten the global padding */
+        .fin-table th, .fin-table td { padding: 10px 12px; font-size: 0.9rem; }
+        .fin-table th { letter-spacing: 1px; }
+        .fin-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .fin-table th.num { text-align: right; }
+        .fin-table .muted { color: #888; }
+        .fin-table .sub { display: block; font-size: 0.75rem; color: #aaa; }
+        .fin-table tfoot td { font-weight: bold; border-top: 2px solid var(--border); }
+        .fin-card { background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px; }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -11,13 +22,22 @@
             <h1 style="margin: 0;">High Tide Books: Business Plan 2026</h1>
         </div>
 
-        <% 
+        <%
+            // --- All figures below come from the same assumptions (see plan.*) ---
             const totalFixed = plan.rent + plan.utilities + plan.helpers + plan.ss_helpers + plan.autonomo + plan.misc;
-            const bookProfit = actualSales * plan.book_margin_pct;
+
+            // Profit = margin on the net price, i.e. after IVA has been handed to Hacienda
+            const bookProfit   = actualSales * plan.book_profit_rate;
+            const ticketSales  = actualTickets * plan.event_price;
             const ticketProfit = actualTickets * plan.event_margin;
-            const totalProfit = bookProfit + ticketProfit;
-            const netResult = totalProfit - totalFixed;
-            const breakEvenBooks = totalFixed / (15 * 0.35); // Approx 15 EUR book, 35% margin
+            const totalProfit  = bookProfit + ticketProfit;
+            const netResult    = totalProfit - totalFixed;
+
+            // THE break-even target: one definition, reused everywhere on this page
+            const breakEvenBooks   = Math.ceil(totalFixed / plan.profit_per_book);
+            const breakEvenTickets = Math.ceil(totalFixed / plan.event_margin);
+            const missing          = Math.max(0, -netResult);
+            const money = v => v.toFixed(2) + ' €';
         %>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
@@ -37,6 +57,14 @@
                         <strong style="color: var(--primary);"><%= totalFixed.toFixed(2) %> €</strong>
                     </li>
                 </ul>
+
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-size: 0.85rem; color: #666;">
+                    <strong>Break-even target for this burn:</strong>
+                    <%= breakEvenBooks %> books <em>or</em> <%= breakEvenTickets %> event tickets per month
+                    (any mix in between). At <%= plan.avg_book_price.toFixed(2) %> € a book you keep
+                    <%= plan.profit_per_book.toFixed(2) %> €; a <%= plan.event_price.toFixed(2) %> € ticket keeps
+                    <%= plan.event_margin.toFixed(2) %> €.
+                </div>
             </div>
 
             <!-- PERFORMANCE DASHBOARD -->
@@ -47,23 +75,27 @@
                     <div style="flex: 1; background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #ddd;">
                         <div style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Book Sales</div>
                         <div style="font-size: 1.5rem; font-weight: bold;"><%= actualSales.toFixed(2) %> €</div>
-                        <div style="font-size: 0.8rem; color: var(--secondary);">~<%= (bookProfit).toFixed(2) %> € Profit</div>
+                        <div style="font-size: 0.8rem; color: var(--secondary);"><%= bookProfit.toFixed(2) %> € profit</div>
                     </div>
                     <div style="flex: 1; background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #ddd;">
                         <div style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Event Tickets</div>
-                        <div style="font-size: 1.5rem; font-weight: bold;"><%= actualTickets %></div>
-                        <div style="font-size: 0.8rem; color: var(--secondary);">~<%= (ticketProfit).toFixed(2) %> € Profit</div>
+                        <div style="font-size: 1.5rem; font-weight: bold;"><%= ticketSales.toFixed(2) %> €</div>
+                        <div style="font-size: 0.8rem; color: var(--secondary);"><%= ticketProfit.toFixed(2) %> € profit <span style="color:#aaa;">(<%= actualTickets %> tickets)</span></div>
                     </div>
                 </div>
 
                 <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
                     <h4 style="margin: 0 0 10px 0;">Monthly Balance</h4>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-size: 1.1rem;">Gross Profit:</span>
+                        <span style="font-size: 1.1rem;">Profit books + events:</span>
                         <strong style="font-size: 1.2rem; color: var(--secondary);"><%= totalProfit.toFixed(2) %> €</strong>
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                        <span style="font-size: 1.1rem;">Net Result:</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                        <span style="font-size: 1.1rem;">- Monthly burn:</span>
+                        <strong style="font-size: 1.2rem; color: #888;"><%= totalFixed.toFixed(2) %> €</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+                        <span style="font-size: 1.1rem;">Profit book shop:</span>
                         <strong style="font-size: 1.5rem; color: <%= netResult >= 0 ? 'var(--secondary)' : 'var(--accent)' %>;">
                             <%= netResult.toFixed(2) %> €
                         </strong>
@@ -71,33 +103,131 @@
                     
                     <% if (netResult < 0) { %>
                         <div style="margin-top: 20px; padding: 10px; background: #fdf6e3; color: var(--accent); font-size: 0.85rem; border-radius: 4px; border: 1px solid #eee8d5;">
-                            <strong>Strategy:</strong> You need <%= Math.ceil(Math.abs(netResult) / (15 * 0.35)) %> more book sales or <%= Math.ceil(Math.abs(netResult) / plan.event_margin) %> more tickets to break even this month.
+                            <strong>Still missing <%= missing.toFixed(2) %> €</strong> to reach the break-even target of
+                            <%= breakEvenBooks %> books / <%= breakEvenTickets %> tickets:
+                            <%= Math.ceil(missing / plan.profit_per_book) %> more books <em>or</em>
+                            <%= Math.ceil(missing / plan.event_margin) %> more tickets this month.
                         </div>
                     <% } else { %>
                         <div style="margin-top: 20px; padding: 10px; background: #eff6f6; color: var(--primary); font-size: 0.85rem; border-radius: 4px; border: 1px solid #d1e5e5;">
-                            <strong>Success:</strong> You have reached your break-even point for the month!
+                            <strong>Break-even reached.</strong> Everything above covers the burn: <%= netResult.toFixed(2) %> € is real profit this month.
                         </div>
                     <% } %>
                 </div>
             </div>
         </div>
 
+        <!-- SALES HISTORY -->
+        <div class="fin-card" style="margin-bottom: 40px;">
+            <h2 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 15px;">Sales History per Month</h2>
+            <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">
+                Book profit = turnover minus <%= (plan.book_iva * 100).toFixed(0) %>% IVA, times the
+                <%= (plan.book_margin_pct * 100).toFixed(0) %>% retail margin.
+                Event profit = ticket revenue minus <%= (plan.event_iva * 100).toFixed(0) %>% cultural IVA
+                (<%= plan.event_margin.toFixed(2) %> € per <%= plan.event_price.toFixed(2) %> € ticket).
+                Burn is that month's own fixed costs. <strong>Profit book shop = book profit + event profit - burn.</strong>
+            </p>
+            <table class="fin-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th class="num">Sales Books</th>
+                        <th class="num">Profit Books</th>
+                        <th class="num">Sales Event Tickets</th>
+                        <th class="num">Profit Events</th>
+                        <th class="num">Monthly Burn</th>
+                        <th class="num">Profit Book Shop</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% history.forEach(h => { %>
+                        <tr>
+                            <td><%= new Date(h.month).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) %></td>
+                            <td class="num"><%= money(h.bookSales) %></td>
+                            <td class="num"><%= money(h.bookProfit) %></td>
+                            <td class="num">
+                                <%= money(h.ticketSales) %>
+                                <span class="sub"><%= h.tickets %> tickets</span>
+                            </td>
+                            <td class="num"><%= money(h.eventProfit) %></td>
+                            <td class="num muted">- <%= money(h.burn) %></td>
+                            <td class="num">
+                                <strong style="color: <%= h.shopProfit >= 0 ? 'var(--secondary)' : 'var(--accent)' %>;">
+                                    <%= money(h.shopProfit) %>
+                                </strong>
+                            </td>
+                        </tr>
+                    <% }) %>
+                    <% if (history.length === 0) { %>
+                        <tr><td colspan="7" class="muted">No sales recorded in the last 12 months.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <h2 style="border-bottom: 1px solid #eee; padding-bottom: 15px;">Sales History per Year</h2>
+            <table class="fin-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th class="num">Sales Books</th>
+                        <th class="num">Profit Books</th>
+                        <th class="num">Sales Event Tickets</th>
+                        <th class="num">Profit Events</th>
+                        <th class="num">Burn</th>
+                        <th class="num">Profit Book Shop</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% yearly.forEach(y => { %>
+                        <tr>
+                            <td><%= y.year %><span class="sub"><%= y.months %> month<%= y.months === 1 ? '' : 's' %> with sales</span></td>
+                            <td class="num"><%= money(y.bookSales) %></td>
+                            <td class="num"><%= money(y.bookProfit) %></td>
+                            <td class="num">
+                                <%= money(y.ticketSales) %>
+                                <span class="sub"><%= y.tickets %> tickets</span>
+                            </td>
+                            <td class="num"><%= money(y.eventProfit) %></td>
+                            <td class="num muted">- <%= money(y.burn) %></td>
+                            <td class="num">
+                                <strong style="color: <%= y.shopProfit >= 0 ? 'var(--secondary)' : 'var(--accent)' %>;">
+                                    <%= money(y.shopProfit) %>
+                                </strong>
+                            </td>
+                        </tr>
+                    <% }) %>
+                    <% if (yearly.length === 0) { %>
+                        <tr><td colspan="7" class="muted">No sales recorded yet.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: #888;">* Years only cover the months shown above (rolling 12 months), not a full calendar year.</p>
+        </div>
+
         <!-- STRATEGIC ANALYSIS -->
-        <div style="background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px;">
+        <div class="fin-card">
             <h2 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 15px;">Strategic Business Analysis: High Tide Community Model</h2>
             
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
                 <div>
                     <h4>1. Profit Structure</h4>
                     <p style="font-size: 0.9rem; line-height: 1.6;">
-                        <strong>Books:</strong> Margin is typically 30-35%. At 15€, you gain ~5.05€. IVA is super-reduced at 4%.<br>
-                        <strong>Events:</strong> Tickets at 15€ yield high margins (~13.64€ after 10% cultural IVA). Events are critical for covering staff costs.
+                        <strong>Books:</strong> IVA is super-reduced at <%= (plan.book_iva * 100).toFixed(0) %>%, the retail margin is
+                        <%= (plan.book_margin_pct * 100).toFixed(0) %>%. A <%= plan.avg_book_price.toFixed(2) %> € book therefore keeps
+                        <%= plan.profit_per_book.toFixed(2) %> €.<br>
+                        <strong>Events:</strong> A <%= plan.event_price.toFixed(2) %> € ticket keeps
+                        <%= plan.event_margin.toFixed(2) %> € after <%= (plan.event_iva * 100).toFixed(0) %>% cultural IVA - almost
+                        three times a book. Events are what cover the staff costs.
                     </p>
                 </div>
                 <div>
-                    <h4>2. Break-Even Target</h4>
+                    <h4>2. Where the Burn Goes</h4>
                     <p style="font-size: 0.9rem; line-height: 1.6;">
-                        To cover <strong><%= totalFixed.toFixed(2) %> €</strong>, you must sell roughly <strong><%= Math.ceil(breakEvenBooks) %> books per month</strong> (approx. 14 per day). Increasing event frequency lowers this target significantly.
+                        Staff plus their social security is
+                        <strong><%= (((plan.helpers + plan.ss_helpers) / totalFixed) * 100).toFixed(0) %>%</strong>
+                        of the <%= totalFixed.toFixed(2) %> € burn. Rent and utilities are only
+                        <%= ((( plan.rent + plan.utilities) / totalFixed) * 100).toFixed(0) %>%, so opening hours - not the
+                        premises - drive the cost base.
                     </p>
                 </div>
                 <div>
@@ -106,43 +236,6 @@
                         We have included <strong>Social Security (32%)</strong> for your helpers and your own <strong>Autónomo fee</strong>. Many small businesses fail because they only count the net salary.
                     </p>
                 </div>
-            </div>
-
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                <h3>Sales History (Last 6 Months)</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">* Status compares gross profit (35%) against that month's specific fixed costs.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Month</th>
-                            <th>Total Sales</th>
-                            <th>Est. Gross Profit</th>
-                            <th>Monthly Burn</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% history.forEach(h => { %>
-                            <% 
-                                const totalSales = parseFloat(h.total) || 0;
-                                const monthlyBurn = parseFloat(h.fixed) || 0;
-                                const monthlyProfit = totalSales * 0.35;
-                                const isProfitable = monthlyProfit > monthlyBurn;
-                            %>
-                            <tr>
-                                <td><%= (h.month || new Date()).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) %></td>
-                                <td><%= totalSales.toFixed(2) %> €</td>
-                                <td><%= monthlyProfit.toFixed(2) %> €</td>
-                                <td style="color: #888;"><%= monthlyBurn.toFixed(2) %> €</td>
-                                <td>
-                                    <span style="font-weight: bold; color: <%= isProfitable ? 'var(--secondary)' : 'var(--accent)' %>;">
-                                        <%= isProfitable ? '✓ Profit' : '✗ Below Break-even' %>
-                                    </span>
-                                </td>
-                            </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
