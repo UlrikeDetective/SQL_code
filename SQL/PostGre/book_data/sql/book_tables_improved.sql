@@ -68,22 +68,71 @@ CREATE TABLE reviews (
     UNIQUE(book_id, customer_id) -- One review per customer per book
 );
 
--- 8. Events Table (Marketing)
+-- 8. Event Types Table (price / cost / capacity template per kind of event)
+CREATE TABLE event_types (
+    id              SERIAL PRIMARY KEY,
+    name            VARCHAR(50)   NOT NULL UNIQUE,
+    ticket_price    NUMERIC(10,2) NOT NULL DEFAULT 15.00,  -- gross, incl. IVA
+    cost_per_person NUMERIC(10,2) NOT NULL DEFAULT 0.00,   -- ingredients, snacks, materials
+    fixed_cost      NUMERIC(10,2) NOT NULL DEFAULT 0.00,   -- licence, DJ, guest speaker fee
+    max_attendees   INT           NOT NULL,
+    iva_rate        NUMERIC(4,3)  NOT NULL DEFAULT 0.100,  -- 10% reduced "cultural" IVA
+    notes           TEXT,
+    CHECK (max_attendees > 0),
+    CHECK (ticket_price >= 0 AND cost_per_person >= 0 AND fixed_cost >= 0)
+);
+
+-- 9. Events Table (Marketing)
+-- ticket_price / cost_per_person / fixed_cost / max_attendees are per-event
+-- overrides: NULL means "inherit the value from event_types".
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     event_date TIMESTAMP NOT NULL,
     location VARCHAR(100),
-    description TEXT
+    description TEXT,
+    event_type_id   INT NOT NULL REFERENCES event_types(id),
+    ticket_price    NUMERIC(10,2),
+    cost_per_person NUMERIC(10,2),
+    fixed_cost      NUMERIC(10,2),
+    max_attendees   INT
 );
 
--- 9. Event Registrations (Many-to-Many)
+CREATE INDEX idx_events_type ON events(event_type_id);
+
+-- 10. Event Registrations (Many-to-Many)
 CREATE TABLE event_registrations (
     event_id INT REFERENCES events(id) ON DELETE CASCADE,
     customer_id INT REFERENCES customers(id) ON DELETE CASCADE,
     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (event_id, customer_id)
 );
+
+-- 11. Event Economics View
+-- Resolves per-event overrides against the type defaults, counts attendees
+-- and derives the money: profit = heads x (net ticket - cost/head) - fixed cost.
+CREATE OR REPLACE VIEW event_economics AS
+SELECT
+    e.id, e.name, e.event_date, e.location, e.description, e.event_type_id,
+    et.name                                        AS event_type,
+    COALESCE(e.ticket_price,    et.ticket_price)    AS ticket_price,
+    COALESCE(e.cost_per_person, et.cost_per_person) AS cost_per_person,
+    COALESCE(e.fixed_cost,      et.fixed_cost)      AS fixed_cost,
+    COALESCE(e.max_attendees,   et.max_attendees)   AS max_attendees,
+    et.iva_rate,
+    COALESCE(r.attendees, 0)                        AS attendees,
+    COALESCE(e.max_attendees, et.max_attendees) - COALESCE(r.attendees, 0) AS spots_left,
+    COALESCE(r.attendees, 0) * COALESCE(e.ticket_price, et.ticket_price) AS ticket_revenue,
+    COALESCE(r.attendees, 0) * ROUND(COALESCE(e.ticket_price, et.ticket_price) / (1 + et.iva_rate), 2) AS net_revenue,
+    COALESCE(r.attendees, 0) * COALESCE(e.cost_per_person, et.cost_per_person) AS variable_cost,
+    COALESCE(r.attendees, 0) * (ROUND(COALESCE(e.ticket_price, et.ticket_price) / (1 + et.iva_rate), 2)
+                                - COALESCE(e.cost_per_person, et.cost_per_person))
+        - COALESCE(e.fixed_cost, et.fixed_cost)     AS event_profit
+FROM events e
+JOIN event_types et ON et.id = e.event_type_id
+LEFT JOIN (
+    SELECT event_id, COUNT(*) AS attendees FROM event_registrations GROUP BY event_id
+) r ON r.event_id = e.id;
 
 -- SEEDING EXAMPLE DATA --
 

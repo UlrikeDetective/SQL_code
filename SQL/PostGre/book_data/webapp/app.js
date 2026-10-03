@@ -258,14 +258,11 @@ app.post('/register', async (req, res) => {
 // EVENTS - Events and Registrations
 app.get('/events', async (req, res) => {
   try {
-    // Fetch events with registration count, limited to top 100 upcoming
+    // Fetch upcoming events with price, capacity and live attendance
     const eventsRes = await db.query(`
-      SELECT e.*, COUNT(er.customer_id) as reg_count
-      FROM events e
-      LEFT JOIN event_registrations er ON e.id = er.event_id
-      WHERE e.event_date >= NOW()
-      GROUP BY e.id
-      ORDER BY e.event_date ASC
+      SELECT * FROM event_economics
+      WHERE event_date >= NOW()
+      ORDER BY event_date ASC
       LIMIT 100
     `);
     
@@ -397,8 +394,11 @@ app.get('/admin', async (req, res) => {
 
     const netResult = (totalCurrentSales * 0.35) + (totalCurrentTickets * 13.64) - totalFixed;
 
+    const eventTypesRes = await db.query('SELECT * FROM event_types ORDER BY name');
+
     res.render('admin', { 
       customers: customersRes.rows, 
+      eventTypes: eventTypesRes.rows,
       orders: ordersRes.rows, 
       items: itemsRes.rows,
       authors: authorsRes.rows,
@@ -425,29 +425,58 @@ app.get('/admin', async (req, res) => {
 // FINANCIALS DASHBOARD - Business Plan & Real-time tracking
 app.get('/admin/financials', async (req, res) => {
   try {
-    // --- ASSUMPTIONS: single source of truth for every number on this page ---
+    // --- BOOK ASSUMPTIONS: single source of truth for every book figure ---
     const BOOK_IVA = 0.04;        // Books: super-reduced Spanish IVA
     const BOOK_MARGIN_PCT = 0.35; // Retail margin on the net (ex-IVA) book price
-    const EVENT_IVA = 0.10;       // Event tickets: reduced "cultural" IVA
-    const EVENT_PRICE = 15.00;    // Gross ticket price charged to the customer
     const AVG_BOOK_PRICE = 15.00; // Gross price of a typical book (break-even maths)
 
-    // Profit kept per euro of gross book turnover, and per ticket sold
-    const bookProfitRate = BOOK_MARGIN_PCT / (1 + BOOK_IVA);        // ~0.3365
-    const profitPerTicket = EVENT_PRICE / (1 + EVENT_IVA);          // ~13.64 EUR
-    const profitPerBook = AVG_BOOK_PRICE * bookProfitRate;          // ~5.05 EUR
+    // Profit kept per euro of gross book turnover, and per average book
+    const bookProfitRate = BOOK_MARGIN_PCT / (1 + BOOK_IVA);   // ~0.3365
+    const profitPerBook = AVG_BOOK_PRICE * bookProfitRate;     // ~5.05 EUR
 
-    // Current Month Totals
+    // Event economics now come from the DB (event_types + per-event overrides)
+    const typesRes = await db.query('SELECT * FROM event_types ORDER BY name');
+    const eventTypes = typesRes.rows.map(t => {
+      const price = parseFloat(t.ticket_price);
+      const costPerPerson = parseFloat(t.cost_per_person);
+      const fixedCost = parseFloat(t.fixed_cost);
+      const ivaRate = parseFloat(t.iva_rate);
+      const netTicket = price / (1 + ivaRate);
+      return {
+        id: t.id,
+        name: t.name,
+        notes: t.notes,
+        ticket_price: price,
+        cost_per_person: costPerPerson,
+        fixed_cost: fixedCost,
+        iva_rate: ivaRate,
+        max_attendees: parseInt(t.max_attendees),
+        net_ticket: netTicket,
+        profit_per_head: netTicket - costPerPerson,
+        // What one sold-out event of this type contributes
+        profit_at_capacity: (netTicket - costPerPerson) * parseInt(t.max_attendees) - fixedCost
+      };
+    });
+
+    // Current Month: books from orders, events from the economics view.
+    // Events are attributed to the month they take place in - that is when the
+    // ingredients are bought and the licence is paid, not when a seat was booked.
     const salesRes = await db.query(`
       SELECT COALESCE(SUM(total_amount), 0) as total FROM orders 
       WHERE order_date >= date_trunc('month', current_date)
     `);
-    const ticketsRes = await db.query(`
-      SELECT COUNT(*) as count FROM event_registrations 
-      WHERE registered_at >= date_trunc('month', current_date)
+    const eventsNowRes = await db.query(`
+      SELECT COALESCE(SUM(attendees), 0)      as tickets,
+             COALESCE(SUM(ticket_revenue), 0) as revenue,
+             COALESCE(SUM(event_profit), 0)   as profit,
+             COUNT(*)                         as events
+      FROM event_economics
+      WHERE event_date >= date_trunc('month', current_date)
+        AND event_date <  date_trunc('month', current_date) + INTERVAL '1 month'
     `);
+    const now = eventsNowRes.rows[0];
 
-    // Historical Performance (Last 12 Months): book sales + event tickets + dynamic costs
+    // Historical Performance (Last 12 Months): book sales + event economics + costs
     const historyRes = await db.query(`
       WITH book_sales AS (
         SELECT date_trunc('month', order_date)::date as month, SUM(total_amount) as total
@@ -455,22 +484,27 @@ app.get('/admin/financials', async (req, res) => {
         WHERE order_date >= date_trunc('month', current_date) - INTERVAL '11 months'
         GROUP BY month
       ),
-      ticket_sales AS (
-        SELECT date_trunc('month', registered_at)::date as month, COUNT(*) as tickets
-        FROM event_registrations
-        WHERE registered_at >= date_trunc('month', current_date) - INTERVAL '11 months'
+      event_sales AS (
+        SELECT date_trunc('month', event_date)::date as month,
+               SUM(attendees)      as tickets,
+               SUM(ticket_revenue) as revenue,
+               SUM(event_profit)   as profit,
+               COUNT(*)            as events
+        FROM event_economics
+        WHERE event_date >= date_trunc('month', current_date) - INTERVAL '11 months'
+          AND event_date <  date_trunc('month', current_date) + INTERVAL '1 month'
         GROUP BY month
       ),
       months AS (
         SELECT month FROM book_sales
         UNION
-        SELECT month FROM ticket_sales
+        SELECT month FROM event_sales
       )
-      SELECT m.month, bs.total, ts.tickets,
+      SELECT m.month, bs.total, es.tickets, es.revenue, es.profit, es.events,
              bc.rent, bc.utilities, bc.helpers, bc.ss_helpers, bc.autonomo, bc.misc
       FROM months m
       LEFT JOIN book_sales bs ON bs.month = m.month
-      LEFT JOIN ticket_sales ts ON ts.month = m.month
+      LEFT JOIN event_sales es ON es.month = m.month
       LEFT JOIN business_costs bc ON bc.month_year = m.month
       ORDER BY m.month DESC
     `);
@@ -483,7 +517,8 @@ app.get('/admin/financials', async (req, res) => {
     const history = historyRes.rows.map(h => {
       const bookSales = parseFloat(h.total) || 0;
       const tickets = parseInt(h.tickets) || 0;
-      const ticketSales = tickets * EVENT_PRICE;
+      const ticketSales = parseFloat(h.revenue) || 0;
+      const eventProfit = parseFloat(h.profit) || 0;
 
       const rent = parseFloat(h.rent) || 200;
       const utilities = parseFloat(h.utilities) || 75;
@@ -493,7 +528,6 @@ app.get('/admin/financials', async (req, res) => {
       const misc = parseFloat(h.misc) || 50;
 
       const bookProfit = bookSales * bookProfitRate;
-      const eventProfit = tickets * profitPerTicket;
       const burn = rent + utilities + helpers + ss_helpers + autonomo + misc;
 
       return {
@@ -501,6 +535,7 @@ app.get('/admin/financials', async (req, res) => {
         bookSales,
         bookProfit,
         tickets,
+        events: parseInt(h.events) || 0,
         ticketSales,
         eventProfit,
         burn,
@@ -513,12 +548,13 @@ app.get('/admin/financials', async (req, res) => {
     history.forEach(h => {
       const year = new Date(h.month).getFullYear();
       const y = yearMap.get(year) || {
-        year, months: 0, bookSales: 0, bookProfit: 0,
+        year, months: 0, bookSales: 0, bookProfit: 0, events: 0,
         tickets: 0, ticketSales: 0, eventProfit: 0, burn: 0, shopProfit: 0
       };
       y.months += 1;
       y.bookSales += h.bookSales;
       y.bookProfit += h.bookProfit;
+      y.events += h.events;
       y.tickets += h.tickets;
       y.ticketSales += h.ticketSales;
       y.eventProfit += h.eventProfit;
@@ -528,9 +564,16 @@ app.get('/admin/financials', async (req, res) => {
     });
     const yearly = Array.from(yearMap.values()).sort((a, b) => b.year - a.year);
 
+    // Break-even needs a representative ticket: use the best-selling type's economics
+    const bookEventType = eventTypes.find(t => t.name === 'Book event') || eventTypes[0];
+
     res.render('financials', {
       actualSales: parseFloat(salesRes.rows[0].total),
-      actualTickets: parseInt(ticketsRes.rows[0].count),
+      actualTickets: parseInt(now.tickets),
+      actualTicketSales: parseFloat(now.revenue),
+      actualEventProfit: parseFloat(now.profit),
+      actualEventCount: parseInt(now.events),
+      eventTypes,
       history,
       yearly,
       // High Tide Plan Assumptions
@@ -546,9 +589,10 @@ app.get('/admin/financials', async (req, res) => {
         book_profit_rate: bookProfitRate,
         avg_book_price: AVG_BOOK_PRICE,
         profit_per_book: profitPerBook,
-        event_iva: EVENT_IVA,
-        event_price: EVENT_PRICE,
-        event_margin: profitPerTicket
+        // Reference ticket for the break-even target
+        ref_event_type: bookEventType.name,
+        ref_event_price: bookEventType.ticket_price,
+        ref_event_profit: bookEventType.profit_per_head
       }
     });
   } catch (err) {
@@ -621,16 +665,41 @@ app.post('/admin/add-book', async (req, res) => {
 
 // ADMIN: Add Event
 app.post('/admin/add-event', async (req, res) => {
-  const { name, date, location, description } = req.body;
+  const { name, date, location, description, event_type_id,
+          ticket_price, cost_per_person, fixed_cost, max_attendees } = req.body;
+  // Blank override fields stay NULL so the event inherits its type's defaults
+  const orNull = v => (v === undefined || v === '' ? null : v);
   try {
     await db.query(
-      'INSERT INTO events (name, event_date, location, description) VALUES ($1, $2, $3, $4)',
-      [name, date, location, description]
+      `INSERT INTO events (name, event_date, location, description, event_type_id,
+                           ticket_price, cost_per_person, fixed_cost, max_attendees)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+      [name, date, location, description, event_type_id,
+       orNull(ticket_price), orNull(cost_per_person), orNull(fixed_cost), orNull(max_attendees)]
     );
     res.redirect('/admin');
   } catch (err) {
     console.error(err);
-    res.send("Error adding event");
+    res.send("Error adding event: " + err.message);
+  }
+});
+
+// ADMIN: Update the price / cost / capacity defaults of an event type
+app.post('/admin/event-types', async (req, res) => {
+  const { id, ticket_price, cost_per_person, fixed_cost, max_attendees, iva_pct } = req.body;
+  try {
+    await db.query(
+      `UPDATE event_types
+       SET ticket_price = $2, cost_per_person = $3, fixed_cost = $4,
+           max_attendees = $5, iva_rate = $6
+       WHERE id = $1`,
+      [id, ticket_price, cost_per_person, fixed_cost, max_attendees,
+       (parseFloat(iva_pct) || 0) / 100]
+    );
+    res.redirect('/admin/financials');
+  } catch (err) {
+    console.error(err);
+    res.send("Error updating event type: " + err.message);
   }
 });
 
@@ -735,6 +804,17 @@ app.post('/events/register', async (req, res) => {
   if (!customer_id) return res.send("Please sign in first");
 
   try {
+    // Don't oversell: the event's own cap wins, otherwise the event type's cap
+    const capRes = await db.query(
+      'SELECT name, max_attendees, spots_left FROM event_economics WHERE id = $1',
+      [event_id]
+    );
+    const ev = capRes.rows[0];
+    if (!ev) return res.send("Unknown event");
+    if (ev.spots_left <= 0) {
+      return res.send(`"${ev.name}" is fully booked (${ev.max_attendees} places). Please pick another date.`);
+    }
+
     await db.query(
       'INSERT INTO event_registrations (event_id, customer_id) VALUES ($1, $2)',
       [event_id, customer_id]

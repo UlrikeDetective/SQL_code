@@ -73,18 +73,25 @@
                     <th>Event</th>
                     <th>Date</th>
                     <th>Location</th>
-                    <th style="text-align: center;">Registrations</th>
+                    <th style="text-align: right;">Price</th>
+                    <th style="text-align: center;">Spots</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <% if (events.length === 0) { %>
-                    <tr><td colspan="5" style="text-align: center; color: #888; padding: 40px;">No upcoming events at this time.</td></tr>
+                    <tr><td colspan="6" style="text-align: center; color: #888; padding: 40px;">No upcoming events at this time.</td></tr>
                 <% } %>
                 <% events.forEach(e => { %>
+                    <%
+                        const spotsLeft = parseInt(e.spots_left);
+                        const soldOut = spotsLeft <= 0;
+                        const almostFull = !soldOut && spotsLeft <= Math.max(3, e.max_attendees * 0.1);
+                    %>
                     <tr>
                         <td>
                             <div style="font-weight: 600;"><%= e.name %></div>
+                            <div style="font-size: 0.75rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;"><%= e.event_type %></div>
                             <% if (e.description) { %>
                                 <div style="font-size: 0.85rem; color: #666; font-weight: normal; margin-top: 3px;"><%= e.description %></div>
                             <% } %>
@@ -94,15 +101,28 @@
                             <span style="font-size: 0.85rem; color: #666;">@ <%= e.event_date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></span>
                         </td>
                         <td><%= e.location %></td>
+                        <td style="text-align: right; font-variant-numeric: tabular-nums;">
+                            <strong><%= parseFloat(e.ticket_price).toFixed(2) %> €</strong>
+                            <% if (parseFloat(e.cost_per_person) > 0) { %>
+                                <div style="font-size: 0.75rem; color: #888;">incl. ingredients</div>
+                            <% } %>
+                        </td>
                         <td style="text-align: center;">
-                            <span style="background: <%= e.reg_count > 10 ? 'var(--secondary)' : 'var(--background)' %>; padding: 2px 10px; border-radius: 12px; font-weight: 600;">
-                                <%= e.reg_count %>
+                            <span style="background: <%= soldOut ? '#f0d9d9' : (almostFull ? '#fdf6e3' : 'var(--background)') %>; padding: 2px 10px; border-radius: 12px; font-weight: 600;">
+                                <%= e.attendees %> / <%= e.max_attendees %>
                             </span>
+                            <% if (soldOut) { %>
+                                <div style="font-size: 0.75rem; color: var(--accent); font-weight: bold; margin-top: 3px;">FULL</div>
+                            <% } else if (almostFull) { %>
+                                <div style="font-size: 0.75rem; color: var(--accent); margin-top: 3px;">only <%= spotsLeft %> left</div>
+                            <% } %>
                         </td>
                         <td style="text-align: right;">
                             <% if (currentCustomer) { %>
                                 <% if (bookedEventIds.includes(e.id)) { %>
                                     <span style="background: var(--secondary); color: #1d5a4d; padding: 5px 15px; border-radius: 4px; font-weight: bold;">BOOKED</span>
+                                <% } else if (soldOut) { %>
+                                    <span style="color: #888; font-size: 0.85rem;">Sold out</span>
                                 <% } else { %>
                                     <form action="/events/register" method="POST">
                                         <input type="hidden" name="event_id" value="<%= e.id %>">

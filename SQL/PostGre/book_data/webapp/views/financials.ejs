@@ -11,8 +11,9 @@
         .fin-table th.num { text-align: right; }
         .fin-table .muted { color: #888; }
         .fin-table .sub { display: block; font-size: 0.75rem; color: #aaa; }
-        .fin-table tfoot td { font-weight: bold; border-top: 2px solid var(--border); }
         .fin-card { background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px; }
+        .fin-table input[type="number"] { width: 90px; padding: 6px 8px; margin: 0; font-size: 0.9rem; text-align: right; }
+        .fin-table button { padding: 6px 14px; font-size: 0.8rem; width: auto; }
     </style>
 </head>
 <body>
@@ -26,16 +27,17 @@
             // --- All figures below come from the same assumptions (see plan.*) ---
             const totalFixed = plan.rent + plan.utilities + plan.helpers + plan.ss_helpers + plan.autonomo + plan.misc;
 
-            // Profit = margin on the net price, i.e. after IVA has been handed to Hacienda
+            // Books: margin on the net price, i.e. after IVA has gone to Hacienda
             const bookProfit   = actualSales * plan.book_profit_rate;
-            const ticketSales  = actualTickets * plan.event_price;
-            const ticketProfit = actualTickets * plan.event_margin;
+            // Events: already priced and costed per event type in the database
+            const ticketSales  = actualTicketSales;
+            const ticketProfit = actualEventProfit;
             const totalProfit  = bookProfit + ticketProfit;
             const netResult    = totalProfit - totalFixed;
 
             // THE break-even target: one definition, reused everywhere on this page
             const breakEvenBooks   = Math.ceil(totalFixed / plan.profit_per_book);
-            const breakEvenTickets = Math.ceil(totalFixed / plan.event_margin);
+            const breakEvenTickets = Math.ceil(totalFixed / plan.ref_event_profit);
             const missing          = Math.max(0, -netResult);
             const money = v => v.toFixed(2) + ' €';
         %>
@@ -60,10 +62,10 @@
 
                 <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-size: 0.85rem; color: #666;">
                     <strong>Break-even target for this burn:</strong>
-                    <%= breakEvenBooks %> books <em>or</em> <%= breakEvenTickets %> event tickets per month
+                    <%= breakEvenBooks %> books <em>or</em> <%= breakEvenTickets %> "<%= plan.ref_event_type %>" tickets per month
                     (any mix in between). At <%= plan.avg_book_price.toFixed(2) %> € a book you keep
-                    <%= plan.profit_per_book.toFixed(2) %> €; a <%= plan.event_price.toFixed(2) %> € ticket keeps
-                    <%= plan.event_margin.toFixed(2) %> €.
+                    <%= plan.profit_per_book.toFixed(2) %> €; a <%= plan.ref_event_price.toFixed(2) %> € ticket keeps
+                    <%= plan.ref_event_profit.toFixed(2) %> €.
                 </div>
             </div>
 
@@ -80,7 +82,8 @@
                     <div style="flex: 1; background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #ddd;">
                         <div style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Event Tickets</div>
                         <div style="font-size: 1.5rem; font-weight: bold;"><%= ticketSales.toFixed(2) %> €</div>
-                        <div style="font-size: 0.8rem; color: var(--secondary);"><%= ticketProfit.toFixed(2) %> € profit <span style="color:#aaa;">(<%= actualTickets %> tickets)</span></div>
+                        <div style="font-size: 0.8rem; color: var(--secondary);"><%= ticketProfit.toFixed(2) %> € profit</div>
+                        <div style="font-size: 0.75rem; color: #aaa;"><%= actualTickets %> tickets across <%= actualEventCount %> events</div>
                     </div>
                 </div>
 
@@ -106,7 +109,7 @@
                             <strong>Still missing <%= missing.toFixed(2) %> €</strong> to reach the break-even target of
                             <%= breakEvenBooks %> books / <%= breakEvenTickets %> tickets:
                             <%= Math.ceil(missing / plan.profit_per_book) %> more books <em>or</em>
-                            <%= Math.ceil(missing / plan.event_margin) %> more tickets this month.
+                            <%= Math.ceil(missing / plan.ref_event_profit) %> more tickets this month.
                         </div>
                     <% } else { %>
                         <div style="margin-top: 20px; padding: 10px; background: #eff6f6; color: var(--primary); font-size: 0.85rem; border-radius: 4px; border: 1px solid #d1e5e5;">
@@ -117,15 +120,80 @@
             </div>
         </div>
 
+        <!-- EVENT PRICING & CAPACITY -->
+        <div class="fin-card" style="margin-bottom: 40px;">
+            <h2 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 15px;">Event Pricing, Costs & Capacity</h2>
+            <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">
+                These are the defaults per kind of event. Every event inherits them, and a single event can
+                override any value when you create it (e.g. a guest chef evening priced higher than the rest).
+                Changing a number here immediately re-prices the history and the dashboard above.
+            </p>
+            <table class="fin-table">
+                <thead>
+                    <tr>
+                        <th>Event Type</th>
+                        <th class="num">Ticket Price</th>
+                        <th class="num">Cost / Person</th>
+                        <th class="num">Fixed Cost</th>
+                        <th class="num">Max People</th>
+                        <th class="num">IVA %</th>
+                        <th class="num">Profit / Person</th>
+                        <th class="num">Sold Out =</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% eventTypes.forEach(t => { %>
+                        <%
+                            // A <form> may not wrap <td>s, so the form lives in the last
+                            // cell and the inputs join it via the HTML5 form="" attribute.
+                            const fid = 'et-' + t.id;
+                        %>
+                        <tr>
+                            <td>
+                                <strong><%= t.name %></strong>
+                                <% if (t.notes) { %><span class="sub"><%= t.notes %></span><% } %>
+                            </td>
+                            <td class="num"><input form="<%= fid %>" type="number" step="0.01" min="0" name="ticket_price" value="<%= t.ticket_price.toFixed(2) %>" required></td>
+                            <td class="num"><input form="<%= fid %>" type="number" step="0.01" min="0" name="cost_per_person" value="<%= t.cost_per_person.toFixed(2) %>" required></td>
+                            <td class="num"><input form="<%= fid %>" type="number" step="0.01" min="0" name="fixed_cost" value="<%= t.fixed_cost.toFixed(2) %>" required></td>
+                            <td class="num"><input form="<%= fid %>" type="number" step="1" min="1" name="max_attendees" value="<%= t.max_attendees %>" required></td>
+                            <td class="num"><input form="<%= fid %>" type="number" step="0.1" min="0" name="iva_pct" value="<%= (t.iva_rate * 100).toFixed(1) %>" required></td>
+                            <td class="num">
+                                <strong style="color: <%= t.profit_per_head >= 0 ? 'var(--secondary)' : 'var(--accent)' %>;"><%= money(t.profit_per_head) %></strong>
+                                <span class="sub"><%= money(t.net_ticket) %> net - <%= money(t.cost_per_person) %></span>
+                            </td>
+                            <td class="num">
+                                <strong style="color: <%= t.profit_at_capacity >= 0 ? 'var(--secondary)' : 'var(--accent)' %>;"><%= money(t.profit_at_capacity) %></strong>
+                                <span class="sub">at <%= t.max_attendees %> people</span>
+                            </td>
+                            <td>
+                                <form action="/admin/event-types" method="POST" id="<%= fid %>" style="margin: 0;">
+                                    <input type="hidden" name="id" value="<%= t.id %>">
+                                    <button type="submit">Save</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: #888;">
+                "Sold Out =" is what one fully booked event of that type contributes to the shop:
+                (net ticket - cost per person) x max people - fixed cost.
+                Compare it against the <%= totalFixed.toFixed(2) %> € monthly burn to see how many events a month you need.
+            </p>
+        </div>
+
         <!-- SALES HISTORY -->
         <div class="fin-card" style="margin-bottom: 40px;">
             <h2 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 15px;">Sales History per Month</h2>
             <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">
                 Book profit = turnover minus <%= (plan.book_iva * 100).toFixed(0) %>% IVA, times the
                 <%= (plan.book_margin_pct * 100).toFixed(0) %>% retail margin.
-                Event profit = ticket revenue minus <%= (plan.event_iva * 100).toFixed(0) %>% cultural IVA
-                (<%= plan.event_margin.toFixed(2) %> € per <%= plan.event_price.toFixed(2) %> € ticket).
-                Burn is that month's own fixed costs. <strong>Profit book shop = book profit + event profit - burn.</strong>
+                Event profit uses each event's own price, IVA and cost structure from the table above:
+                attendees x (net ticket - cost per person) - fixed cost.
+                Events count in the month they take place in. Burn is that month's own fixed costs.
+                <strong>Profit book shop = book profit + event profit - burn.</strong>
             </p>
             <table class="fin-table">
                 <thead>
@@ -147,7 +215,7 @@
                             <td class="num"><%= money(h.bookProfit) %></td>
                             <td class="num">
                                 <%= money(h.ticketSales) %>
-                                <span class="sub"><%= h.tickets %> tickets</span>
+                                <span class="sub"><%= h.tickets %> tickets / <%= h.events %> events</span>
                             </td>
                             <td class="num"><%= money(h.eventProfit) %></td>
                             <td class="num muted">- <%= money(h.burn) %></td>
@@ -185,7 +253,7 @@
                             <td class="num"><%= money(y.bookProfit) %></td>
                             <td class="num">
                                 <%= money(y.ticketSales) %>
-                                <span class="sub"><%= y.tickets %> tickets</span>
+                                <span class="sub"><%= y.tickets %> tickets / <%= y.events %> events</span>
                             </td>
                             <td class="num"><%= money(y.eventProfit) %></td>
                             <td class="num muted">- <%= money(y.burn) %></td>
@@ -215,9 +283,11 @@
                         <strong>Books:</strong> IVA is super-reduced at <%= (plan.book_iva * 100).toFixed(0) %>%, the retail margin is
                         <%= (plan.book_margin_pct * 100).toFixed(0) %>%. A <%= plan.avg_book_price.toFixed(2) %> € book therefore keeps
                         <%= plan.profit_per_book.toFixed(2) %> €.<br>
-                        <strong>Events:</strong> A <%= plan.event_price.toFixed(2) %> € ticket keeps
-                        <%= plan.event_margin.toFixed(2) %> € after <%= (plan.event_iva * 100).toFixed(0) %>% cultural IVA - almost
-                        three times a book. Events are what cover the staff costs.
+                        <strong>Events:</strong>
+                        <% eventTypes.forEach(t => { %>
+                            <%= t.name %> <%= money(t.profit_per_head) %>/head;
+                        <% }) %>
+                        Events have no stock risk, which is why they carry the staff costs.
                     </p>
                 </div>
                 <div>
@@ -234,6 +304,8 @@
                     <h4>3. The "Hidden" Costs</h4>
                     <p style="font-size: 0.9rem; line-height: 1.6; color: #cc0000;">
                         We have included <strong>Social Security (32%)</strong> for your helpers and your own <strong>Autónomo fee</strong>. Many small businesses fail because they only count the net salary.
+                        Cooking events add a second hidden cost: the ingredients, which is why they have their own
+                        <em>cost per person</em> above.
                     </p>
                 </div>
             </div>
