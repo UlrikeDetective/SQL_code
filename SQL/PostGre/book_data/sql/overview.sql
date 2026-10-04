@@ -50,7 +50,7 @@ INSERT INTO business_costs (month_year, helpers, ss_helpers) VALUES
   ('2026-05-01', 1200.00, 384.00);
 
 INSERT INTO business_costs (month_year, rent, utilities, helpers, ss_helpers, autonomo, misc) VALUES 
-('2026-09-01', 200.00, 75.00, 1800.00, 576.00, 310.00, 100.00);
+('2026-10-01', 200.00, 75.00, 1800.00, 576.00, 310.00, 100.00);
 
 -- 3. SALES PERFORMANCE
 -- ==========================================================
@@ -242,12 +242,12 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.hashtags LIKE '%tech%'
+WHERE b.hashtags LIKE '%movie%'
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 92
+        AND er.event_id = 279
   );
 
 SELECT DISTINCT c.first_name, c.last_name, c.email
@@ -255,49 +255,56 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%His Dark Materials%'
+WHERE b.title LIKE '%Wired%'
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 5
+        AND er.event_id = 38
   );
 
+ SELECT DISTINCT c.first_name, c.last_name, c.email
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN books b ON oi.book_id = b.id
+WHERE b.title = 'Wild';
+
   INSERT INTO event_registrations (event_id, customer_id, registered_at)
-WITH tech_customers AS (
+WITH movie_customers AS (
     SELECT DISTINCT o.customer_id
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
-    WHERE b.hashtags ILIKE '%tech%'
+    WHERE b.hashtags ILIKE '%movie%'
 )
 SELECT 
-    92 AS event_id,
+    279 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
-FROM tech_customers sc
+FROM movie_customers sc
 LEFT JOIN event_registrations er 
-       ON er.event_id = 92 
+       ON er.event_id = 279 
       AND er.customer_id = sc.customer_id
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
   AND RANDOM() < 0.4;         -- Pick roughly 50% of eligible customers
 
 
  INSERT INTO event_registrations (event_id, customer_id, registered_at)
-WITH tough_customers AS (
+WITH wanderlust_customers AS (
     SELECT DISTINCT o.customer_id
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
-    WHERE b.title = 'The Promise'
+    WHERE b.title Ilike '%Wired%'
 )
 SELECT 
-    322 AS event_id,
+    38 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
-FROM tough_customers sc
+FROM wanderlust_customers sc
 LEFT JOIN event_registrations er 
-       ON er.event_id = 322 
+       ON er.event_id = 38 
       AND er.customer_id = sc.customer_id
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
   AND RANDOM() < 0.8;         -- Pick roughly 50% of eligible customers

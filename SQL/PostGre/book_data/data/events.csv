@@ -1,307 +1,307 @@
-"id","name","event_date","location","description"
-1,"Hawaiian books party","2026-02-15 20:00:00","the bookshop","Fiction from your favourite pacific island."
-2,"Japan night","2026-02-26 20:00:00","the bookshop","Wisdom from Japan"
-3,"Let's go surfing","2026-03-05 20:00:00","the bookshop","Stories about surfing"
-18,"Japan book club - March","2026-03-13 20:00:00","the bookshop","Introducing your favourite book from Japan!"
-25,"Hawaiian crime party - March - Paradise Crime Thrillers - Vol 01 - Wired in","2026-03-20 20:00:00","the bookshop","Paradise Crime Thrillers - Vol 01 - Wired in"
-27,"Tech talks - March","2026-03-27 20:00:00","the bookshop","All about tech"
-30,"Reeses Book Club Tarifa Edition - First lie wins","2026-03-31 20:00:00","the bookshop","Reese Book Club"
-33,"Travel club - April","2026-04-08 20:00:00","the bookshop",NULL
-22,"Crazy Rich","2026-04-11 20:00:00","the bookshop","Crazy rich asiens - book talk"
-23,"Surfing days - April","2026-04-16 20:00:00","the bookshop","Surfers meeting"
-19,"Japan book club - April","2026-04-17 20:00:00","the bookshop","Introducing your favourite book from Japan!"
-39,"Kitchen Stories - Hawaii","2026-04-18 18:00:00","the bookshop - kitchen",NULL
-46,"Conservations with friends - Part 1","2026-04-20 20:00:00","the bookshop","Watch party of the TV series - Part 1"
-55,"High Fidelity - book","2026-04-21 20:00:00","the bookshop",NULL
-11,"Tomorrow, tomorrow, and tomorrow","2026-04-22 20:00:00","the bookshop","book reading"
-26,"Hawaiian crime party - April - Paradise Crime Thrillers - Vol 02 - Wired rogue","2026-04-24 20:00:00","the bookshop","Paradise Crime Thrillers - Vol 02 - Wired rogue"
-10,"Tech talks - April","2026-04-25 21:00:00","the bookshop","All about tech"
-47,"Conservations with friends - Part 2","2026-04-27 20:00:00","the bookshop","Watch party of the TV series - Part 2"
-31,"Reeses Book Club Tarifa Edition - Romantic Comedy","2026-04-28 20:00:00","the bookshop","Reese Book Club"
-6,"The Millennium Trilogy - The Girl with the Dragon Tattoo","2026-04-30 21:00:00","the bookshop","Movie + Discussion"
-48,"Conservations with friends - Part 3","2026-05-04 20:00:00","the bookshop","Watch party of the TV series - Part 3"
-41,"Travel club - May","2026-05-06 20:00:00","the bookshop",NULL
-51,"Fever Pitch","2026-05-07 20:00:00","the bookshop",NULL
-56,"Surfing days - May","2026-05-08 20:00:00","the bookshop",NULL
-9,"Hawaiian crime party - Paradise Crime Thrillers - Vol 03 - Wired hard","2026-05-11 20:00:00","the bookshop veranda","Paradise crime books"
-16,"Barbara Streisand","2026-05-13 20:00:00","the bookshop veranda","memoire"
-7,"How to be good","2026-05-14 20:00:00","the bookshop","British readings - Nick Hornby"
-20,"Japan book club - May","2026-05-15 20:00:00","the bookshop","Introducing your favourite book from Japan!"
-32,"Reeses Book Club Tarifa Edition - Daisy Jones and the Six","2026-05-19 20:00:00","the bookshop","Reese Book Club"
-40,"Kitchen Stories - Mexico","2026-05-22 20:00:00","the bookshop - kitchen","Mexican cooking session"
-4,"His Dark Materials - Northern lights","2026-05-23 20:00:00","the bookshop","Book one"
-12,"Normal People - Part 1","2026-05-25 20:00:00","the bookshop veranda","Watch party of the TV series - Part 1"
-24,"Tech talks - may","2026-05-28 20:00:00","the bookshop","Tech meeting"
-28,"The Millennium Trilogy - The Girl Who Played With Fire","2026-05-30 20:00:00","the bookshop","Movie + Discussion"
-49,"Normal People - Part 2","2026-06-01 20:00:00","the bookshop","Watch party of the TV series - Part 2"
-62,"Martial Arts & Mindfulness with Jet Li","2026-06-02 19:00:00","the bookshop","A deep dive into the philosophy of martial arts and true freedom, inspiredby Jet Li's memoir ""Beyond Life and Death""."
-63,"Singapore Noir: Crime Fiction Spotlight","2026-06-03 20:00:00","the bookshop","Exploring the dark alleys of Singapore through modern crime fiction, featuring ""Names Have Been Changed"" by Yu-Mei Balasingamchow."
-64,"The Nvidia Way: AI and Tech Evolution","2026-06-04 18:30:00","the bookshop","A discussion on the rise of Nvidia and the future of artificial intelligence, based on the new release by Tae Kim."
-21,"An Education Summer movie","2026-06-05 21:00:00","the bookshop veranda","Summer movie watching"
-65,"Vegan Chinese Kitchen Workshop","2026-06-06 12:00:00","the bookshop - kitchen","Learn to cook delicious plant-based Chinese dishes inspired by Yang Liu's ""Vegan Chinese Food""."
-50,"Normal People - Part 3","2026-06-08 20:00:00","the bookshop","Watch party of the TV series - Part 3"
-34,"Hawaiian crime party - Paradise Crime Thrillers - Vol 04 - Wired dark","2026-06-09 20:00:00","the bookshop","Paradise crime books"
-76,"Tech talk - June - The NeXT Chapter: Steve Jobs in Exile","2026-06-10 17:00:00","the bookshop","An exploration of the crucial years between Apple and NeXT that shaped a visionary leader, based on the new biography by Walter Isaacson."
-13,"All about romance","2026-06-11 20:00:00","the bookshop veranda","Name your romance book to discuss"
-57,"Surfing days - June","2026-06-12 20:00:00","the bookshop veranda",NULL
-67,"Traveler's Meetup: Epic Bike Rides","2026-06-13 11:00:00","the bookshop veranda","Join fellow cycling enthusiasts for stories of the most scenic bike routes across Europe, featuring Lonely Planet's latest guide."
-52,"High Fidelity - TV Watching Part 01","2026-06-15 20:00:00","the bookshop",NULL
-61,"Reeses Book Club Tarifa Edition - Lucky","2026-06-16 20:00:00","the bookshop veranda",NULL
-59,"Patti Smith","2026-06-17 20:00:00","the bookshop veranda",NULL
-68,"Japan book club - June - Japanese Tea Ceremony Workshop","2026-06-18 18:00:00","the bookshop - kitchen","An authentic introduction to selecting and brewing the perfect cup of Sencha and Matcha, inspired by Per Oscar Brekell's guide."
-69,"Inside the Box: Management Masterclass","2026-06-19 20:00:00","the bookshop","Discover how constraints can drive creativity and improve organizational management, featuring the work of David Epstein."
-8,"Notes from a small island","2026-06-20 20:00:00","the bookshop veranda","Notes from Great Britain"
-53,"High Fidelity - TV Watching Part 02","2026-06-22 20:00:00","the bookshop",NULL
-80,"Otters and Why They Matter","2026-06-23 20:00:00","the bookshop veranda","A fun and educational talk on the natural history of otters and their importance to our environment, based on Heide Island's new book."
-81,"The Infinity Machine: DeepMind & AI","2026-06-24 20:00:00","the bookshop veranda","Exploring the quest for superintelligence with Demis Hassabis and DeepMind, based on the book by Sebastian Mallaby."
-15,"Come As You Are","2026-06-25 20:00:00","the bookshop","Let's talk about sex"
-54,"High Fidelity - TV Watching Part 03","2026-06-29 20:00:00","the bookshop",NULL
-17,"Zadie Smith's NW","2026-06-30 20:00:00","the bookshop veranda","Book talk"
-95,"Colourful Kitchen: Intro to Matcha & Mochi","2026-07-02 18:00:00","the bookshop kitchen","Learn the basics of Japanese tea and sweets."
-58,"Surfing days - July","2026-07-03 20:00:00","the bookshop veranda",NULL
-29,"The Millennium Trilogy - The Girl Who Kicked the Hornets' Nest","2026-07-04 21:00:00","the bookshop veranda","Movie + Discussion"
-98,"Wanderlust Wayfarers: Hidden Gems of Kyoto","2026-07-06 20:00:00","the bookshop veranda","Discover the quiet corners of Japan's ancient capital."
-88,"Surf-side Eating: Summer Social","2026-07-07 18:00:00","the bookshop - kitchen","Relaxed recipes and coastal living discussion."
-100,"Silicon Shores: Cybersecurity for Nomads","2026-07-08 20:00:00","the bookshop","Protecting your data while traveling the world."
-101,"The Lineup: Coastal Conservation","2026-07-09 20:00:00","the bookshop veranda","Local experts talk about protecting our shores."
-14,"Hunger Games - Movie I - Summer cinema","2026-07-10 21:00:00","the bookshop veranda","Summer cinema"
-123,"There There","2026-07-11 20:00:00","the bookshop","Tommy Orange novel"
-35,"Hawaiian crime party - Paradise Crime Thrillers - Vol 05 - Wired dawn","2026-07-13 20:00:00","the bookshop veranda",NULL
-106,"The Lineup: Board Shaping Basics","2026-07-15 20:00:00","the bookshop veranda","The physics and art behind a great surfboard."
-89,"Hula & Hawaiian Traditions","2026-07-16 20:00:00","the bookshop veranda","Cultural evening inspired by the book ""Hula"" by Jasmin Iolani Hakes."
-108,"Book Circle: Norwegian Wood Retrospective","2026-07-17 20:00:00","the bookshop","Revisiting Murakami's masterpiece."
-93,"Eivissa - The Ibiza Cookbook Kitchen Workshop","2026-07-18 20:00:00","the bookshop - kitchen",NULL
-110,"Silicon Shores: Future of Remote Work","2026-07-20 20:00:00","the bookshop","How the landscape of work is changing forever."
-82,"Reeses Book Club Tarifa Edition - True Biz","2026-07-21 20:00:00","the bookshop veranda","July selection: A story about the deaf community, family, and rebellion."
-112,"The Lineup: Surf Photography","2026-07-22 20:00:00","the bookshop veranda","How to capture the power of the ocean."
-113,"Book Circle: Convenience Store Woman","2026-07-23 20:00:00","the bookshop","Discussing societal expectations in modern Japan."
-114,"The Seven Dials Mystery","2026-07-24 20:00:00","the bookshop veranda","Agatha Christie Crimes"
-115,"A Promised Land","2026-07-25 20:00:00","the bookshop","Barack Obama memoir"
-116,"Silicon Shores: Ethical Tech","2026-07-27 20:00:00","the bookshop","Discussing privacy, data, and human-centric design."
-117,"Movie Night: The Beach","2026-07-28 20:00:00","the bookshop veranda","Movie to Alex Garland novel"
-118,"Colourful Kitchen: Ramen Broth Mastery","2026-07-29 18:00:00","the bookshop kitchen","The long road to the perfect soup base."
-119,"Book Circle: Strange Weather in Tokyo","2026-07-30 20:00:00","the bookshop","A quiet romance in the heart of the city."
-42,"His Dark Materials - Subtle Knife","2026-07-31 20:00:00","the bookshop veranda",NULL
-121,"Colourful Kitchen: Sushi Roll Saturday","2026-08-01 20:00:00","the bookshop kitchen","Mastering the art of Maki."
-122,"Lives in Print: The Waterman","2026-08-03 20:00:00","the bookshop veranda","The history of Duke Kahanamoku and the beach boys."
-90,"Silicon Shores: The Founders - The Story of Paypal and the Entrepreneurs Who Shaped Silicon Valley","2026-08-04 20:00:00","the bookshop veranda","Discussing  The Founders - The Story of Paypal and the Entrepreneurs Who Shaped Silicon Valley"
-124,"Before the coffee gets cold - Vol.01","2026-08-05 20:00:00","the bookshop veranda","First book of the series Before the coffee gets cold by Toshikazu Kawaguchi"
-125,"Book Circle: Malibu Rising","2026-08-06 20:00:00","the bookshop","A summer discussion of the Riva family saga."
-126,"Wanderlust Wayfarers: Epic Road Trips of Europe","2026-08-07 20:00:00","the bookshop veranda","Planning the ultimate California coast drive."
-127,"The Lineup: Beach Yoga & Surf","2026-08-08 20:00:00","the bookshop veranda","Mindfulness and movement by the sea."
-36,"Hawaiian crime party - Paradise Crime Thrillers - Vol 06 - Wired justice","2026-08-10 20:00:00","the bookshop",NULL
-129,"Colourful Kitchen: Coastal Tapas & Wine","2026-08-11 20:00:00","the bookshop kitchen","Mediterranean flavors meet surfer chill."
-130,"Book Circle: Barbarian Days","2026-08-12 20:00:00","the bookshop","Discussing the Pulitzer-winning surf memoir."
-131,"Curious Cosmos: Marine Biology 101","2026-08-13 20:00:00","the bookshop veranda","Understanding the ecosystem beneath the waves."
-132,"Wanderlust Wayfarers: Hawaiian Traditions","2026-08-14 20:00:00","the bookshop veranda","Learning about Aloha spirit and island wisdom."
-133,"Movie night: The devil wears Prada","2026-08-15 20:00:00","the bookshop veranda","for fashion lovers and Merly Streep fans"
-134,"Book Circle: On Beauty","2026-08-17 20:00:00","the bookshop","Zadie Smith"
-83,"Reeses Book Club Tarifa Edition - The Unwedding","2026-08-18 20:00:00","the bookshop veranda","August selection: A gripping thriller set at a luxury resort."
-60,"Lives in Print: Cher","2026-08-19 20:00:00","the bookshop veranda","memoirs"
-137,"Colourful Kitchen: Healthy Surfer Snacks","2026-08-20 20:00:00","the bookshop kitchen","Fueling for the next session."
-138,"Book Circle: Summer without men","2026-08-21 20:00:00","the bookshop veranda","Siri Hustvedt"
-139,"Silicon Shores: Coding for all","2026-08-22 20:00:00","the bookshop","An intro workshop for the next generation of hackers."
-140,"Curious Cosmos: The Wave","2026-08-24 20:00:00","the bookshop","The science and stories of rogue waves."
-141,"The Lineup: Women in Surfing","2026-08-25 20:00:00","the bookshop veranda","Trailblazers who changed the sport."
-142,"Colourful Kitchen: Seafood Pasta Night","2026-08-26 20:00:00","the bookshop kitchen","Fresh catch meets Italian tradition."
-143,"Book Circle: Women of Good Fortune","2026-08-27 20:00:00","the bookshop veranda","Sophie Wan"
-144,"Silicon Shores: The Innovators","2026-08-28 20:00:00","the bookshop","Networking night for the local tech community."
-145,"Inner Compass: Let My People Go Surfing","2026-08-29 20:00:00","the bookshop kitchen","Business ethics and the Patagonia story."
-146,"Social Network: Summer Finale Party","2026-08-31 20:00:00","the bookshop veranda","Celebrating a summer of surf, tech, and community. social"
-37,"Investigating Crime - Paradise Crime Thrillers - Vol 07 - Wired secret","2026-09-01 20:00:00","the bookshop",NULL
-185,"Colourful Kitchen: Summer Soba Workshop","2026-09-02 20:00:00","the bookshop kitchen","Bi-weekly community cooking workshop exploring vibrant seasonal recipes. Cool noodles for hot days. Master the art of Soba."
-94,"The Lineup: Sunset Surf History","2026-09-03 20:00:00","the bookshop veranda","A journey through the roots of surfing culture."
-128,"Silicon Shores: The Apple II Legacy","2026-09-04 20:00:00","the bookshop","How the computer became personal."
-151,"Movie night: Hunger Games 02 - Catching Fire","2026-09-05 20:00:00","the bookshop veranda",NULL
-104,"Wanderlust Wayfarers: Backpacking Asia","2026-09-07 20:00:00","the bookshop veranda","Practical tips for long-term travel in Asia."
-91,"Book Circle: A long way down","2026-09-08 20:00:00","the bookshop","Nick Hornby novel"
-109,"Japan Explorer - Tales from the cafe - (Before the coffee gets cold Vol.02)","2026-09-09 20:00:00","the bookshop","Second book of the series"
-135,"Design: Surf Shack","2026-09-10 20:00:00","the bookshop","Finding beauty in laid-back coastal living."
-298,"Extra Work - Nice Girls Don't Get the Corner Office","2026-09-11 20:00:00","the bookshop","Book events about work and career."
-97,"Inner Compass: Discussing Ikigai","2026-09-12 20:00:00","the bookshop","Morning coffee and deep dive into the Japanese secret to a long life."
-219,"Curious Cosmos - The Nature of Swimming: Unique Bathing Locations and Swimming Experiences","2026-09-14 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-84,"Reeses Book Club Tarifa Edition - The Island of Missing Trees","2026-09-15 20:00:00","the bookshop veranda","September selection: A moving story of love, division, and memory in Cyprus."
-186,"Colourful Kitchen - Surf Cafe Living: Cooking, Entertaining and Living by the Sea","2026-09-16 20:00:00","the bookshop kitchen","Bi-weekly community cooking workshop exploring vibrant seasonal recipes."
-258,"The Lineup - Surf & Art: Contemporary Surf Artists Around the World","2026-09-17 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-190,"Silicon Shores - Coding session Python","2026-09-18 20:00:00","the bookshop","Coding Session"
-278,"Movie night - Eat, Pray, Love","2026-09-19 20:00:00","the bookshop","Bi-weekly Movie night."
-120,"Wanderlust Wayfarers: Tokyo Photo Walk","2026-09-21 20:00:00","the bookshop veranda","Capturing the neon and the zen of Tokyo."
-99,"Book Circle: Driver's Education","2026-09-22 20:00:00","the bookshop kitchen","Grant Ginder novel"
-5,"Fantasy and Superheros  - His Dark Materials - Amber Spyglass","2026-09-23 20:00:00","the bookshop","Book three of Dark Materials"
-153,"Serial II  - The Hitchhiker's Guide to the Galaxy - V01","2026-09-24 20:00:00","the bookshop",NULL
-304,"Social Network - End of September swirl","2026-09-25 20:00:00","the bookshop","Social meetup - good talks and drinks."
-310,"Poetry night - Lemons, Vinegar & Unvarnished Truths","2026-09-26 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam."
-220,"Curious Cosmos - Come As You Are","2026-09-28 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-322,"Book Circle - The Promise by Damon Galgut","2026-09-29 20:00:00","the bookshop","tba though guys club choice"
-187,"Colourful Kitchen - Zariz - 100 Easy, Breezy, Tel Aviv-y Recipes","2026-09-30 20:00:00","the bookshop kitchen","Bi-weekly community cooking workshop exploring vibrant seasonal recipes."
-259,"The Lineup - A guide to surfers workout","2026-10-01 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-92,"Silicon Shores: The Code - Silicon Valley Revolution","2026-10-02 20:00:00","the bookshop","Exploring the digital revolution that reshaped the world."
-279,"Movie night - The devil wears Prada","2026-10-03 20:00:00","the bookshop","Bi-weekly Movie night."
-235,"Wanderlust Wayfarers - Wild","2026-10-05 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-38,"Investigating crime - Paradise Crime Thrillers - Vol 08 - Wired fear","2026-10-06 20:00:00","the bookshop",NULL
-158,"Japan Explorer  - Before the coffee gets cold - Vol.03","2026-10-07 20:00:00","the bookshop veranda",NULL
-299,"Extra Work - Ideaflow - Why Creative Businesses Win","2026-10-09 20:00:00","the bookshop","Book events about work and career."
-316,"Inner Compass - Light on Life - The Yoga Journey to Wholeness, Inner Peace and Ultimate Freedom","2026-10-10 20:00:00","the bookshop","Philosophy, psychology, and democracy."
-221,"Curious Cosmos - Embracing the Water: Guide to enjoying nature and swimming in open waters","2026-10-12 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-102,"Book Circle: The Nakano Thrift Shop","2026-10-13 20:00:00","the bookshop","Analyzing the quirky characters of Hiromi Kawakami."
-111,"Colourful Kitchen: Greek Out","2026-10-14 20:00:00","the bookshop kitchen","Sunny Vibes, High-Energy Mediterranean Flavor"
-260,"The Lineup - Carissa Moore: Hawaii Gold: A Celebration of Surfing","2026-10-15 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-191,"Silicon Shores - Super Pumped - The Battle for Uber","2026-10-16 20:00:00","the bookshop","Coding Session"
-280,"Movie night - Movie night: Hunger Games 03 - Mockingjay","2026-10-17 20:00:00","the bookshop","Bi-weekly Movie night."
-236,"Wanderlust Wayfarers - In Search of Captain Zero: A Surfer's Road Trip Beyond the End of the Road","2026-10-19 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-85,"Reeses Book Club Tarifa Edition - Sankofa","2026-10-20 20:00:00","the bookshop veranda","October selection: A woman's journey to find her father and her own identity."
-218,"Fantasy and Superheros - Norse Mythology","2026-10-21 20:00:00","the bookshop","tba"
-154,"Serial II  - The Hitchhiker's Guide to the Galaxy - V02","2026-10-22 20:00:00","the bookshop",NULL
-305,"Social Network - All Pumpkin","2026-10-23 20:00:00","the bookshop","Social meetup - good talks and drinks."
-311,"Poetry night - Home Body","2026-10-24 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam."
-222,"Curious Cosmos - Scavenging Beauty - A Memoir in Walks","2026-10-26 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-170,"Book Circle: What I loved","2026-10-27 20:00:00","the bookshop","Siri Hustvedt"
-107,"Colourful Kitchen: Japanese Street Food","2026-10-28 20:00:00","the bookshop kitchen","Takoyaki, Okonomiyaki, and more!"
-261,"The Lineup - What to wear when","2026-10-29 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-169,"Social Network: Spooky Books","2026-10-31 21:00:00","the bookshop","social"
-237,"Wanderlust Wayfarers - Down Under Travels in a Sunburned Country","2026-11-02 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring. - Edition Australia"
-255,"Investigating crime - Paradise Crime Thrillers - Vol 09 - Wired Courage","2026-11-03 20:00:00","the bookshop",""
-215,"Japan Explorer - Matcha on Monday","2026-11-04 20:00:00","the bookshop","tba"
-96,"Silicon Shores: AI in the Creative Arts","2026-11-06 20:00:00","the bookshop","How artificial intelligence is reshaping art and literature."
-223,"Curious Cosmos - The Jellyfish Problem","2026-11-09 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-165,"Book Circle: Swing Time","2026-11-10 20:00:00","the bookshop","Zadie Smith"
-43,"Fantasy and Superheros  - Book of Dust - La belle Sauvage","2026-11-11 20:00:00","the bookshop","Philip Pullman"
-262,"The Lineup - Board talk","2026-11-12 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-300,"Extra Work - Ideaflow: Why Crative Businesses Win","2026-11-13 20:00:00","the bookshop","Book events about work and career."
-282,"Movie night - A Walk In The Woods","2026-11-14 20:00:00","the bookshop","Bi-weekly Movie night."
-317,"Inner Compass - Wabi Sabi","2026-11-14 20:00:00","the bookshop","Philosophy, psychology, and democracy. - Beth Kempton book"
-238,"Wanderlust Wayfarers - Notes from a Big Country","2026-11-16 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring. - All about the USA"
-86,"Reeses Book Club Tarifa Edition - L.A. Weather","2026-11-17 20:00:00","the bookshop","November selection: A family drama set against the backdrop of California weather."
-147,"Colourful Kitchen: Poké Bowl Perfection","2026-11-18 20:00:00","The kitchen","favourite tropical bowl"
-149,"Japan Explorer - Japanese Magic Realism Coffee Night","2026-11-19 20:00:00","the bookshop","A deep dive into Japanese contemporary fiction."
-192,"Silicon Shores - Monthly Python and AI","2026-11-20 20:00:00","the bookshop","Coding Session"
-224,"Curious Cosmos - The woman in Me","2026-11-23 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle. - Britney Spears Edition"
-194,"Book Circle - The Joy Luck Club","2026-11-24 20:00:00","the bookshop","tba"
-103,"Colourful Kitchen: Miso Making for Beginners","2026-11-25 20:00:00","the bookshop kitchen","Start your own fermentation journey."
-155,"Serial II  - The Hitchhiker's Guide to the Galaxy - V03","2026-11-26 20:00:00","the bookshop",NULL
-263,"The Lineup - Celebrating Surfing","2026-11-26 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-306,"Social Network - November Groove","2026-11-27 20:00:00","the bookshop","Social meetup - good talks and drinks."
-312,"Poetry night - The love of my life: poetry for rediscovery","2026-11-28 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam."
-283,"Movie night - Before Sunrise","2026-11-28 20:00:00","the bookshop","Bi-weekly Movie night."
-239,"Wanderlust Wayfarers - The Savage Landscape: How We Made the Wilderness","2026-11-30 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-162,"Investigating crime - How to Solve Your Own Murder - Part 01","2026-12-01 20:00:00","the bookshop",NULL
-159,"Japan Explorer - Before the coffee gets cold - Vol.04","2026-12-02 20:00:00","the bookshop",NULL
-105,"Silicon Shores: Blockchain Beyond Crypto","2026-12-04 20:00:00","the bookshop","Exploring the structural impact of ledger technology."
-240,"Wanderlust Wayfarers","2026-12-07 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-195,"Book Circle","2026-12-08 20:00:00","the bookshop","tba"
-150,"Colourful Kitchen: The Perfect Bento Box","2026-12-09 20:00:00","the bookshop - kitchen","Cooking"
-264,"The Lineup","2026-12-10 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-301,"Extra Work","2026-12-11 20:00:00","the bookshop","Book events about work and career."
-284,"Movie night","2026-12-12 20:00:00","the bookshop","Bi-weekly Movie night."
-318,"Inner Compass","2026-12-12 20:00:00","the bookshop","Philosophy, psychology, and democracy."
-225,"Curious Cosmos","2026-12-14 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-87,"Reeses Book Club Tarifa Edition - Such a Fun Age","2026-12-15 20:00:00","the bookshop","December selection: A striking story about race, privilege, and complicated relationships."
-44,"Fantasy and Superheros - Book of Dust - The secret commonwealth","2026-12-16 20:00:00","the bookshop","Philip Pullman"
-193,"Silicon Shores","2026-12-18 20:00:00","the bookshop","Coding Session"
-241,"Wanderlust Wayfarers","2026-12-21 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-171,"Book Circle: The Blazing World","2026-12-22 20:00:00","the bookshop","Siri Hustvedt"
-148,"Colourful Kitchen: Tropical Fruit Deserts","2026-12-23 20:00:00","the bookshop - kitchen","Sweet treats inspired by the islands."
-172,"Social Network: Festive Festive","2026-12-24 14:00:00","the bookshop","social"
-265,"The Lineup","2026-12-24 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-307,"Social Network","2026-12-25 20:00:00","the bookshop","Social meetup - good talks and drinks."
-313,"Poetry night","2026-12-26 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam."
-285,"Movie night","2026-12-26 20:00:00","the bookshop","Bi-weekly Movie night."
-226,"Curious Cosmos","2026-12-28 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-242,"Wanderlust Wayfarers","2027-01-04 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-166,"Book Circle: White Teeth","2027-01-05 20:00:00","the bookshop","Zadie Smith"
-216,"Japan Explorer","2027-01-06 20:00:00","the bookshop","tba"
-266,"The Lineup","2027-01-07 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-302,"Extra Work","2027-01-08 20:00:00","the bookshop","Book events about work and career."
-286,"Movie night","2027-01-09 20:00:00","the bookshop","Bi-weekly Movie night."
-319,"Inner Compass","2027-01-09 20:00:00","the bookshop","Philosophy, psychology, and democracy."
-227,"Curious Cosmos","2027-01-11 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-163,"Investigating crime - How to Seal Your Own Fate - Part 02","2027-01-12 20:00:00","the bookshop",NULL
-243,"Wanderlust Wayfarers","2027-01-18 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-196,"Book Circle","2027-01-19 20:00:00","the bookshop","tba"
-267,"The Lineup","2027-01-21 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-308,"Social Network","2027-01-22 20:00:00","the bookshop","Social meetup - good talks and drinks."
-314,"Poetry night","2027-01-23 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam."
-287,"Movie night","2027-01-23 20:00:00","the bookshop","Bi-weekly Movie night."
-228,"Curious Cosmos","2027-01-25 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-156,"Serial II - The Hitchhiker's Guide to the Galaxy - V04","2027-01-28 20:00:00","the bookshop",NULL
-244,"Wanderlust Wayfarers","2027-02-01 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-173,"Book Circle: Memories of the Future","2027-02-02 20:00:00","the bookshop","Siri Hustvedt"
-160,"Japan Explorer - Before the coffee gets cold - Vol.05","2027-02-03 20:00:00","the bookshop",NULL
-268,"The Lineup","2027-02-04 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-288,"Movie night","2027-02-06 20:00:00","the bookshop","Bi-weekly Movie night."
-229,"Curious Cosmos","2027-02-08 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-256,"Investigating crime - Paradise Crime Thrillers - Vol 10 - Wired courage II","2027-02-09 20:00:00","the bookshop",""
-303,"Extra Work","2027-02-12 20:00:00","the bookshop","Book events about work and career."
-320,"Inner Compass","2027-02-13 20:00:00","the bookshop","Philosophy, psychology, and democracy."
-245,"Wanderlust Wayfarers","2027-02-15 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-197,"Book Circle","2027-02-16 20:00:00","the bookshop","tba"
-269,"The Lineup","2027-02-18 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-289,"Movie night","2027-02-20 20:00:00","the bookshop","Bi-weekly Movie night."
-230,"Curious Cosmos","2027-02-22 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-45,"Serial II  - Book of Dust - The rose field","2027-02-24 20:00:00","the bookshop","Philip Pullman"
-157,"Serial II  - The Hitchhiker's Guide to the Galaxy - V05","2027-02-25 20:00:00","the bookshop",NULL
-309,"Social Network","2027-02-26 20:00:00","the bookshop","Social meetup - good talks and drinks."
-315,"Poetry night","2027-02-27 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam."
-246,"Wanderlust Wayfarers","2027-03-01 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-198,"Book Circle","2027-03-02 20:00:00","the bookshop","tba"
-217,"Japan Explorer","2027-03-03 20:00:00","the bookshop","tba"
-270,"The Lineup","2027-03-04 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-290,"Movie night","2027-03-06 20:00:00","the bookshop","Bi-weekly Movie night."
-231,"Curious Cosmos","2027-03-08 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-257,"Investigating crime - Paradise Crime Thrillers - Vol 11 - Wired truth","2027-03-09 20:00:00","the bookshop",""
-321,"Inner Compass","2027-03-13 20:00:00","the bookshop","Philosophy, psychology, and democracy."
-247,"Wanderlust Wayfarers","2027-03-15 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-199,"Book Circle","2027-03-16 20:00:00","the bookshop","tba"
-271,"The Lineup","2027-03-18 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-291,"Movie night","2027-03-20 20:00:00","the bookshop","Bi-weekly Movie night."
-232,"Curious Cosmos","2027-03-22 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-200,"Book Circle","2027-03-30 20:00:00","the bookshop","tba"
-272,"The Lineup","2027-04-01 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-292,"Movie night","2027-04-03 20:00:00","the bookshop","Bi-weekly Movie night."
-248,"Wanderlust Wayfarers","2027-04-05 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-167,"Book Circle: Grand Union","2027-04-06 20:00:00","the bookshop","Zadie Smith"
-161,"Japan Explorer - Before the coffee gets cold - Vol.06","2027-04-07 20:00:00","the bookshop",NULL
-233,"Curious Cosmos","2027-04-12 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-164,"Investigating crime - How to Cheat Your Own Death - Part 03","2027-04-13 20:00:00","the bookshop",NULL
-273,"The Lineup","2027-04-15 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-293,"Movie night","2027-04-17 20:00:00","the bookshop","Bi-weekly Movie night."
-249,"Wanderlust Wayfarers","2027-04-19 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-174,"Book Circle: A Woman Looking at Men Looking at Women","2027-04-20 20:00:00","the bookshop veranda","Siri Hustvedt"
-234,"Curious Cosmos","2027-04-26 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle."
-274,"The Lineup","2027-04-29 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-294,"Movie night","2027-05-01 20:00:00","the bookshop","Bi-weekly Movie night."
-250,"Wanderlust Wayfarers","2027-05-03 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-201,"Book Circle","2027-05-04 20:00:00","the bookshop veranda","tba"
-275,"The Lineup","2027-05-13 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-295,"Movie night","2027-05-15 20:00:00","the bookshop","Bi-weekly Movie night."
-251,"Wanderlust Wayfarers","2027-05-17 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-202,"Book Circle","2027-05-18 20:00:00","the bookshop veranda","tba"
-276,"The Lineup","2027-05-27 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-296,"Movie night","2027-05-29 20:00:00","the bookshop","Bi-weekly Movie night."
-252,"Wanderlust Wayfarers","2027-05-31 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-203,"Book Circle","2027-06-01 20:00:00","the bookshop veranda","tba"
-277,"The Lineup","2027-06-10 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports."
-297,"Movie night","2027-06-12 20:00:00","the bookshop","Bi-weekly Movie night."
-253,"Wanderlust Wayfarers","2027-06-14 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-175,"Book Circle: The Blindfold","2027-06-15 20:00:00","the bookshop veranda","Siri Hustvedt"
-254,"Wanderlust Wayfarers","2027-06-28 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring."
-204,"Book Circle","2027-06-29 16:05:00","the bookshop veranda","tba"
-168,"Book Circle: Dead and Alive","2027-07-06 20:00:00","the bookshop veranda","Zadie Smith"
-205,"Book Circle","2027-07-20 20:00:00","the bookshop veranda","tba"
-206,"Book Circle","2027-08-03 20:00:00","the bookshop veranda","tba"
-176,"Book Circle: The Shaking Woman or A History of My Nerves","2027-08-17 20:00:00","the bookshop veranda","Siri Hustvedt"
-207,"Book Circle","2027-08-31 20:00:00","the bookshop veranda","tba"
-208,"Book Circle","2027-09-07 20:00:00","the bookshop","tba"
-209,"Book Circle","2027-09-21 20:00:00","the bookshop veranda","tba"
-210,"Book Circle","2027-10-05 20:00:00","the bookshop veranda","tba"
-177,"Book Circle: Mothers, Fathers, and Others","2027-10-19 20:00:00","the bookshop","Siri Hustvedt"
-211,"Book Circle","2027-11-02 20:00:00","the bookshop","tba"
-212,"Book Circle","2027-11-16 20:00:00","the bookshop","tba"
-213,"Book Circle","2027-11-30 20:00:00","the bookshop","tba"
-178,"Book Circle: The Sorrows of an American","2027-12-07 20:00:00","the bookshop","Siri Hustvedt"
-214,"Book Circle","2027-12-21 20:00:00","the bookshop","tba"
-179,"Book Circle: Living, Thinking, Looking","2028-02-22 20:00:00","the bookshop","Siri Hustvedt"
-180,"Book Circle: Yonder","2028-04-04 20:00:00","the bookshop veranda","Siri Hustvedt"
-181,"Book Circle: The Delusions of Certainty","2028-06-06 20:00:00","the bookshop veranda","Siri Hustvedt"
-182,"Book Circle: A Plea for Eros","2028-08-22 20:00:00","the bookshop veranda","Siri Hustvedt"
-183,"Book Circle: The Enchantment of Lily Dahl","2028-10-17 20:00:00","the bookshop","Siri Hustvedt"
+"id","name","event_date","location","description","event_type_id","ticket_price","cost_per_person","fixed_cost","max_attendees"
+1,"Hawaiian books party","2026-02-15 20:00:00","the bookshop","Fiction from your favourite pacific island.",3,NULL,NULL,NULL,NULL
+2,"Japan night","2026-02-26 20:00:00","the bookshop","Wisdom from Japan",2,NULL,NULL,NULL,NULL
+3,"Let's go surfing","2026-03-05 20:00:00","the bookshop","Stories about surfing",2,NULL,NULL,NULL,NULL
+18,"Japan book club - March","2026-03-13 20:00:00","the bookshop","Introducing your favourite book from Japan!",2,NULL,NULL,NULL,NULL
+25,"Hawaiian crime party - March - Paradise Crime Thrillers - Vol 01 - Wired in","2026-03-20 20:00:00","the bookshop","Paradise Crime Thrillers - Vol 01 - Wired in",3,NULL,NULL,NULL,NULL
+27,"Tech talks - March","2026-03-27 20:00:00","the bookshop","All about tech",2,NULL,NULL,NULL,NULL
+30,"Reeses Book Club Tarifa Edition - First lie wins","2026-03-31 20:00:00","the bookshop","Reese Book Club",2,NULL,NULL,NULL,NULL
+33,"Travel club - April","2026-04-08 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+22,"Crazy Rich","2026-04-11 20:00:00","the bookshop","Crazy rich asiens - book talk",2,NULL,NULL,NULL,NULL
+23,"Surfing days - April","2026-04-16 20:00:00","the bookshop","Surfers meeting",2,NULL,NULL,NULL,NULL
+19,"Japan book club - April","2026-04-17 20:00:00","the bookshop","Introducing your favourite book from Japan!",2,NULL,NULL,NULL,NULL
+39,"Kitchen Stories - Hawaii","2026-04-18 18:00:00","the bookshop - kitchen",NULL,1,NULL,NULL,NULL,NULL
+46,"Conservations with friends - Part 1","2026-04-20 20:00:00","the bookshop","Watch party of the TV series - Part 1",2,NULL,NULL,NULL,NULL
+55,"High Fidelity - book","2026-04-21 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+11,"Tomorrow, tomorrow, and tomorrow","2026-04-22 20:00:00","the bookshop","book reading",2,NULL,NULL,NULL,NULL
+26,"Hawaiian crime party - April - Paradise Crime Thrillers - Vol 02 - Wired rogue","2026-04-24 20:00:00","the bookshop","Paradise Crime Thrillers - Vol 02 - Wired rogue",3,NULL,NULL,NULL,NULL
+10,"Tech talks - April","2026-04-25 21:00:00","the bookshop","All about tech",2,NULL,NULL,NULL,NULL
+47,"Conservations with friends - Part 2","2026-04-27 20:00:00","the bookshop","Watch party of the TV series - Part 2",2,NULL,NULL,NULL,NULL
+31,"Reeses Book Club Tarifa Edition - Romantic Comedy","2026-04-28 20:00:00","the bookshop","Reese Book Club",2,NULL,NULL,NULL,NULL
+6,"The Millennium Trilogy - The Girl with the Dragon Tattoo","2026-04-30 21:00:00","the bookshop","Movie + Discussion",2,NULL,NULL,NULL,NULL
+48,"Conservations with friends - Part 3","2026-05-04 20:00:00","the bookshop","Watch party of the TV series - Part 3",2,NULL,NULL,NULL,NULL
+41,"Travel club - May","2026-05-06 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+51,"Fever Pitch","2026-05-07 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+56,"Surfing days - May","2026-05-08 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+9,"Hawaiian crime party - Paradise Crime Thrillers - Vol 03 - Wired hard","2026-05-11 20:00:00","the bookshop veranda","Paradise crime books",3,NULL,NULL,NULL,NULL
+16,"Barbara Streisand","2026-05-13 20:00:00","the bookshop veranda","memoire",2,NULL,NULL,NULL,NULL
+7,"How to be good","2026-05-14 20:00:00","the bookshop","British readings - Nick Hornby",2,NULL,NULL,NULL,NULL
+20,"Japan book club - May","2026-05-15 20:00:00","the bookshop","Introducing your favourite book from Japan!",2,NULL,NULL,NULL,NULL
+32,"Reeses Book Club Tarifa Edition - Daisy Jones and the Six","2026-05-19 20:00:00","the bookshop","Reese Book Club",2,NULL,NULL,NULL,NULL
+40,"Kitchen Stories - Mexico","2026-05-22 20:00:00","the bookshop - kitchen","Mexican cooking session",1,NULL,NULL,NULL,34
+4,"His Dark Materials - Northern lights","2026-05-23 20:00:00","the bookshop","Book one",2,NULL,NULL,NULL,NULL
+12,"Normal People - Part 1","2026-05-25 20:00:00","the bookshop veranda","Watch party of the TV series - Part 1",2,NULL,NULL,NULL,NULL
+24,"Tech talks - may","2026-05-28 20:00:00","the bookshop","Tech meeting",2,NULL,NULL,NULL,NULL
+28,"The Millennium Trilogy - The Girl Who Played With Fire","2026-05-30 20:00:00","the bookshop","Movie + Discussion",2,NULL,NULL,NULL,NULL
+49,"Normal People - Part 2","2026-06-01 20:00:00","the bookshop","Watch party of the TV series - Part 2",2,NULL,NULL,NULL,NULL
+62,"Martial Arts & Mindfulness with Jet Li","2026-06-02 19:00:00","the bookshop","A deep dive into the philosophy of martial arts and true freedom, inspiredby Jet Li's memoir ""Beyond Life and Death"".",2,NULL,NULL,NULL,NULL
+63,"Singapore Noir: Crime Fiction Spotlight","2026-06-03 20:00:00","the bookshop","Exploring the dark alleys of Singapore through modern crime fiction, featuring ""Names Have Been Changed"" by Yu-Mei Balasingamchow.",2,NULL,NULL,NULL,NULL
+64,"The Nvidia Way: AI and Tech Evolution","2026-06-04 18:30:00","the bookshop","A discussion on the rise of Nvidia and the future of artificial intelligence, based on the new release by Tae Kim.",2,NULL,NULL,NULL,NULL
+21,"An Education Summer movie","2026-06-05 21:00:00","the bookshop veranda","Summer movie watching",3,NULL,NULL,NULL,NULL
+65,"Vegan Chinese Kitchen Workshop","2026-06-06 12:00:00","the bookshop - kitchen","Learn to cook delicious plant-based Chinese dishes inspired by Yang Liu's ""Vegan Chinese Food"".",1,NULL,NULL,NULL,NULL
+50,"Normal People - Part 3","2026-06-08 20:00:00","the bookshop","Watch party of the TV series - Part 3",2,NULL,NULL,NULL,NULL
+34,"Hawaiian crime party - Paradise Crime Thrillers - Vol 04 - Wired dark","2026-06-09 20:00:00","the bookshop","Paradise crime books",3,NULL,NULL,NULL,NULL
+76,"Tech talk - June - The NeXT Chapter: Steve Jobs in Exile","2026-06-10 17:00:00","the bookshop","An exploration of the crucial years between Apple and NeXT that shaped a visionary leader, based on the new biography by Walter Isaacson.",2,NULL,NULL,NULL,NULL
+13,"All about romance","2026-06-11 20:00:00","the bookshop veranda","Name your romance book to discuss",2,NULL,NULL,NULL,NULL
+57,"Surfing days - June","2026-06-12 20:00:00","the bookshop veranda",NULL,2,NULL,NULL,NULL,NULL
+67,"Traveler's Meetup: Epic Bike Rides","2026-06-13 11:00:00","the bookshop veranda","Join fellow cycling enthusiasts for stories of the most scenic bike routes across Europe, featuring Lonely Planet's latest guide.",2,NULL,NULL,NULL,NULL
+52,"High Fidelity - TV Watching Part 01","2026-06-15 20:00:00","the bookshop",NULL,3,NULL,NULL,NULL,NULL
+61,"Reeses Book Club Tarifa Edition - Lucky","2026-06-16 20:00:00","the bookshop veranda",NULL,2,NULL,NULL,NULL,NULL
+59,"Patti Smith","2026-06-17 20:00:00","the bookshop veranda",NULL,2,NULL,NULL,NULL,NULL
+68,"Japan book club - June - Japanese Tea Ceremony Workshop","2026-06-18 18:00:00","the bookshop - kitchen","An authentic introduction to selecting and brewing the perfect cup of Sencha and Matcha, inspired by Per Oscar Brekell's guide.",1,NULL,NULL,NULL,33
+69,"Inside the Box: Management Masterclass","2026-06-19 20:00:00","the bookshop","Discover how constraints can drive creativity and improve organizational management, featuring the work of David Epstein.",2,NULL,NULL,NULL,NULL
+8,"Notes from a small island","2026-06-20 20:00:00","the bookshop veranda","Notes from Great Britain",2,NULL,NULL,NULL,NULL
+53,"High Fidelity - TV Watching Part 02","2026-06-22 20:00:00","the bookshop",NULL,3,NULL,NULL,NULL,NULL
+80,"Otters and Why They Matter","2026-06-23 20:00:00","the bookshop veranda","A fun and educational talk on the natural history of otters and their importance to our environment, based on Heide Island's new book.",2,NULL,NULL,NULL,NULL
+81,"The Infinity Machine: DeepMind & AI","2026-06-24 20:00:00","the bookshop veranda","Exploring the quest for superintelligence with Demis Hassabis and DeepMind, based on the book by Sebastian Mallaby.",2,NULL,NULL,NULL,NULL
+15,"Come As You Are","2026-06-25 20:00:00","the bookshop","Let's talk about sex",2,NULL,NULL,NULL,NULL
+54,"High Fidelity - TV Watching Part 03","2026-06-29 20:00:00","the bookshop",NULL,3,NULL,NULL,NULL,NULL
+17,"Zadie Smith's NW","2026-06-30 20:00:00","the bookshop veranda","Book talk",2,NULL,NULL,NULL,NULL
+95,"Colourful Kitchen: Intro to Matcha & Mochi","2026-07-02 18:00:00","the bookshop kitchen","Learn the basics of Japanese tea and sweets.",1,NULL,NULL,NULL,26
+58,"Surfing days - July","2026-07-03 20:00:00","the bookshop veranda",NULL,2,NULL,NULL,NULL,NULL
+29,"The Millennium Trilogy - The Girl Who Kicked the Hornets' Nest","2026-07-04 21:00:00","the bookshop veranda","Movie + Discussion",2,NULL,NULL,NULL,NULL
+98,"Wanderlust Wayfarers: Hidden Gems of Kyoto","2026-07-06 20:00:00","the bookshop veranda","Discover the quiet corners of Japan's ancient capital.",2,NULL,NULL,NULL,NULL
+88,"Surf-side Eating: Summer Social","2026-07-07 18:00:00","the bookshop - kitchen","Relaxed recipes and coastal living discussion.",1,NULL,NULL,NULL,62
+100,"Silicon Shores: Cybersecurity for Nomads","2026-07-08 20:00:00","the bookshop","Protecting your data while traveling the world.",2,NULL,NULL,NULL,NULL
+101,"The Lineup: Coastal Conservation","2026-07-09 20:00:00","the bookshop veranda","Local experts talk about protecting our shores.",2,NULL,NULL,NULL,NULL
+14,"Hunger Games - Movie I - Summer cinema","2026-07-10 21:00:00","the bookshop veranda","Summer cinema",3,NULL,NULL,NULL,NULL
+123,"There There","2026-07-11 20:00:00","the bookshop","Tommy Orange novel",2,NULL,NULL,NULL,NULL
+35,"Hawaiian crime party - Paradise Crime Thrillers - Vol 05 - Wired dawn","2026-07-13 20:00:00","the bookshop veranda",NULL,3,NULL,NULL,NULL,NULL
+106,"The Lineup: Board Shaping Basics","2026-07-15 20:00:00","the bookshop veranda","The physics and art behind a great surfboard.",2,NULL,NULL,NULL,NULL
+89,"Hula & Hawaiian Traditions","2026-07-16 20:00:00","the bookshop veranda","Cultural evening inspired by the book ""Hula"" by Jasmin Iolani Hakes.",2,NULL,NULL,NULL,NULL
+108,"Book Circle: Norwegian Wood Retrospective","2026-07-17 20:00:00","the bookshop","Revisiting Murakami's masterpiece.",2,NULL,NULL,NULL,NULL
+93,"Eivissa - The Ibiza Cookbook Kitchen Workshop","2026-07-18 20:00:00","the bookshop - kitchen",NULL,1,NULL,NULL,NULL,34
+110,"Silicon Shores: Future of Remote Work","2026-07-20 20:00:00","the bookshop","How the landscape of work is changing forever.",2,NULL,NULL,NULL,NULL
+82,"Reeses Book Club Tarifa Edition - True Biz","2026-07-21 20:00:00","the bookshop veranda","July selection: A story about the deaf community, family, and rebellion.",2,NULL,NULL,NULL,NULL
+112,"The Lineup: Surf Photography","2026-07-22 20:00:00","the bookshop veranda","How to capture the power of the ocean.",2,NULL,NULL,NULL,NULL
+113,"Book Circle: Convenience Store Woman","2026-07-23 20:00:00","the bookshop","Discussing societal expectations in modern Japan.",2,NULL,NULL,NULL,NULL
+114,"The Seven Dials Mystery","2026-07-24 20:00:00","the bookshop veranda","Agatha Christie Crimes",2,NULL,NULL,NULL,NULL
+115,"A Promised Land","2026-07-25 20:00:00","the bookshop","Barack Obama memoir",2,NULL,NULL,NULL,NULL
+116,"Silicon Shores: Ethical Tech","2026-07-27 20:00:00","the bookshop","Discussing privacy, data, and human-centric design.",2,NULL,NULL,NULL,NULL
+117,"Movie Night: The Beach","2026-07-28 20:00:00","the bookshop veranda","Movie to Alex Garland novel",3,NULL,NULL,NULL,NULL
+118,"Colourful Kitchen: Ramen Broth Mastery","2026-07-29 18:00:00","the bookshop kitchen","The long road to the perfect soup base.",1,NULL,NULL,NULL,28
+119,"Book Circle: Strange Weather in Tokyo","2026-07-30 20:00:00","the bookshop","A quiet romance in the heart of the city.",2,NULL,NULL,NULL,NULL
+42,"His Dark Materials - Subtle Knife","2026-07-31 20:00:00","the bookshop veranda",NULL,2,NULL,NULL,NULL,NULL
+121,"Colourful Kitchen: Sushi Roll Saturday","2026-08-01 20:00:00","the bookshop kitchen","Mastering the art of Maki.",1,NULL,NULL,NULL,34
+122,"Lives in Print: The Waterman","2026-08-03 20:00:00","the bookshop veranda","The history of Duke Kahanamoku and the beach boys.",2,NULL,NULL,NULL,NULL
+90,"Silicon Shores: The Founders - The Story of Paypal and the Entrepreneurs Who Shaped Silicon Valley","2026-08-04 20:00:00","the bookshop veranda","Discussing  The Founders - The Story of Paypal and the Entrepreneurs Who Shaped Silicon Valley",2,NULL,NULL,NULL,NULL
+124,"Before the coffee gets cold - Vol.01","2026-08-05 20:00:00","the bookshop veranda","First book of the series Before the coffee gets cold by Toshikazu Kawaguchi",2,NULL,NULL,NULL,NULL
+125,"Book Circle: Malibu Rising","2026-08-06 20:00:00","the bookshop","A summer discussion of the Riva family saga.",2,NULL,NULL,NULL,NULL
+126,"Wanderlust Wayfarers: Epic Road Trips of Europe","2026-08-07 20:00:00","the bookshop veranda","Planning the ultimate California coast drive.",2,NULL,NULL,NULL,NULL
+127,"The Lineup: Beach Yoga & Surf","2026-08-08 20:00:00","the bookshop veranda","Mindfulness and movement by the sea.",2,NULL,NULL,NULL,NULL
+36,"Hawaiian crime party - Paradise Crime Thrillers - Vol 06 - Wired justice","2026-08-10 20:00:00","the bookshop",NULL,3,NULL,NULL,NULL,NULL
+129,"Colourful Kitchen: Coastal Tapas & Wine","2026-08-11 20:00:00","the bookshop kitchen","Mediterranean flavors meet surfer chill.",1,NULL,NULL,NULL,34
+130,"Book Circle: Barbarian Days","2026-08-12 20:00:00","the bookshop","Discussing the Pulitzer-winning surf memoir.",2,NULL,NULL,NULL,NULL
+131,"Curious Cosmos: Marine Biology 101","2026-08-13 20:00:00","the bookshop veranda","Understanding the ecosystem beneath the waves.",2,NULL,NULL,NULL,NULL
+132,"Wanderlust Wayfarers: Hawaiian Traditions","2026-08-14 20:00:00","the bookshop veranda","Learning about Aloha spirit and island wisdom.",2,NULL,NULL,NULL,NULL
+133,"Movie night: The devil wears Prada","2026-08-15 20:00:00","the bookshop veranda","for fashion lovers and Merly Streep fans",3,NULL,NULL,NULL,NULL
+134,"Book Circle: On Beauty","2026-08-17 20:00:00","the bookshop","Zadie Smith",2,NULL,NULL,NULL,NULL
+83,"Reeses Book Club Tarifa Edition - The Unwedding","2026-08-18 20:00:00","the bookshop veranda","August selection: A gripping thriller set at a luxury resort.",2,NULL,NULL,NULL,NULL
+60,"Lives in Print: Cher","2026-08-19 20:00:00","the bookshop veranda","memoirs",2,NULL,NULL,NULL,NULL
+137,"Colourful Kitchen: Healthy Surfer Snacks","2026-08-20 20:00:00","the bookshop kitchen","Fueling for the next session.",1,NULL,NULL,NULL,26
+138,"Book Circle: Summer without men","2026-08-21 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+139,"Silicon Shores: Coding for all","2026-08-22 20:00:00","the bookshop","An intro workshop for the next generation of hackers.",2,NULL,NULL,NULL,NULL
+140,"Curious Cosmos: The Wave","2026-08-24 20:00:00","the bookshop","The science and stories of rogue waves.",2,NULL,NULL,NULL,NULL
+141,"The Lineup: Women in Surfing","2026-08-25 20:00:00","the bookshop veranda","Trailblazers who changed the sport.",2,NULL,NULL,NULL,NULL
+142,"Colourful Kitchen: Seafood Pasta Night","2026-08-26 20:00:00","the bookshop kitchen","Fresh catch meets Italian tradition.",1,NULL,NULL,NULL,35
+143,"Book Circle: Women of Good Fortune","2026-08-27 20:00:00","the bookshop veranda","Sophie Wan",2,NULL,NULL,NULL,NULL
+144,"Silicon Shores: The Innovators","2026-08-28 20:00:00","the bookshop","Networking night for the local tech community.",2,NULL,NULL,NULL,NULL
+145,"Inner Compass: Let My People Go Surfing","2026-08-29 20:00:00","the bookshop kitchen","Business ethics and the Patagonia story.",2,NULL,NULL,NULL,NULL
+146,"Social Network: Summer Finale Party","2026-08-31 20:00:00","the bookshop veranda","Celebrating a summer of surf, tech, and community. social",3,NULL,NULL,NULL,NULL
+37,"Investigating Crime - Paradise Crime Thrillers - Vol 07 - Wired secret","2026-09-01 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+185,"Colourful Kitchen: Summer Soba Workshop","2026-09-02 20:00:00","the bookshop kitchen","Bi-weekly community cooking workshop exploring vibrant seasonal recipes. Cool noodles for hot days. Master the art of Soba.",1,NULL,NULL,NULL,NULL
+94,"The Lineup: Sunset Surf History","2026-09-03 20:00:00","the bookshop veranda","A journey through the roots of surfing culture.",2,NULL,NULL,NULL,NULL
+128,"Silicon Shores: The Apple II Legacy","2026-09-04 20:00:00","the bookshop","How the computer became personal.",2,NULL,NULL,NULL,NULL
+151,"Movie night: Hunger Games 02 - Catching Fire","2026-09-05 20:00:00","the bookshop veranda",NULL,3,NULL,NULL,NULL,NULL
+104,"Wanderlust Wayfarers: Backpacking Asia","2026-09-07 20:00:00","the bookshop veranda","Practical tips for long-term travel in Asia.",2,NULL,NULL,NULL,NULL
+91,"Book Circle: A long way down","2026-09-08 20:00:00","the bookshop","Nick Hornby novel",2,NULL,NULL,NULL,NULL
+109,"Japan Explorer - Tales from the cafe - (Before the coffee gets cold Vol.02)","2026-09-09 20:00:00","the bookshop","Second book of the series",2,NULL,NULL,NULL,NULL
+135,"Design: Surf Shack","2026-09-10 20:00:00","the bookshop","Finding beauty in laid-back coastal living.",2,NULL,NULL,NULL,NULL
+298,"Extra Work - Nice Girls Don't Get the Corner Office","2026-09-11 20:00:00","the bookshop","Book events about work and career.",2,NULL,NULL,NULL,NULL
+97,"Inner Compass: Discussing Ikigai","2026-09-12 20:00:00","the bookshop","Morning coffee and deep dive into the Japanese secret to a long life.",2,NULL,NULL,NULL,NULL
+219,"Curious Cosmos - The Nature of Swimming: Unique Bathing Locations and Swimming Experiences","2026-09-14 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+84,"Reeses Book Club Tarifa Edition - The Island of Missing Trees","2026-09-15 20:00:00","the bookshop veranda","September selection: A moving story of love, division, and memory in Cyprus.",2,NULL,NULL,NULL,NULL
+186,"Colourful Kitchen - Surf Cafe Living: Cooking, Entertaining and Living by the Sea","2026-09-16 20:00:00","the bookshop kitchen","Bi-weekly community cooking workshop exploring vibrant seasonal recipes.",1,NULL,NULL,NULL,40
+258,"The Lineup - Surf & Art: Contemporary Surf Artists Around the World","2026-09-17 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+190,"Silicon Shores - Coding session Python","2026-09-18 20:00:00","the bookshop","Coding Session",2,NULL,NULL,NULL,NULL
+278,"Movie night - Eat, Pray, Love","2026-09-19 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+120,"Wanderlust Wayfarers: Tokyo Photo Walk","2026-09-21 20:00:00","the bookshop veranda","Capturing the neon and the zen of Tokyo.",2,NULL,NULL,NULL,NULL
+99,"Book Circle: Driver's Education","2026-09-22 20:00:00","the bookshop kitchen","Grant Ginder novel",2,NULL,NULL,NULL,NULL
+5,"Fantasy and Superheros  - His Dark Materials - Amber Spyglass","2026-09-23 20:00:00","the bookshop","Book three of Dark Materials",2,NULL,NULL,NULL,NULL
+153,"Serial II  - The Hitchhiker's Guide to the Galaxy - V01","2026-09-24 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+304,"Social Network - End of September swirl","2026-09-25 20:00:00","the bookshop","Social meetup - good talks and drinks.",3,NULL,NULL,NULL,NULL
+310,"Poetry night - Lemons, Vinegar & Unvarnished Truths","2026-09-26 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam.",2,NULL,NULL,NULL,NULL
+220,"Curious Cosmos - Come As You Are","2026-09-28 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+322,"Book Circle - The Promise by Damon Galgut","2026-09-29 20:00:00","the bookshop","tba though guys club choice",2,NULL,NULL,NULL,NULL
+187,"Colourful Kitchen - Zariz - 100 Easy, Breezy, Tel Aviv-y Recipes","2026-09-30 20:00:00","the bookshop kitchen","Bi-weekly community cooking workshop exploring vibrant seasonal recipes.",1,NULL,NULL,NULL,42
+259,"The Lineup - A guide to surfers workout","2026-10-01 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+92,"Silicon Shores: The Code - Silicon Valley Revolution","2026-10-02 20:00:00","the bookshop","Exploring the digital revolution that reshaped the world.",2,NULL,NULL,NULL,NULL
+279,"Movie night - The devil wears Prada","2026-10-03 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+235,"Wanderlust Wayfarers - Wild","2026-10-05 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+38,"Investigating crime - Paradise Crime Thrillers - Vol 08 - Wired fear","2026-10-06 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+158,"Japan Explorer  - Before the coffee gets cold - Vol.03","2026-10-07 20:00:00","the bookshop veranda",NULL,2,NULL,NULL,NULL,NULL
+299,"Extra Work - Ideaflow - Why Creative Businesses Win","2026-10-09 20:00:00","the bookshop","Book events about work and career.",2,NULL,NULL,NULL,NULL
+316,"Inner Compass - Light on Life - The Yoga Journey to Wholeness, Inner Peace and Ultimate Freedom","2026-10-10 20:00:00","the bookshop","Philosophy, psychology, and democracy.",2,NULL,NULL,NULL,NULL
+221,"Curious Cosmos - Embracing the Water: Guide to enjoying nature and swimming in open waters","2026-10-12 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+102,"Book Circle: The Nakano Thrift Shop","2026-10-13 20:00:00","the bookshop","Analyzing the quirky characters of Hiromi Kawakami.",2,NULL,NULL,NULL,NULL
+111,"Colourful Kitchen: Greek Out","2026-10-14 20:00:00","the bookshop kitchen","Sunny Vibes, High-Energy Mediterranean Flavor",1,NULL,NULL,NULL,NULL
+260,"The Lineup - Carissa Moore: Hawaii Gold: A Celebration of Surfing","2026-10-15 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+191,"Silicon Shores - Super Pumped - The Battle for Uber","2026-10-16 20:00:00","the bookshop","Coding Session",2,NULL,NULL,NULL,NULL
+280,"Movie night - Movie night: Hunger Games 03 - Mockingjay","2026-10-17 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+236,"Wanderlust Wayfarers - In Search of Captain Zero: A Surfer's Road Trip Beyond the End of the Road","2026-10-19 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+85,"Reeses Book Club Tarifa Edition - Sankofa","2026-10-20 20:00:00","the bookshop veranda","October selection: A woman's journey to find her father and her own identity.",2,NULL,NULL,NULL,NULL
+218,"Fantasy and Superheros - Norse Mythology","2026-10-21 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+154,"Serial II  - The Hitchhiker's Guide to the Galaxy - V02","2026-10-22 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+305,"Social Network - All Pumpkin","2026-10-23 20:00:00","the bookshop","Social meetup - good talks and drinks.",3,NULL,NULL,NULL,NULL
+311,"Poetry night - Home Body","2026-10-24 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam.",2,NULL,NULL,NULL,NULL
+222,"Curious Cosmos - Scavenging Beauty - A Memoir in Walks","2026-10-26 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+170,"Book Circle: What I loved","2026-10-27 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+107,"Colourful Kitchen: Japanese Street Food","2026-10-28 20:00:00","the bookshop kitchen","Takoyaki, Okonomiyaki, and more!",1,NULL,NULL,NULL,NULL
+261,"The Lineup - What to wear when","2026-10-29 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+169,"Social Network: Spooky Books","2026-10-31 21:00:00","the bookshop","social",3,NULL,NULL,NULL,NULL
+237,"Wanderlust Wayfarers - Down Under Travels in a Sunburned Country","2026-11-02 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring. - Edition Australia",2,NULL,NULL,NULL,NULL
+255,"Investigating crime - Paradise Crime Thrillers - Vol 09 - Wired Courage","2026-11-03 20:00:00","the bookshop","",2,NULL,NULL,NULL,NULL
+215,"Japan Explorer - Matcha on Monday","2026-11-04 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+96,"Silicon Shores: AI in the Creative Arts","2026-11-06 20:00:00","the bookshop","How artificial intelligence is reshaping art and literature.",2,NULL,NULL,NULL,NULL
+223,"Curious Cosmos - The Jellyfish Problem","2026-11-09 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+165,"Book Circle: Swing Time","2026-11-10 20:00:00","the bookshop","Zadie Smith",2,NULL,NULL,NULL,NULL
+43,"Fantasy and Superheros  - Book of Dust - La belle Sauvage","2026-11-11 20:00:00","the bookshop","Philip Pullman",2,NULL,NULL,NULL,NULL
+262,"The Lineup - Board talk","2026-11-12 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+300,"Extra Work - Ideaflow: Why Crative Businesses Win","2026-11-13 20:00:00","the bookshop","Book events about work and career.",2,NULL,NULL,NULL,NULL
+282,"Movie night - A Walk In The Woods","2026-11-14 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+317,"Inner Compass - Wabi Sabi","2026-11-14 20:00:00","the bookshop","Philosophy, psychology, and democracy. - Beth Kempton book",2,NULL,NULL,NULL,NULL
+238,"Wanderlust Wayfarers - Notes from a Big Country","2026-11-16 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring. - All about the USA",2,NULL,NULL,NULL,NULL
+86,"Reeses Book Club Tarifa Edition - L.A. Weather","2026-11-17 20:00:00","the bookshop","November selection: A family drama set against the backdrop of California weather.",2,NULL,NULL,NULL,NULL
+147,"Colourful Kitchen: Poké Bowl Perfection","2026-11-18 20:00:00","The kitchen","favourite tropical bowl",1,NULL,NULL,NULL,NULL
+149,"Japan Explorer - Japanese Magic Realism Coffee Night","2026-11-19 20:00:00","the bookshop","A deep dive into Japanese contemporary fiction.",2,NULL,NULL,NULL,NULL
+192,"Silicon Shores - Monthly Python and AI","2026-11-20 20:00:00","the bookshop","Coding Session",2,NULL,NULL,NULL,NULL
+224,"Curious Cosmos - The woman in Me","2026-11-23 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle. - Britney Spears Edition",2,NULL,NULL,NULL,NULL
+194,"Book Circle - The Joy Luck Club","2026-11-24 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+103,"Colourful Kitchen: Miso Making for Beginners","2026-11-25 20:00:00","the bookshop kitchen","Start your own fermentation journey.",1,NULL,NULL,NULL,NULL
+263,"The Lineup - Celebrating Surfing","2026-11-26 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+155,"Serial II  - The Hitchhiker's Guide to the Galaxy - V03","2026-11-26 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+306,"Social Network - November Groove","2026-11-27 20:00:00","the bookshop","Social meetup - good talks and drinks.",3,NULL,NULL,NULL,NULL
+283,"Movie night - Before Sunrise","2026-11-28 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+312,"Poetry night - The love of my life: poetry for rediscovery","2026-11-28 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam.",2,NULL,NULL,NULL,NULL
+239,"Wanderlust Wayfarers - The Savage Landscape: How We Made the Wilderness","2026-11-30 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+162,"Investigating crime - How to Solve Your Own Murder - Part 01","2026-12-01 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+159,"Japan Explorer - Before the coffee gets cold - Vol.04","2026-12-02 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+105,"Silicon Shores: Blockchain Beyond Crypto","2026-12-04 20:00:00","the bookshop","Exploring the structural impact of ledger technology.",2,NULL,NULL,NULL,NULL
+240,"Wanderlust Wayfarers","2026-12-07 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+195,"Book Circle","2026-12-08 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+150,"Colourful Kitchen: The Perfect Bento Box","2026-12-09 20:00:00","the bookshop - kitchen","Cooking",1,NULL,NULL,NULL,NULL
+264,"The Lineup","2026-12-10 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+301,"Extra Work","2026-12-11 20:00:00","the bookshop","Book events about work and career.",2,NULL,NULL,NULL,NULL
+318,"Inner Compass","2026-12-12 20:00:00","the bookshop","Philosophy, psychology, and democracy.",2,NULL,NULL,NULL,NULL
+284,"Movie night","2026-12-12 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+225,"Curious Cosmos","2026-12-14 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+87,"Reeses Book Club Tarifa Edition - Such a Fun Age","2026-12-15 20:00:00","the bookshop","December selection: A striking story about race, privilege, and complicated relationships.",2,NULL,NULL,NULL,NULL
+44,"Fantasy and Superheros - Book of Dust - The secret commonwealth","2026-12-16 20:00:00","the bookshop","Philip Pullman",2,NULL,NULL,NULL,NULL
+193,"Silicon Shores","2026-12-18 20:00:00","the bookshop","Coding Session",2,NULL,NULL,NULL,NULL
+241,"Wanderlust Wayfarers","2026-12-21 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+171,"Book Circle: The Blazing World","2026-12-22 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+148,"Colourful Kitchen: Tropical Fruit Deserts","2026-12-23 20:00:00","the bookshop - kitchen","Sweet treats inspired by the islands.",1,NULL,NULL,NULL,NULL
+172,"Social Network: Festive Festive","2026-12-24 14:00:00","the bookshop","social",3,NULL,NULL,NULL,NULL
+265,"The Lineup","2026-12-24 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+307,"Social Network","2026-12-25 20:00:00","the bookshop","Social meetup - good talks and drinks.",3,NULL,NULL,NULL,NULL
+285,"Movie night","2026-12-26 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+313,"Poetry night","2026-12-26 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam.",2,NULL,NULL,NULL,NULL
+226,"Curious Cosmos","2026-12-28 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+242,"Wanderlust Wayfarers","2027-01-04 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+166,"Book Circle: White Teeth","2027-01-05 20:00:00","the bookshop","Zadie Smith",2,NULL,NULL,NULL,NULL
+216,"Japan Explorer","2027-01-06 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+266,"The Lineup","2027-01-07 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+302,"Extra Work","2027-01-08 20:00:00","the bookshop","Book events about work and career.",2,NULL,NULL,NULL,NULL
+286,"Movie night","2027-01-09 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+319,"Inner Compass","2027-01-09 20:00:00","the bookshop","Philosophy, psychology, and democracy.",2,NULL,NULL,NULL,NULL
+227,"Curious Cosmos","2027-01-11 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+163,"Investigating crime - How to Seal Your Own Fate - Part 02","2027-01-12 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+243,"Wanderlust Wayfarers","2027-01-18 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+196,"Book Circle","2027-01-19 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+267,"The Lineup","2027-01-21 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+308,"Social Network","2027-01-22 20:00:00","the bookshop","Social meetup - good talks and drinks.",3,NULL,NULL,NULL,NULL
+287,"Movie night","2027-01-23 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+314,"Poetry night","2027-01-23 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam.",2,NULL,NULL,NULL,NULL
+228,"Curious Cosmos","2027-01-25 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+156,"Serial II - The Hitchhiker's Guide to the Galaxy - V04","2027-01-28 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+244,"Wanderlust Wayfarers","2027-02-01 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+173,"Book Circle: Memories of the Future","2027-02-02 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+160,"Japan Explorer - Before the coffee gets cold - Vol.05","2027-02-03 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+268,"The Lineup","2027-02-04 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+288,"Movie night","2027-02-06 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+229,"Curious Cosmos","2027-02-08 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+256,"Investigating crime - Paradise Crime Thrillers - Vol 10 - Wired courage II","2027-02-09 20:00:00","the bookshop","",2,NULL,NULL,NULL,NULL
+303,"Extra Work","2027-02-12 20:00:00","the bookshop","Book events about work and career.",2,NULL,NULL,NULL,NULL
+320,"Inner Compass","2027-02-13 20:00:00","the bookshop","Philosophy, psychology, and democracy.",2,NULL,NULL,NULL,NULL
+245,"Wanderlust Wayfarers","2027-02-15 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+197,"Book Circle","2027-02-16 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+269,"The Lineup","2027-02-18 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+289,"Movie night","2027-02-20 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+230,"Curious Cosmos","2027-02-22 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+45,"Serial II  - Book of Dust - The rose field","2027-02-24 20:00:00","the bookshop","Philip Pullman",2,NULL,NULL,NULL,NULL
+157,"Serial II  - The Hitchhiker's Guide to the Galaxy - V05","2027-02-25 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+309,"Social Network","2027-02-26 20:00:00","the bookshop","Social meetup - good talks and drinks.",3,NULL,NULL,NULL,NULL
+315,"Poetry night","2027-02-27 20:00:00","the bookshop","About poetry, very short novels and sometimes a slam.",2,NULL,NULL,NULL,NULL
+246,"Wanderlust Wayfarers","2027-03-01 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+198,"Book Circle","2027-03-02 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+217,"Japan Explorer","2027-03-03 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+270,"The Lineup","2027-03-04 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+290,"Movie night","2027-03-06 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+231,"Curious Cosmos","2027-03-08 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+257,"Investigating crime - Paradise Crime Thrillers - Vol 11 - Wired truth","2027-03-09 20:00:00","the bookshop","",2,NULL,NULL,NULL,NULL
+321,"Inner Compass","2027-03-13 20:00:00","the bookshop","Philosophy, psychology, and democracy.",2,NULL,NULL,NULL,NULL
+247,"Wanderlust Wayfarers","2027-03-15 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+199,"Book Circle","2027-03-16 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+271,"The Lineup","2027-03-18 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+291,"Movie night","2027-03-20 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+232,"Curious Cosmos","2027-03-22 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+200,"Book Circle","2027-03-30 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+272,"The Lineup","2027-04-01 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+292,"Movie night","2027-04-03 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+248,"Wanderlust Wayfarers","2027-04-05 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+167,"Book Circle: Grand Union","2027-04-06 20:00:00","the bookshop","Zadie Smith",2,NULL,NULL,NULL,NULL
+161,"Japan Explorer - Before the coffee gets cold - Vol.06","2027-04-07 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+233,"Curious Cosmos","2027-04-12 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+164,"Investigating crime - How to Cheat Your Own Death - Part 03","2027-04-13 20:00:00","the bookshop",NULL,2,NULL,NULL,NULL,NULL
+273,"The Lineup","2027-04-15 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+293,"Movie night","2027-04-17 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+249,"Wanderlust Wayfarers","2027-04-19 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+174,"Book Circle: A Woman Looking at Men Looking at Women","2027-04-20 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+234,"Curious Cosmos","2027-04-26 20:00:00","the bookshop","Bi-weekly event of all things of nature, cosmos and our healthy lifestyle.",2,NULL,NULL,NULL,NULL
+274,"The Lineup","2027-04-29 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+294,"Movie night","2027-05-01 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+250,"Wanderlust Wayfarers","2027-05-03 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+201,"Book Circle","2027-05-04 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+275,"The Lineup","2027-05-13 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+295,"Movie night","2027-05-15 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+251,"Wanderlust Wayfarers","2027-05-17 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+202,"Book Circle","2027-05-18 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+276,"The Lineup","2027-05-27 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+296,"Movie night","2027-05-29 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+252,"Wanderlust Wayfarers","2027-05-31 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+203,"Book Circle","2027-06-01 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+277,"The Lineup","2027-06-10 20:00:00","the bookshop","Bi-weekly event of all things surfing and water sports.",2,NULL,NULL,NULL,NULL
+297,"Movie night","2027-06-12 20:00:00","the bookshop","Bi-weekly Movie night.",3,NULL,NULL,NULL,NULL
+253,"Wanderlust Wayfarers","2027-06-14 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+175,"Book Circle: The Blindfold","2027-06-15 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+254,"Wanderlust Wayfarers","2027-06-28 20:00:00","the bookshop","Bi-weekly event of all things travelling and exploring.",2,NULL,NULL,NULL,NULL
+204,"Book Circle","2027-06-29 16:05:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+168,"Book Circle: Dead and Alive","2027-07-06 20:00:00","the bookshop veranda","Zadie Smith",2,NULL,NULL,NULL,NULL
+205,"Book Circle","2027-07-20 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+206,"Book Circle","2027-08-03 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+176,"Book Circle: The Shaking Woman or A History of My Nerves","2027-08-17 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+207,"Book Circle","2027-08-31 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+208,"Book Circle","2027-09-07 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+209,"Book Circle","2027-09-21 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+210,"Book Circle","2027-10-05 20:00:00","the bookshop veranda","tba",2,NULL,NULL,NULL,NULL
+177,"Book Circle: Mothers, Fathers, and Others","2027-10-19 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+211,"Book Circle","2027-11-02 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+212,"Book Circle","2027-11-16 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+213,"Book Circle","2027-11-30 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+178,"Book Circle: The Sorrows of an American","2027-12-07 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+214,"Book Circle","2027-12-21 20:00:00","the bookshop","tba",2,NULL,NULL,NULL,NULL
+179,"Book Circle: Living, Thinking, Looking","2028-02-22 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+180,"Book Circle: Yonder","2028-04-04 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+181,"Book Circle: The Delusions of Certainty","2028-06-06 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+182,"Book Circle: A Plea for Eros","2028-08-22 20:00:00","the bookshop veranda","Siri Hustvedt",2,NULL,NULL,NULL,NULL
+183,"Book Circle: The Enchantment of Lily Dahl","2028-10-17 20:00:00","the bookshop","Siri Hustvedt",2,NULL,NULL,NULL,NULL
