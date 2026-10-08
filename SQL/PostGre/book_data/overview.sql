@@ -192,7 +192,7 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.hashtags ILIKE '%before%'
+WHERE b.hashtags ILIKE '%career%'
 ORDER BY c.id, o.order_date DESC; -- Nimmt das zuletzt gekaufte Buch
 
 SELECT * FROM books where title = 'Barbarian - Days A Surfing Life';
@@ -234,7 +234,7 @@ JOIN order_items oi ON b.id = oi.book_id
 WHERE b.title = 'Palo Alto'
 GROUP BY b.id, b.title;
 
-  select * from events order by event_date;
+select * from events order by event_date;
 
   SELECT DISTINCT c.first_name, c.last_name, c.email
 FROM customers c
@@ -250,17 +250,17 @@ WHERE b.title Like 'Before'
         AND er.event_id = 91
   );
 
-    SELECT DISTINCT c.first_name, c.last_name, c.email
+SELECT DISTINCT c.first_name, c.last_name, c.email
 FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.hashtags LIKE '%before%'
+WHERE b.hashtags LIKE '%swimming%'
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 158
+        AND er.event_id = 221
   );
 
 SELECT DISTINCT c.first_name, c.last_name, c.email
@@ -268,12 +268,12 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%Education%'
+WHERE b.title LIKE '%Ideaflow%'
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 99
+        AND er.event_id = 299
   );
 
 SELECT DISTINCT c.first_name, c.last_name, c.email
@@ -281,10 +281,10 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%Come As You%'
+WHERE b.title LIKE '%Greek%'
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 220
+        AND er.event_id = 111
   );
