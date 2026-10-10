@@ -1,4 +1,10 @@
 "id","first_name","last_name","email","joined_date","gender","birthday"
+627,"Luisa","Antunez","Luisa.Antunez@tarifa.es","2026-10-08 22:38:59.422711",NULL,NULL
+626,"Matilde","de-la-Cruz","Matilde.de-la-cruz@tarifa.es","2026-10-08 22:37:58.86722",NULL,NULL
+625,"Antia","Valero","Antia.Valero@tarifa.es","2026-10-08 22:36:43.781158",NULL,NULL
+624,"Johnny","Vries","Johnny.Vries@tarifa.es","2026-10-05 04:11:40.703502",NULL,NULL
+623,"Lara","Evers","Lara.Evers@tarifa.es","2026-10-05 04:10:55.286418",NULL,NULL
+622,"Corne","Berg","Corne.Berg@tarifa.es","2026-10-05 04:09:50.787527",NULL,NULL
 621,"Donald","Cadieux","Donald.Cadieux@tarifa.es","2026-09-29 17:52:41.297489","male","1976-05-26"
 620,"Nelson","Bowman","Nelson.Bowman@tarifa.es","2026-09-29 17:51:42.870594","male","1997-11-29"
 619,"Brigitte","Cowan","Brigitte.Cowan@tarifa.es","2026-09-29 17:50:51.59197","female","1987-12-06"
