@@ -39,7 +39,7 @@ WHERE er.customer_id IS NULL  -- Exclude already registered customers
 
 -- buy books
 WITH selected_customers AS (
-    -- 1. Find customers who bought books with hashtag '%reese%'
+    -- 1. Identify all unique customers who have purchased a book with #reese
     SELECT DISTINCT o.customer_id
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
@@ -47,28 +47,31 @@ WITH selected_customers AS (
     WHERE b.hashtags ILIKE '%reese%'
 ),
 eligible_customers AS (
-    -- 2. Pick ~50% of those who haven't already bought book 389
+    -- 2. Filter out ANY customer who has EVER purchased book_id = 389 in the past
     SELECT sc.customer_id
     FROM selected_customers sc
     WHERE NOT EXISTS (
         SELECT 1 
-        FROM orders o 
-        JOIN order_items oi ON o.id = oi.order_id 
-        WHERE o.customer_id = sc.customer_id 
-          AND oi.book_id = 389
+        FROM orders o_past
+        JOIN order_items oi_past ON o_past.id = oi_past.order_id
+        WHERE o_past.customer_id = sc.customer_id
+          AND oi_past.book_id = 389
     )
-    AND RANDOM() < 0.5
+    AND RANDOM() < 0.5 -- Pick roughly 50% of remaining eligible customers
 ),
 new_orders AS (
-    -- 3. Create a new order for each selected customer
-    INSERT INTO orders (customer_id, order_date)
+    -- 3. Create orders with total_amount set directly to the book price
+    INSERT INTO orders (customer_id, order_date, total_amount)
     SELECT 
-        customer_id, 
-        CURRENT_TIMESTAMP
-    FROM eligible_customers
+        ec.customer_id, 
+        CURRENT_TIMESTAMP,
+        b.price
+    FROM eligible_customers ec
+    CROSS JOIN books b
+    WHERE b.id = 389
     RETURNING id AS order_id
 )
--- 4. Insert "L.A. Weather" (id = 389) into order_items for each new order
+-- 4. Create the corresponding order items
 INSERT INTO order_items (order_id, book_id, quantity, unit_price)
 SELECT 
     no.order_id,
