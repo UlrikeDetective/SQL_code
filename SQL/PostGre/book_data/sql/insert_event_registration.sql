@@ -37,9 +37,34 @@ LEFT JOIN event_registrations er
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
   AND RANDOM() < 0.25;         -- Pick roughly 50% of eligible customers
 
+
+-- 1. Create the trigger function
+CREATE OR REPLACE FUNCTION update_book_stock_on_order()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Check if sufficient stock exists
+    IF (SELECT stock_quantity FROM books WHERE id = NEW.book_id) < NEW.quantity THEN
+        RAISE EXCEPTION 'Insufficient stock for book ID %', NEW.book_id;
+    END IF;
+
+    -- Deduct stock_quantity
+    UPDATE books
+    SET stock_quantity = stock_quantity - NEW.quantity
+    WHERE id = NEW.book_id;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 2. Attach the trigger to the order_items table
+CREATE TRIGGER trigger_reduce_book_stock
+AFTER INSERT ON order_items
+FOR EACH ROW
+EXECUTE FUNCTION update_book_stock_on_order();
+
 -- buy books
 WITH selected_customers AS (
-    -- 1. Identify all unique customers who have purchased a book with #reese
+    -- 1. Identify all unique customers who bought a book with #reese
     SELECT DISTINCT o.customer_id
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
@@ -47,7 +72,7 @@ WITH selected_customers AS (
     WHERE b.hashtags ILIKE '%reese%'
 ),
 eligible_customers AS (
-    -- 2. Filter out ANY customer who has EVER purchased book_id = 389 in the past
+    -- 2. Exclude customers who already bought book 389 and pick ~50%
     SELECT sc.customer_id
     FROM selected_customers sc
     WHERE NOT EXISTS (
@@ -57,10 +82,10 @@ eligible_customers AS (
         WHERE o_past.customer_id = sc.customer_id
           AND oi_past.book_id = 389
     )
-    AND RANDOM() < 0.5 -- Pick roughly 50% of remaining eligible customers
+    AND RANDOM() < 0.1
 ),
 new_orders AS (
-    -- 3. Create orders with total_amount set directly to the book price
+    -- 3. Create the orders with total_amount
     INSERT INTO orders (customer_id, order_date, total_amount)
     SELECT 
         ec.customer_id, 
@@ -68,16 +93,28 @@ new_orders AS (
         b.price
     FROM eligible_customers ec
     CROSS JOIN books b
-    WHERE b.id = 389
+    WHERE b.id = 389 AND b.stock_quantity >= 1 -- Ensure book is in stock
     RETURNING id AS order_id
+),
+inserted_items AS (
+    -- 4. Create order items
+    INSERT INTO order_items (order_id, book_id, quantity, unit_price)
+    SELECT 
+        no.order_id,
+        389 AS book_id,
+        1 AS quantity,
+        b.price AS unit_price
+    FROM new_orders no
+    CROSS JOIN books b
+    WHERE b.id = 389
+    RETURNING book_id, quantity
 )
--- 4. Create the corresponding order items
-INSERT INTO order_items (order_id, book_id, quantity, unit_price)
-SELECT 
-    no.order_id,
-    389 AS book_id,
-    1 AS quantity,
-    b.price AS unit_price
-FROM new_orders no
-CROSS JOIN books b
-WHERE b.id = 389;
+-- 5. Deduct stock_quantity in the books table for the purchased items
+UPDATE books
+SET stock_quantity = stock_quantity - sub.total_purchased
+FROM (
+    SELECT book_id, SUM(quantity) AS total_purchased
+    FROM inserted_items
+    GROUP BY book_id
+) sub
+WHERE books.id = sub.book_id;
