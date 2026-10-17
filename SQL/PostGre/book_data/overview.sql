@@ -18,12 +18,12 @@ select * from reviews order by id desc;
 select * from business_costs;
 
 select * from authors where last_name = 'Milano';
-SELECT * FROM books where title LIKE '%Memories of%';
+SELECT * FROM books where title LIKE '%Weather%';
 select * from books where author_id = 209;
 SELECT * FROM customers where last_name = 'Müller';
 select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
-Select * from
+Select * from order_items where book_id = 389 order by id desc;
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
