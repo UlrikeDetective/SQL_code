@@ -24,6 +24,7 @@ SELECT * FROM customers where last_name = 'Müller';
 select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
 Select * from order_items where book_id = 389 order by id desc;
+SELECT * FROM books where genre_id = 36;
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
