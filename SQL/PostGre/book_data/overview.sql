@@ -18,13 +18,13 @@ select * from reviews order by id desc;
 select * from business_costs;
 
 select * from authors where last_name = 'Milano';
-SELECT * FROM books where title LIKE '%Weather%';
+SELECT * FROM books where title LIKE '%Missing%';
 select * from books where author_id = 209;
 SELECT * FROM customers where last_name = 'Müller';
 select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
 Select * from order_items where book_id = 389 order by id desc;
-SELECT * FROM books where genre_id = 36;
+SELECT * FROM books where genre_id = 33;
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
@@ -173,7 +173,7 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Normal People';
+WHERE b.title = 'The Jellyfish Problem';
 
  -- Customers who bought books with hashtag 'tech':
 
