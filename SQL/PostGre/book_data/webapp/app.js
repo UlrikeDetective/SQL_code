@@ -321,7 +321,7 @@ app.get('/admin', async (req, res) => {
       JOIN books b ON oi.book_id = b.id
       GROUP BY b.id, b.title
       ORDER BY total_sold DESC
-      LIMIT 5
+      LIMIT 15
     `);
 
     // 3. Best Selling Authors
@@ -332,7 +332,7 @@ app.get('/admin', async (req, res) => {
       JOIN authors a ON b.author_id = a.id
       GROUP BY a.id, a.first_name, a.last_name
       ORDER BY total_sold DESC
-      LIMIT 5
+      LIMIT 15
     `);
 
     // 4. Books that don't sell (Zero Sales)
@@ -351,7 +351,7 @@ app.get('/admin', async (req, res) => {
       JOIN orders o ON c.id = o.customer_id
       GROUP BY c.id
       ORDER BY total_spent DESC
-      LIMIT 5
+      LIMIT 10
     `);
 
     // 6. Inactive Customers (No orders in last 3 months, or never)

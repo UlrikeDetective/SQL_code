@@ -1,240 +1,108 @@
--- ==========================================================
--- BOOKSHOP BUSINESS OVERVIEW REPORT
--- ==========================================================
--- Current System Date: 2026-02-21
+select * from auth_group;
+select * from auth_group_permissions;
+select * from auth_permission;
+select * from auth_user;
+select * from auth_user_groups;
+select * from auth_user_user_permissions;
+select * from core_customer order by id desc;
+select * from core_expense order by id desc;
+select * from core_inventory;
+select * from core_lesson order by date;
+select * from core_lesson_attendees order by id desc;
+select * from core_package order by purchase_date desc;
+select * from django_admin_log;
+select * from django_content_type;
+select * from django_migrations;
+select * from django_session;
 
--- 1. QUICK SYSTEM CHECKS (Basic Table Dumps)
--- ==========================================================
--- These help verify data integrity at a glance
-SELECT * FROM authors order by id;
-SELECT * FROM books ORDER BY id desc;
-SELECT * FROM customers ORDER BY id DESC;
-SELECT * FROM orders ORDER BY id DESC;
-Select * from order_items order by id desc;
-Select * from genres order by id;
-select * from events order by event_date;
-select * from event_registrations order by registered_at desc;
-select * from reviews order by id desc;
+copy core_lesson_attendees (id, lesson_id, customer_id) FROM '/Users/ulrike_imac_air/projects/SQL_code/SQL/PostGre/yoga/data/lessens_attendence_2026_04_10.csv' DELIMITER ',' CSV HEADER;
+select * from core_lesson where lesson_type = 'YOGA' and time = '18:00:00' order by date;
+select * from core_lesson where lesson_type = 'MEDITATION' order by date;
+select * from core_lesson_attendees where customer_id = 169;
+select * from core_package where customer_id = 169;
 
-select * from authors where last_name = 'Kerouac';
-select * from books where author_id = 96;
+select * from core_customer where name = 'Ava Dubois';
+select * from core_customer where id = 3078;
+select * from core_customer where country = 'Spain';
+select * from core_customer where city = 'Tarifa';
+select * from core_package order by remaining_lessons desc;
+
+UPDATE core_customer
+SET country = 'United Kingdom'
+WHERE country = 'UK';
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
 -- Total number of customers
 SELECT COUNT(*) AS total_customers 
-FROM customers;
+FROM core_customer;
 
 -- New customers joined in the last month
 SELECT COUNT(*) AS new_customers_last_month 
-FROM customers 
-WHERE joined_date >= CURRENT_DATE - INTERVAL '1 month';
+FROM core_customer 
+WHERE created_at >= CURRENT_DATE - INTERVAL '1 month';
 
 -- New customers joined in the last ... for dashboard
 SELECT 
-    COUNT(*) FILTER (WHERE joined_date >= NOW() - INTERVAL '1 day') AS last_24h,
-    COUNT(*) FILTER (WHERE joined_date >= CURRENT_DATE - INTERVAL '7 days') AS last_week,
-    COUNT(*) FILTER (WHERE joined_date >= CURRENT_DATE - INTERVAL '1 month') AS last_month,
-    COUNT(*) FILTER (WHERE joined_date >= CURRENT_DATE - INTERVAL '3 months') AS last_quarter,
-    COUNT(*) FILTER (WHERE joined_date >= CURRENT_DATE - INTERVAL '1 year') AS last_year
-FROM customers;
+    COUNT(*) FILTER (WHERE created_at >= NOW() - INTERVAL '1 day') AS last_24h,
+    COUNT(*) FILTER (WHERE created_at >= CURRENT_DATE - INTERVAL '7 days') AS last_week,
+    COUNT(*) FILTER (WHERE created_at >= CURRENT_DATE - INTERVAL '1 month') AS last_month,
+    COUNT(*) FILTER (WHERE created_at >= CURRENT_DATE - INTERVAL '3 months') AS last_quarter,
+    COUNT(*) FILTER (WHERE created_at >= CURRENT_DATE - INTERVAL '1 year') AS last_year
+FROM core_customer;
+
+INSERT INTO core_lesson (date, time, max_students, min_students, is_cancelled, notes, lesson_type)
+VALUES
+('2026-03-06', '18:00:00', 20, 3, false, '', 'YOGA'),
+('2026-03-12', '18:00:00', 20, 3, false, '', 'YOGA'),
+('2026-03-21', '18:00:00', 20, 3, false, '', 'YOGA'),
+('2026-04-11', '18:00:00', 20, 3, false, '', 'YOGA'),
+('2026-04-25', '18:00:00', 20, 3, false, '', 'YOGA');
+
+Insert into core_lesson_attendees (lesson_id, customer_id)
+Values
+(91, 1611),
+(97, 1611),
+(113, 1611),
+(318, 1611),
+(119, 1611),
+(125, 1611),
+(131, 1611),
+(137, 1611),
+(143, 1611),
+(149, 1611);
 
 
--- 3. SALES PERFORMANCE
+Select * from core_customer where created_at >= NOW();
+
+-- 3. Statistics
 -- ==========================================================
--- Top 15 Best Selling Books (by Volume)
-SELECT b.title, SUM(oi.quantity) AS total_units_sold
-FROM order_items oi
-JOIN books b ON oi.book_id = b.id
-GROUP BY b.id, b.title
-ORDER BY total_units_sold DESC
-LIMIT 15;
-
--- Books with ZERO Sales (Using LEFT JOIN to find unsold inventory)
-SELECT b.title, COALESCE(SUM(oi.quantity), 0) AS total_units_sold
-FROM books b
-LEFT JOIN order_items oi ON b.id = oi.book_id
-GROUP BY b.id, b.title
-HAVING COALESCE(SUM(oi.quantity), 0) = 0
-ORDER BY b.title ASC
-LIMIT 15;
-
--- Best-selling Authors by quantity sold
-SELECT a.first_name, a.last_name, SUM(oi.quantity) AS units_sold
-FROM order_items oi
-JOIN books b ON oi.book_id = b.id
-JOIN authors a ON b.author_id = a.id
-GROUP BY a.id, a.first_name, a.last_name
-ORDER BY units_sold DESC
-LIMIT 10;
-
--- Revenue by Genre
-SELECT g.name AS genre, SUM(oi.quantity * oi.unit_price) AS total_revenue
-FROM order_items oi
-JOIN books b ON oi.book_id = b.id
-JOIN genres g ON b.genre_id = g.id
-GROUP BY g.id, g.name
-ORDER BY total_revenue DESC;
-
--- Change prices on books
-SELECT * FROM authors where last_name = 'Pullman';
-SELECT * FROM books where author_id = 105;
+-- Which days and which months have the most attendees - tables core_lesson_attendees and core_lesson
+-- which packages are the most popular to book - table core_package
+-- which packages are booked by locals and which by visitors? tables core_package and core_customer
+-- difference numbers in attendence between morning courses and evening courses - tables core_lesson and core_lesson_attendees
+-- who attendended more morning courses / evening courses - locals or visitors? - tables core_lesson, core_customers and core_lesson_attendees
+-- how often per week do locals attend courses - tables core_lesson, core_lessons and core_lesson_attendees
 
 
--- 4. INVENTORY & STOCK MANAGEMENT
--- ==========================================================
--- Critical Stock Levels (Lowest stock first)
-SELECT title, stock_quantity, price
-FROM books
-ORDER BY stock_quantity ASC
-LIMIT 20;
+-- SQL query to insert local customers from Tarifa, Spain
+-- Table: core_customer
 
--- Current Out of Stock List
-SELECT title, isbn, released_year
-FROM books
-WHERE stock_quantity = 0;
+INSERT INTO core_customer (name, email, phone, city, country, customer_type, created_at)
+VALUES
+('Francisco Javier García', 'javier.garcia@example.es', '+34910000001', 'Madrid', 'Spain', 'VISITOR', NOW()),
+('María Carmen Rodríguez', 'marmen.rodriguez@example.es', '+34930000002', 'Barcelona', 'Spain', 'VISITOR', NOW()),
+('José Antonio Martínez', 'jose.martinez@example.es', '+34950000003', 'Seville', 'Spain', 'VISITOR', NOW()),
+('Montserrat Puig', 'montserrat.puig@example.es', '+34930000004', 'Girona', 'Spain', 'VISITOR', NOW()),
+('Jordi Molins', 'jordi.molins@example.es', '+34930000005', 'Lleida', 'Spain', 'VISITOR', NOW()),
+('Alejandro Sanz', 'alejandro.sanz@example.es', '+34910000006', 'Madrid', 'Spain', 'VISITOR', NOW()),
+('Lucía Fernández', 'lucia.fernandez@example.es', '+34960000007', 'Valencia', 'Spain', 'VISITOR', NOW()),
+('Eneko Agirre', 'eneko.agirre@example.es', '+34940000086', 'Getxo', 'Spain', 'VISITOR', NOW());
 
-SELECT * FROM books ORDER BY price;
+INSERT INTO core_customer (name, email, phone, city, country, customer_type, created_at)
+VALUES 
+('Søren Bakke', 'soren.kitesurf@nordicnet.no', '', 'Tarifa', 'Spain', 'LOCAL', '2026-03-12 09:15:22.451233'),
+('Emma Whitlock', 'emma.wh.nomad@gmail.com', '', 'Tarifa', 'Spain', 'LOCAL', '2026-03-12 10:22:11.102344'),
+('Isabella Costa', 'bella.costa@uol.com.br', '', 'Tarifa', 'Spain', 'LOCAL', '2026-03-14 12:45:11.992884');
 
--- 5. SOCIAL & EVENT ENGAGEMENT
--- ==========================================================
--- Highest Rated Books (with at least 2 reviews)
-SELECT b.title, ROUND(AVG(r.rating), 2) AS avg_rating, COUNT(r.id) AS review_count
-FROM reviews r
-JOIN books b ON r.book_id = b.id
-GROUP BY b.id, b.title
-HAVING COUNT(r.id) >= 2
-ORDER BY avg_rating DESC, review_count DESC;
-
--- Registrations per event
-SELECT e.name AS event_name, e.event_date, COUNT(er.customer_id) AS total_registrations
-FROM events e
-LEFT JOIN event_registrations er ON e.id = er.event_id
-GROUP BY e.id, e.name, e.event_date
--- ORDER BY e.event_date ASC;
-Order by t
-
-
--- 6. FINANCIAL OVERVIEW
--- ==========================================================
--- Total Revenue to date
-SELECT SUM(total_amount) AS total_lifetime_revenue 
-FROM orders;
-
-SELECT 
-    SUM(total_amount) FILTER (WHERE order_date >= NOW() - INTERVAL '1 day') AS rev_last_24h,
-    SUM(total_amount) FILTER (WHERE order_date >= CURRENT_DATE - INTERVAL '7 days') AS rev_last_week,
-    SUM(total_amount) FILTER (WHERE order_date >= CURRENT_DATE - INTERVAL '1 month') AS rev_last_month,
-    SUM(total_amount) FILTER (WHERE order_date >= CURRENT_DATE - INTERVAL '3 months') AS rev_last_quarter,
-    SUM(total_amount) FILTER (WHERE order_date >= CURRENT_DATE - INTERVAL '1 year') AS rev_last_year
-FROM orders;
-
--- Top 5 spending customers (Customer Lifetime Value)
-SELECT c.first_name, c.last_name, c.email, SUM(o.total_amount) AS total_spent
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-GROUP BY c.id, c.first_name, c.last_name, c.email
-ORDER BY total_spent DESC
-LIMIT 5;
-
--- Average Order Value
-SELECT ROUND(AVG(total_amount), 2) AS average_order_value 
-FROM orders;
-
-
- --  Customers who bought books by Philip Pullman:
-SELECT DISTINCT c.first_name, c.last_name, c.email
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-JOIN authors a ON b.author_id = a.id
-WHERE a.first_name = 'Toby' AND a.last_name = 'Neal';
-
- -- Customers who bought 'Hula':
-
-SELECT DISTINCT c.first_name, c.last_name, c.email
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Normal People';
-
- -- Customers who bought books with hashtag 'tech':
-
-SELECT DISTINCT c.first_name, c.last_name, c.email, b.title
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-WHERE b.hashtags LIKE '%#singapore%';
-
-SELECT * FROM books where title = 'Barbarian - Days A Surfing Life';
-
-SELECT DISTINCT c.first_name, c.last_name, c.email
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-JOIN authors a ON b.author_id = a.id
--- WHERE b.title = ''Aloha Kitchen: Recipes from Hawai'i'';
-Where b.author_id = 198;
-
-SELECT * FROM authors where last_name = 'Kysar';
-
--- Amount Paid per Customer
--- This query groups the results by customer and sums their total spend on 'Palo Alto', in case a customer bought it across multiple orders.
-SELECT
-c.first_name,
-c.last_name,
-c.email,
-SUM(oi.quantity * oi.unit_price) AS total_paid
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Palo Alto'
-GROUP BY c.id, c.first_name, c.last_name, c.email;
-
--- Total Money Made from the Book
--- This query calculates the total revenue generated specifically from 'Palo Alto' across the entire shop.
-
-SELECT
-b.title,
-SUM(oi.quantity * oi.unit_price) AS total_revenue,
-SUM(oi.quantity) AS total_units_sold
-FROM books b
-JOIN order_items oi ON b.id = oi.book_id
-WHERE b.title = 'Palo Alto'
-GROUP BY b.id, b.title;
-
--- which persons bought a book but haven't registered to the book event.
-SELECT DISTINCT c.first_name, c.last_name, c.email
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Normal People'
-  -- Filter out customers who ARE registered for event 12
-  AND NOT EXISTS (
-      SELECT 1 
-      FROM event_registrations er 
-      WHERE er.customer_id = c.id 
-        AND er.event_id = 12
-  );
-
-  select * from events order by event_date;
-
-  SELECT DISTINCT c.first_name, c.last_name, c.email
-FROM customers c
-JOIN orders o ON c.id = o.customer_id
-JOIN order_items oi ON o.id = oi.order_id
-JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Normal People'
-  -- Filter out customers who ARE registered for event 12
-  AND NOT EXISTS (
-      SELECT 1 
-      FROM event_registrations er 
-      WHERE er.customer_id = c.id 
-        AND er.event_id = 49
-  );
+select * from core_customer where city = 'Tarifa';
