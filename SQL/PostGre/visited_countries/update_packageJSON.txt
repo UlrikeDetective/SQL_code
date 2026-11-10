@@ -1,0 +1,7 @@
+First: update manually new versions of package-lock.json
+
+Second: remove package-lock.json - rm -rf node_modules package-lock.json
+
+3.Install and update package-lock.json:Run the npm install command to download the new packages and build a fresh, fully updated package-lock.json file:
+
+npm install
