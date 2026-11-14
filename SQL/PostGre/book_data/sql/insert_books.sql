@@ -3,162 +3,160 @@ BEGIN;
 -- =============================================================================
 -- 1. INSERT NEW AUTHORS (Skipped if already present in database)
 -- =============================================================================
+BEGIN;
+
 INSERT INTO authors (first_name, last_name, bio)
 VALUES
-  ('Chloe', 'Aridjis', 'Mexican-American novelist and writer.'),
-  ('Emma', 'Cline', 'American novelist and short story writer.'),
-  ('Makenna', 'Goodman', 'American author and editor.'),
-  ('M. John', 'Harrison', 'English science fiction and fantasy author.'),
-  ('Marlon', 'James', 'Jamaican novelist and Booker Prize winner.'),
-  ('Luke', 'Kennard', 'British poet and novelist.'),
-  ('Kenan', 'Orhan', 'Turkish-American author and short story writer.'),
-  ('Rebecca', 'Perry', 'British poet and writer.'),
-  ('Gwendoline', 'Riley', 'English novelist and academic.'),
-  ('Elizabeth', 'Strout', 'Pulitzer Prize-winning American novelist.'),
-  ('Douglas', 'Stuart', 'Scottish-American author and Booker Prize winner.'),
-  ('Djamel', 'White', 'Contemporary novelist and writer.'),
-  ('Missouri', 'Williams', 'British writer and editor.'),
-  ('Tayari', 'Jones', 'American author and professor.'),
-  ('Michael', 'Pollan', 'American author, journalist, and activist.'),
-  ('Ann', 'Patchett', 'American author and bookstore owner.'),
-  ('Beverly', 'Gage', 'American historian and professor.'),
-  ('George', 'Saunders', 'American writer and university professor.'),
-  ('Camille', 'Bordas', 'French author writing in English.'),
-  ('Vincent', 'Yu', 'Contemporary writer and essayist.'),
-  ('Roopika', 'Risam', 'Digital humanities scholar and author.'),
-  ('Ben', 'Lerner', 'American poet, novelist, and essayist.'),
-  ('Colson', 'Whitehead', 'Pulitzer Prize-winning American novelist.')
-ON CONFLICT (first_name, last_name) 
-DO UPDATE SET bio = EXCLUDED.bio 
-WHERE authors.bio IS NULL OR authors.bio = '';
+  ('Judith Hanson', 'Lasater', 'American yoga teacher, physical therapist, and author specializing in restorative yoga.'),
+  ('Martin', 'Williams', 'Writer, conservationist, and environmental journalist based in Hong Kong.'),
+  ('Sharon', 'Weinberger', 'National security journalist and author covering defense technology and intelligence.'),
+  ('Paul', 'Theroux', 'Acclaimed American travel writer and novelist.'),
+  ('Ellie', 'Bruce', 'Writer and researcher exploring history, archaeology, and human stories.'),
+  ('Eileen', 'Buckholtz', 'Former NSA mathematician, computer scientist, and author.'),
+  ('Shigehiko', 'Toyama', 'Japanese scholar of English literature, essayist, and linguist.'),
+  ('Ratna Damayanti', 'Taha', 'Author and commentator focusing on social dynamics and cultural perspectives.'),
+  ('Richard', 'Cooke', 'Australian journalist, essayist, and author.'),
+  ('Rob', 'Walker', 'Journalist and author exploring design, technology, and everyday observation.'),
+  ('Bettany', 'Hughes', 'British historian, author, and broadcaster specializing in ancient history.'),
+  ('Barry', 'Cunliffe', 'Emeritus Professor of European Archaeology at the University of Oxford.'),
+  ('Tom', 'Holland', 'British historian and author of bestselling works on the ancient world.'),
+  ('Philip', 'Freeman', 'American classicist and author of biographies on ancient leaders.'),
+  ('Lloyd', 'Llewellyn-Jones', 'Professor of Ancient History specializing in Achaemenid Persia.'),
+  ('Paul', 'Kriwaczek', 'Author, journalist, and BBC producer focusing on ancient civilizations.'),
+  ('Eckart', 'Frahm', 'Professor of Assyriology at Yale University.'),
+  ('Toby', 'Wilkinson', 'English Egyptologist and academic.'),
+  ('Marlon', 'James', 'Jamaican novelist and winner of the Booker Prize.'),
+  ('Orhan', 'Pamuk', 'Turkish novelist and recipient of the 2006 Nobel Prize in Literature.'),
+  ('Mohammed', 'Hanif', 'British-Pakistani writer, journalist, and satirical novelist.'),
+  ('Shehan', 'Karunatilaka', 'Sri Lankan author and winner of the 2022 Booker Prize.'),
+  ('Richard', 'Panek', 'Science writer specializing in astronomy and cosmology.'),
+  ('Mark', 'Bowen', 'Physicist and author writing about science and polar exploration.'),
+  ('Dava', 'Sobel', 'American science writer and biographer.'),
+  ('Lucius Annaeus', 'Seneca', 'Roman Stoic philosopher, statesman, and dramatist.'),
+  ('Leo', 'Tolstoy', 'Russian master of realistic fiction and philosophical writing.'),
+  ('Carlo', 'Rovelli', 'Italian theoretical physicist and bestselling science writer.'),
+  ('Harry G.', 'Frankfurt', 'American moral philosopher and professor emeritus at Princeton University.'),
+  ('Tsuyoshi', 'Sekihara', 'Japanese author and advocate for regional revitalization and rural culture.'),
+  ('Jessica', 'Hernandez', 'Indigenous scholar, scientist, and environmental advocate.'),
+  ('Ethan', 'Tapper', 'Forester, writer, and conservationist.'),
+  ('Kirstin', 'Chen', 'Singaporean-born American novelist.'),
+  ('Toshio', 'Suzuki', 'Japanese film producer and co-founder of Studio Ghibli.'),
+  ('Jeanine', 'Donofrio', 'Cookbook author and creator of the Love & Lemons food blog.'),
+  ('Tim', 'Flannery', 'Australian mammalogist, palaeontologist, and environmentalist.'),
+  ('Anne', 'Lawrence-Mathers', 'Professor of Medieval History at the University of Reading.'),
+  ('Adrienne', 'Mayor', 'Historian of ancient science and classical folklorist at Stanford University.'),
+  ('Ian', 'Morris', 'British archaeologist, historian, and professor at Stanford University.'),
+  ('Dustin', 'Hoffman', 'Academy Award-winning American actor and filmmaker.'),
+  ('Sofia', 'Franklyn', 'Podcaster, media personality, and author.'),
+  ('Avni', 'Doshi', 'American novelist shortlisted for the Booker Prize.'),
+  ('John', 'Burrows', 'Organizational researcher and author focusing on workplace trust and social capital.'),
+  ('Jor-El', 'Caraballo', 'Licensed therapist, writer, and mental health educator.'),
+  ('Brandie', 'Smith', 'Conservation biologist and director of the Smithsonian National Zoo.'),
+  ('Ryan', 'Devereaux', 'Investigative journalist covering border politics, policing, and human rights.'),
+  ('Jürgen', 'Ingels', 'Belgian entrepreneur, venture capitalist, and author.'),
+  ('Anthony', 'Shieh', 'Author and essayist exploring modern social narratives.'),
+  ('Jason Erik', 'Lundberg', 'American-born writer, editor, and anthologist based in Singapore.'),
+  ('Michele', 'Sagan', 'Leadership strategist and organizational transformation consultant.'),
+  ('Ong Chin', 'Huat', 'Malaysian writer, journalist, and cultural commentator.'),
+  ('Sha-En', 'Yeo', 'Positive psychology practitioner, speaker, and author.'),
+  ('Ian P.', 'Collins', 'Organizational wellbeing specialist and author.'),
+  ('Tiago', 'Forte', 'Productivity expert and author known for Building a Second Brain.'),
+  ('Evan', 'Brooke', 'Contemporary fiction author.'),
+  ('Mary H.K.', 'Choi', 'Korean-American writer and author of contemporary novels.'),
+  ('Emily', 'Crane', 'Writer and researcher exploring memory and cognition.'),
+  ('Harriet', 'Clark', 'Author of literary and historical fiction.'),
+  ('Tom', 'McCarthy', 'English novelist and visual artist.'),
+  ('Hiroko', 'Oyamada', 'Akutagawa Prize-winning Japanese novelist.'),
+  ('Jacqueline', 'Rose', 'British academic, feminist thinker, and author.'),
+  ('Namita', 'Gokhale', 'Indian writer, publisher, and co-founder of the Jaipur Literature Festival.'),
+  ('Sawako', 'Natori', 'Japanese novelist and scriptwriter.'),
+  ('Jared', 'Henderson', 'Writer, philosopher, and educator.'),
+  ('Karen Joy', 'Fowler', 'American author of literary and speculative fiction.'),
+  ('Uma', 'Naidoo', 'Harvard-trained nutritional psychiatrist, chef, and author.'),
+  ('Jennifer', 'Ackerman', 'Award-winning science and nature writer.'),
+  ('Danica', 'Nava', 'Chickasaw author of contemporary romance fiction.'),
+  ('AJ', 'Ayers', 'Certified financial planner and co-founder of Brooklyn FI.'),
+  ('Robert', 'Greene', 'American author known for books on strategy, power, and human nature.'),
+  ('Hika', 'Harada', 'Japanese novelist and screenwriter.'),
+  ('Rosa', 'Liksom', 'Finnish author and visual artist.'),
+  ('Arto', 'Paasilinna', 'Finnish novelist known for humorous and satirical fiction.'),
+  ('Mika', 'Waltari', 'Finnish author famous for historical novels.'),
+  ('Usagi', 'Tsuchiya', 'Japanese writer and food essayist.'),
+  ('Matthew', 'Teller', 'British writer, journalist, and documentary maker focusing on the Middle East.'),
+  ('Sophie', 'Blackall', 'Australian-born illustrator and author.'),
+  ('Hwang', 'Sok-yong', 'Renowned South Korean novelist and essayist.'),
+  ('Philip', 'Matyszak', 'British historian and author specializing in ancient Greece and Rome.'),
+  ('Barbara', 'Mertz', 'American Egyptologist and bestselling author.'),
+  ('Amanda H.', 'Podany', 'Professor Emerita of History specializing in the ancient Near East.'),
+  ('Robert', 'Knapp', 'Classicist and historian focusing on everyday life in ancient Rome.'),
+  ('James', 'Davidson', 'British classicist and cultural historian.'),
+  ('Natalie', 'Haynes', 'English writer, broadcaster, and classicist.'),
+  ('Mark', 'Pendergrast', 'American independent scholar and journalist.'),
+  ('Sarah', 'Rose', 'Journalist and author writing on history and global trade.'),
+  ('Dan', 'Koeppel', 'American journalist and author focusing on food history and culture.'),
+  ('Saeko', 'Himuro', 'Japanese novelist and essayist best known for Ocean Waves.')
+ON CONFLICT (first_name, last_name) DO NOTHING;
+-- DO UPDATE SET bio = EXCLUDED.bio 
+-- WHERE authors.bio IS NULL OR authors.bio = ''
+COMMIT;
+
 
 -- =============================================================================
 -- 2. INSERT BOOKS
 -- =============================================================================
+BEGIN;
+
 INSERT INTO books (title, isbn, author_id, genre_id, released_year, price, stock_quantity, pages, hashtags)
 VALUES
-  -- ---------------------------------------------------------------------------
-  -- BOOKER PRIZE LIST
-  -- ---------------------------------------------------------------------------
-  (
-    'The Shadow Of The Object', '9781804228001',
-    (SELECT id FROM authors WHERE first_name = 'Chloe' AND last_name = 'Aridjis' LIMIT 1),
-    9, 2026, 22.00, 10, 240, '#bookerprize #literaryfiction #art #identity'
-  ),
-  (
-    'Switzy', '9780593802001',
-    (SELECT id FROM authors WHERE first_name = 'Emma' AND last_name = 'Cline' LIMIT 1),
-    9, 2026, 24.50, 10, 288, '#bookerprize #literaryfiction #contemporary'
-  ),
-  (
-    'Helen Of Nowhere', '9781804228018',
-    (SELECT id FROM authors WHERE first_name = 'Makenna' AND last_name = 'Goodman' LIMIT 1),
-    9, 2026, 21.00, 10, 220, '#bookerprize #novel #nature #isolation'
-  ),
-  (
-    'The End Of Everything', '9781804228025',
-    (SELECT id FROM authors WHERE first_name = 'M. John' AND last_name = 'Harrison' LIMIT 1),
-    3, 2026, 23.00, 10, 310, '#bookerprize #speculative #fantasy #sci-fi'
-  ),
-  (
-    'The Disappearers', '9780593803008',
-    (SELECT id FROM authors WHERE first_name = 'Marlon' AND last_name = 'James' LIMIT 1),
-    9, 2026, 28.00, 10, 416, '#bookerprize #historicalfiction #caribbean'
-  ),
-  (
-    'Black Bag', '9781804228032',
-    (SELECT id FROM authors WHERE first_name = 'Luke' AND last_name = 'Kennard' LIMIT 1),
-    34, 2026, 19.99, 10, 256, '#bookerprize #thriller #satire #darkhumor'
-  ),
-  (
-    'The Renovation', '9781804228049',
-    (SELECT id FROM authors WHERE first_name = 'Kenan' AND last_name = 'Orhan' LIMIT 1),
-    9, 2026, 22.50, 10, 272, '#bookerprize #familydrama #novel'
-  ),
-  (
-    'May We Feed The King', '9781804228056',
-    (SELECT id FROM authors WHERE first_name = 'Rebecca' AND last_name = 'Perry' LIMIT 1),
-    37, 2026, 18.00, 10, 190, '#bookerprize #shortstories #fables'
-  ),
-  (
-    'The Palm House', '9781804228063',
-    (SELECT id FROM authors WHERE first_name = 'Gwendoline' AND last_name = 'Riley' LIMIT 1),
-    9, 2026, 20.00, 10, 208, '#bookerprize #literaryfiction #relationships'
-  ),
-  (
-    'The Things We Never Say', '9780593804005',
-    (SELECT id FROM authors WHERE first_name = 'Elizabeth' AND last_name = 'Strout' LIMIT 1),
-    9, 2026, 27.00, 10, 304, '#bookerprize #barackobamareading #smalltown #humanconnection'
-  ),
-  (
-    'John Of John', '9780593805002',
-    (SELECT id FROM authors WHERE first_name = 'Douglas' AND last_name = 'Stuart' LIMIT 1),
-    9, 2026, 26.00, 10, 350, '#bookerprize #workingclass #scotland #drama'
-  ),
-  (
-    'All Them Dogs', '9781804228070',
-    (SELECT id FROM authors WHERE first_name = 'Djamel' AND last_name = 'White' LIMIT 1),
-    9, 2026, 21.50, 10, 260, '#bookerprize #urban #literaryfiction'
-  ),
-  (
-    'The Vivisectors', '9781804228087',
-    (SELECT id FROM authors WHERE first_name = 'Missouri' AND last_name = 'Williams' LIMIT 1),
-    9, 2026, 23.99, 10, 298, '#bookerprize #dystopian #philosophical'
-  ),
-
-  -- ---------------------------------------------------------------------------
-  -- BARACK OBAMA READING LIST
-  -- ---------------------------------------------------------------------------
-  (
-    'Kin', '9780593806009',
-    (SELECT id FROM authors WHERE first_name = 'Tayari' AND last_name = 'Jones' LIMIT 1),
-    9, 2026, 26.99, 10, 336, '#barackobamareading #family #southernfiction'
-  ),
-  (
-    'A World Appears', '9780593807006',
-    (SELECT id FROM authors WHERE first_name = 'Michael' AND last_name = 'Pollan' LIMIT 1),
-    2, 2026, 28.00, 10, 352, '#barackobamareading #nonfiction #science #nature'
-  ),
-  (
-    'Whistler', '9780593808003',
-    (SELECT id FROM authors WHERE first_name = 'Ann' AND last_name = 'Patchett' LIMIT 1),
-    9, 2026, 27.50, 10, 320, '#barackobamareading #literaryfiction #friendship'
-  ),
-  (
-    'This Land Is Your Land', '9780593809000',
-    (SELECT id FROM authors WHERE first_name = 'Beverly' AND last_name = 'Gage' LIMIT 1),
-    2, 2026, 32.00, 10, 480, '#barackobamareading #history #americanhistory #politics'
-  ),
-  (
-    'Vigil', '9780593810006',
-    (SELECT id FROM authors WHERE first_name = 'George' AND last_name = 'Saunders' LIMIT 1),
-    37, 2026, 22.00, 10, 240, '#barackobamareading #shortstories #satire #humanity'
-  ),
-  (
-    'One Sun Only', '9780593811003',
-    (SELECT id FROM authors WHERE first_name = 'Camille' AND last_name = 'Bordas' LIMIT 1),
-    9, 2026, 24.00, 10, 272, '#barackobamareading #comingofage #contemporary'
-  ),
-  (
-    'Seek Immediate Shelter', '9781804228094',
-    (SELECT id FROM authors WHERE first_name = 'Vincent' AND last_name = 'Yu' LIMIT 1),
-    36, 2026, 21.00, 10, 224, '#barackobamareading #essays #society #climate'
-  ),
-  (
-    'Data Empire', '9781804228100',
-    (SELECT id FROM authors WHERE first_name = 'Roopika' AND last_name = 'Risam' LIMIT 1),
-    15, 2026, 29.50, 10, 310, '#barackobamareading #tech #digitalculture #society'
-  ),
-  (
-    'Transcription', '9780593812000',
-    (SELECT id FROM authors WHERE first_name = 'Ben' AND last_name = 'Lerner' LIMIT 1),
-    9, 2026, 25.00, 10, 288, '#barackobamareading #literaryfiction #art #language'
-  ),
-  (
-    'Cool Machine', '9780593813007',
-    (SELECT id FROM authors WHERE first_name = 'Colson' AND last_name = 'Whitehead' LIMIT 1),
-    9, 2026, 28.50, 10, 336, '#barackobamareading #historicalfiction #americanlit'
-  )
+  ('Savasana: The Practice of Radical Rest', '9781645471233', (SELECT id FROM authors WHERE first_name = 'Judith Hanson' AND last_name = 'Lasater' LIMIT 1), 10, 2024, 19.95, 7, 208, '#yoga #rest #wellness #mindfulness'),
+  ('The Nile Revealed: A Deep History of Earth''s Longest River', '9781789148121', (SELECT id FROM authors WHERE first_name = 'Martin' AND last_name = 'Williams' LIMIT 1), 2, 2024, 24.99, 6, 288, '#nile #africa #history #geography #river'),
+  ('Valley of Death: The Tragedy at Dien Bien Phu That Led America into the Vietnam War', '9780393634525', (SELECT id FROM authors WHERE first_name = 'Sharon' AND last_name = 'Weinberger' LIMIT 1), 2, 2025, 29.99, 5, 432, '#history #vietnam #militaryhistory'),
+  ('True North: On the Road in Canada', '9780358667896', (SELECT id FROM authors WHERE first_name = 'Paul' AND last_name = 'Theroux' LIMIT 1), 6, 2024, 28.00, 8, 384, '#travel #canada #roadtrip #nonfiction'),
+  ('Things We Found in the Ground', '9781914240881', (SELECT id FROM authors WHERE first_name = 'Ellie' AND last_name = 'Bruce' LIMIT 1), 2, 2025, 21.50, 6, 272, '#archaeology #history #discovery'),
+  ('Queens of Code: Inspiring True Stories from NSA''s Computing Women', '9781633889019', (SELECT id FROM authors WHERE first_name = 'Eileen' AND last_name = 'Buckholtz' LIMIT 1), 15, 2024, 26.95, 7, 320, '#womeninstem #computing #history #nsa'),
+  ('The Art of Organizing Thoughts: Slow Wisdom for a Fast World', '9781787704923', (SELECT id FROM authors WHERE first_name = 'Shigehiko' AND last_name = 'Toyama' LIMIT 1), 10, 2023, 16.99, 10, 224, '#japanesewisdom #thinking #philosophy #productivity'),
+  ('Mind the Gap', '9789815123456', (SELECT id FROM authors WHERE first_name = 'Ratna Damayanti' AND last_name = 'Taha' LIMIT 1), 2, 2024, 18.50, 5, 240, '#society #culture #perspectives'),
+  ('The Last Best Place on the Internet: A Human History of Wikipedia', '9780374608910', (SELECT id FROM authors WHERE first_name = 'Richard' AND last_name = 'Cooke' LIMIT 1), 15, 2025, 27.00, 8, 336, '#wikipedia #internet #techhistory #culture'),
+  ('The Art of Noticing: 131 Ways to Spark Creativity, Find Inspiration, and Discover Joy in the Everyday', '9780525521242', (SELECT id FROM authors WHERE first_name = 'Rob' AND last_name = 'Walker' LIMIT 1), 10, 2019, 18.00, 12, 256, '#creativity #mindfulness #observation #design'),
+  ('Ancient Egypt: A History in Seven Treasures', '9781529307924', (SELECT id FROM authors WHERE first_name = 'Bettany' AND last_name = 'Hughes' LIMIT 1), 2, 2024, 30.00, 7, 352, '#ancientegypt #history #archaeology'),
+  ('The Scythians: Nomad Warriors of the Steppe', '9780198820123', (SELECT id FROM authors WHERE first_name = 'Barry' AND last_name = 'Cunliffe' LIMIT 1), 2, 2019, 24.95, 6, 432, '#scythians #ancienthistory #nomads #steppe'),
+  ('Rubicon: The Triumph and Tragedy of the Roman Republic', '9781400078974', (SELECT id FROM authors WHERE first_name = 'Tom' AND last_name = 'Holland' LIMIT 1), 2, 2003, 18.99, 11, 464, '#rome #romanrepublic #ancienthistory #classics'),
+  ('Alexander the Great', '9781416592815', (SELECT id FROM authors WHERE first_name = 'Philip' AND last_name = 'Freeman' LIMIT 1), 2, 2011, 17.99, 9, 416, '#alexanderthegreat #greece #biography #ancienthistory'),
+  ('Persians: The Age of the Great Kings', '9781541600348', (SELECT id FROM authors WHERE first_name = 'Lloyd' AND last_name = 'Llewellyn-Jones' LIMIT 1), 2, 2022, 22.99, 7, 448, '#persia #ancienthistory #iran #empires'),
+  ('Babylon: Mesopotamia and the Birth of Civilization', '9781250054166', (SELECT id FROM authors WHERE first_name = 'Paul' AND last_name = 'Kriwaczek' LIMIT 1), 2, 2010, 19.99, 8, 336, '#babylon #mesopotamia #ancienthistory #civilization'),
+  ('Assyria: The Rise and Fall of the World''s First Empire', '9781541674400', (SELECT id FROM authors WHERE first_name = 'Eckart' AND last_name = 'Frahm' LIMIT 1), 2, 2023, 32.00, 6, 512, '#assyria #mesopotamia #ancienthistory #empire'),
+  ('The Rise and Fall of Ancient Egypt', '9780553384901', (SELECT id FROM authors WHERE first_name = 'Toby' AND last_name = 'Wilkinson' LIMIT 1), 2, 2010, 22.00, 9, 656, '#ancientegypt #pharaohs #history'),
+  ('A Brief History of Seven Killings', '9781594633942', (SELECT id FROM authors WHERE first_name = 'Marlon' AND last_name = 'James' LIMIT 1), 9, 2014, 18.00, 8, 704, '#bookerprize #jamaica #literaryfiction'),
+  ('The Museum of Innocence', '9780307386243', (SELECT id FROM authors WHERE first_name = 'Orhan' AND last_name = 'Pamuk' LIMIT 1), 9, 2009, 17.95, 10, 560, '#istanbul #turkey #nobellaureate #love #literaryfiction'),
+  ('A Case of Exploding Mangoes', '9780307388186', (SELECT id FROM authors WHERE first_name = 'Mohammed' AND last_name = 'Hanif' LIMIT 1), 9, 2008, 16.95, 7, 336, '#pakistan #satire #politicalfiction'),
+  ('The Seven Moons of Maali Almeida', '9781641294508', (SELECT id FROM authors WHERE first_name = 'Shehan' AND last_name = 'Karunatilaka' LIMIT 1), 9, 2022, 17.99, 9, 400, '#bookerprize #srilanka #magicalrealism'),
+  ('The 4% Universe: Dark Matter, Dark Energy, and the Race to Discover the Rest of Reality', '9780547577579', (SELECT id FROM authors WHERE first_name = 'Richard' AND last_name = 'Panek' LIMIT 1), 2, 2011, 16.95, 7, 320, '#astrophysics #cosmology #darkmatter #science'),
+  ('The Telescope in the Ice: Inventing a New Astronomy at the South Pole', '9781137280084', (SELECT id FROM authors WHERE first_name = 'Mark' AND last_name = 'Bowen' LIMIT 1), 2, 2017, 27.99, 5, 320, '#astronomy #southpole #antarctica #science'),
+  ('Longitude: The True Story of a Lone Genius Who Solved the Greatest Scientific Problem of His Time', '9780802715296', (SELECT id FROM authors WHERE first_name = 'Dava' AND last_name = 'Sobel' LIMIT 1), 2, 1995, 16.00, 12, 184, '#sciencehistory #navigation #maritime #biography'),
+  ('The Elements of Marie Curie: How the Glow of Radium Lit a Path for Women in Science', '9780802163820', (SELECT id FROM authors WHERE first_name = 'Dava' AND last_name = 'Sobel' LIMIT 1), 2, 2024, 28.00, 9, 336, '#mariecurie #womeninscience #chemistry #biography'),
+  ('On the Shortness of Life', '9780143036326', (SELECT id FROM authors WHERE first_name = 'Lucius Annaeus' AND last_name = 'Seneca' LIMIT 1), 13, 2005, 13.00, 15, 112, '#stoicism #philosophy #classics #rome'),
+  ('The Death of Ivan Ilyich', '9780553210354', (SELECT id FROM authors WHERE first_name = 'Leo' AND last_name = 'Tolstoy' LIMIT 1), 9, 1886, 11.99, 14, 144, '#russianliterature #classics #philosophy #novella'),
+  ('Seven Brief Lessons on Physics', '9780399184413', (SELECT id FROM authors WHERE first_name = 'Carlo' AND last_name = 'Rovelli' LIMIT 1), 2, 2016, 15.00, 14, 96, '#physics #science #quantum #cosmology'),
+  ('On Bullshit', '9780691122946', (SELECT id FROM authors WHERE first_name = 'Harry G.' AND last_name = 'Frankfurt' LIMIT 1), 13, 2005, 12.95, 11, 80, '#philosophy #truth #ethics #essays'),
+  ('Kuni: A Japanese Vision and Practice for Urban-Rural Reconnection', '9781787705128', (SELECT id FROM authors WHERE first_name = 'Tsuyoshi' AND last_name = 'Sekihara' LIMIT 1), 2, 2024, 22.00, 6, 240, '#japan #sustainability #rural #community'),
+  ('Growing Papaya Trees', '9780807019870', (SELECT id FROM authors WHERE first_name = 'Jessica' AND last_name = 'Hernandez' LIMIT 1), 5, 2025, 24.95, 7, 256, '#indigenous #ecology #nature #memoir'),
+  ('How to Love a Forest: The Bittersweet Work of Tending a Changing World', '9781953943415', (SELECT id FROM authors WHERE first_name = 'Ethan' AND last_name = 'Tapper' LIMIT 1), 2, 2024, 22.95, 8, 256, '#forestry #ecology #nature #conservation'),
+  ('Tech Wives', '9780063312456', (SELECT id FROM authors WHERE first_name = 'Kirstin' AND last_name = 'Chen' LIMIT 1), 9, 2025, 27.99, 7, 320, '#siliconvalley #contemporaryfiction #drama'),
+  ('Zen and Ghibli', '9781787705340', (SELECT id FROM authors WHERE first_name = 'Toshio' AND last_name = 'Suzuki' LIMIT 1), 24, 2024, 21.00, 10, 224, '#studioghibli #zen #japan #cinema #anime'),
+  ('Love & Lemons: Pop of Flavour', '9780593542118', (SELECT id FROM authors WHERE first_name = 'Jeanine' AND last_name = 'Donofrio' LIMIT 1), 25, 2025, 35.00, 8, 320, '#cookbook #vegetarian #cooking #food'),
+  ('Europe: The First 100 Million Years', '9780802129147', (SELECT id FROM authors WHERE first_name = 'Tim' AND last_name = 'Flannery' LIMIT 1), 2, 2018, 20.00, 6, 400, '#europe #naturalhistory #evolution #paleontology'),
+  ('The Magic Books: A History of Enchantment in 20 Medieval Manuscripts', '9780300265415', (SELECT id FROM authors WHERE first_name = 'Anne' AND last_name = 'Lawrence-Mathers' LIMIT 1), 24, 2024, 30.00, 6, 272, '#medieval #magic #manuscripts #history'),
+  ('The First Fossil Hunters: Dinosaurs, Mammoths, and Myth in Greek and Roman Times', '9780691150130', (SELECT id FROM authors WHERE first_name = 'Adrienne' AND last_name = 'Mayor' LIMIT 1), 2, 2011, 24.95, 7, 400, '#paleontology #mythology #ancientgreece #fossils'),
+  ('Geography Is Destiny: Britain and the World, a 10,000-Year History', '9780374157272', (SELECT id FROM authors WHERE first_name = 'Ian' AND last_name = 'Morris' LIMIT 1), 2, 2022, 32.00, 6, 592, '#britain #geopolitics #history #geography'),
+  ('Look at Me', '9781250891129', (SELECT id FROM authors WHERE first_name = 'Dustin' AND last_name = 'Hoffman' LIMIT 1), 5, 2025, 29.99, 6, 336, '#memoir #cinema #hollywood #acting'),
+  ('Daddy Issues: A Memoir', '9781668045121', (SELECT id FROM authors WHERE first_name = 'Sofia' AND last_name = 'Franklyn' LIMIT 1), 5, 2025, 28.00, 7, 272, '#memoir #popculture #humor'),
+  ('The First House', '9780385549813', (SELECT id FROM authors WHERE first_name = 'Avni' AND last_name = 'Doshi' LIMIT 1), 9, 2025, 27.00, 7, 288, '#literaryfiction #family #india'),
+  ('Social Capital at Work: Building the Hidden Asset That Drives Trust, Engagement and Performance', '9781398614567', (SELECT id FROM authors WHERE first_name = 'John' AND last_name = 'Burrows' LIMIT 1), 18, 2024, 29.99, 5, 256, '#leadership #workplace #business #trust'),
+  ('Meditations on Becoming a Man: A Guide to Building Value, Purpose and Connection in Your Life', '9781523523412', (SELECT id FROM authors WHERE first_name = 'Jor-El' AND last_name = 'Caraballo' LIMIT 1), 10, 2024, 18.95, 7, 240, '#mentalhealth #masculinity #selfgrowth #psychology'),
+  ('In the Company of Pandas', '9781588347657', (SELECT id FROM authors WHERE first_name = 'Brandie' AND last_name = 'Smith' LIMIT 1), 2, 2024, 26.95, 8, 256, '#pandas #wildlife #conservation #animals'),
+  ('The Hunt: A True Story of Resurrection and Retribution in the West', '9780593448915', (SELECT id FROM authors WHERE first_name = 'Ryan' AND last_name = 'Devereaux' LIMIT 1), 2, 2025, 29.00, 6, 368, '#truecrime #americanwest #journalism'),
+  ('Start Grow Sell: 50 Lessons for Successful Entrepreneurship', '9789401489126', (SELECT id FROM authors WHERE first_name = 'Jürgen' AND last_name = 'Ingels' LIMIT 1), 18, 2023, 27.50, 6, 288, '#entrepreneurship #startups #business'),
+  ('Lies We Live With', '9789815198765', (SELECT id FROM authors WHERE first_name = 'Anthony' AND last_name = 'Shieh' LIMIT 1), 9, 2024, 19.00, 5, 264, '#contemporaryfiction #society #essays')
 ON CONFLICT (isbn) DO NOTHING;
 
 COMMIT;

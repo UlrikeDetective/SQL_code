@@ -6,7 +6,7 @@
 -- 1. QUICK SYSTEM CHECKS (Basic Table Dumps)
 -- ==========================================================
 -- These help verify data integrity at a glance
-SELECT * FROM authors order by id;
+SELECT * FROM authors order by id desc;
 SELECT * FROM books ORDER BY id desc;
 SELECT * FROM customers ORDER BY id DESC;
 SELECT * FROM orders ORDER BY id DESC;
@@ -18,13 +18,13 @@ select * from reviews order by id desc;
 select * from business_costs;
 
 select * from authors where last_name = 'Milano';
-SELECT * FROM books where title LIKE '%Missing%';
-select * from books where author_id = 209;
+SELECT * FROM books where title LIKE '%Swing%';
+select * from books where author_id = 105;
 SELECT * FROM customers where last_name = 'Müller';
 select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
 Select * from order_items where book_id = 389 order by id desc;
-SELECT * FROM books where genre_id = 33;
+SELECT * FROM books where hashtags iLike '%#reese%';
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
@@ -52,7 +52,7 @@ INSERT INTO business_costs (month_year, helpers, ss_helpers) VALUES
   ('2026-05-01', 1200.00, 384.00);
 
 INSERT INTO business_costs (month_year, rent, utilities, helpers, ss_helpers, autonomo, misc) VALUES 
-('2026-09-01', 200.00, 75.00, 1800.00, 576.00, 310.00, 100.00);
+('2026-1-01', 200.00, 75.00, 1800.00, 576.00, 310.00, 100.00);
 
 -- 3. SALES PERFORMANCE
 -- ==========================================================

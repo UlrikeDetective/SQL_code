@@ -1,548 +1,630 @@
 "id","first_name","last_name","bio"
-1,"Jhumpa","Lahiri",NULL
-2,"Neil","Gaiman",NULL
-3,"Dave","Eggers",NULL
-4,"Michael","Chabon",NULL
-5,"Patti","Smith",NULL
-6,"Raymond","Carver",NULL
-7,"Don","DeLillo",NULL
-8,"John","Steinbeck",NULL
-9,"David","Foster Wallace",NULL
-10,"Toshikazu","Kawaguchi",NULL
-11,"DK","Travel",NULL
-12,"Toby","Neal",NULL
-13,"Naomi","Klein",NULL
-14,"Osamu","Dazai",NULL
-15,"Stephanie","Land",NULL
-16,"Monica","Ali",NULL
-17,"Rolf","Potts",NULL
-18,"Walter","Travis",NULL
-19,"Nick","Hornby",NULL
-20,"Sue","Monk Kidd",NULL
-21,"Nanoko","Hanada",NULL
-22,"Sally","Rooney",NULL
-23,"Siri","Hustvedt",NULL
-24,"Sayaka","Murata",NULL
-25,"Alan","Watts",NULL
-26,"Zz","Packer",NULL
-27,"Claire","Keegan",NULL
-28,"Illaria","Bernardini",NULL
-29,"Musa","Okwonga",NULL
-30,"Hannah","Fry",NULL
-31,"Gabrielle","Zevin",NULL
-32,"Dan","Harris",NULL
-33,"Freida","Harris",NULL
-34,"Emily","Henry",NULL
-35,"Lauren","Graham",NULL
-36,"Kevin","Kwan",NULL
-37,"Pamela","Redmond Satran",NULL
-38,"George","Saunders","American writer and university professor."
-39,"Tori","Eldridge",NULL
-40,"Jacinda","Ardern",NULL
-41,"Elizabeth","Gilbert",NULL
-43,"Liz","Pelly",NULL
-44,"Hector","Garcia",NULL
-45,"Cher","Cher",NULL
-46,"Barbara","Streisand",NULL
-47,"Yamada","Koun",NULL
-48,"Diane","Cardwell",NULL
-49,"Lucy","Clarke",NULL
-50,"William","Finnegan",NULL
-51,"Fumio","Sasaki",NULL
-52,"David","Szalay",NULL
-53,"Rebecca","Makkai",NULL
-54,"Johny","David",NULL
-55,"Joseph","Cox",NULL
-56,"Steve","Wozniak",NULL
-57,"Andy","Greenberg",NULL
-58,"Abdulrazak","Gurnah",NULL
-59,"Yvon","Chouinard",NULL
-60,"Michael","Lewis",NULL
-61,"Jordan","Ellenberg",NULL
-62,"Cheryl","Strayed",NULL
-63,"Satoshi","Yagisawa",NULL
-64,"Benjamin","Markovits",NULL
-65,"Emi","Yagi",NULL
-66,"Sanaka","Hiiragi",NULL
-67,"Hiromi","Kawakami",NULL
-68,"Hu","AnYan",NULL
-69,"Yoko","Ogawa",NULL
-70,"Natsume","Soseki",NULL
-71,"Haruki","Murakami",NULL
-72,"Atsuhiro","Yoshido",NULL
-73,"Banana","Yoshimoto",NULL
-74,"Yuko","Tsushima",NULL
-75,"Durian","Sukegawa",NULL
-76,"Mieko","Kawakami",NULL
-77,"Takashi","Hiraide",NULL
-78,"Megha","Majumdar",NULL
-79,"Lily","King",NULL
-80,"Katie","Kitamura",NULL
-81,"Hisashi","Kashiwai",NULL
-82,"Jungeun","Yun",NULL
-83,"Her","Taeyeon",NULL
-84,"Mizuki","Tsujimura",NULL
-85,"Zadie","Smith",NULL
-86,"Kiran","Desai",NULL
-87,"Brian","Goldstone",NULL
-88,"Christina","Applegate",NULL
-89,"Samanth","Subramanian",NULL
-90,"Karen","Hao",NULL
-91,"Sei","Shoagon",NULL
-92,"Aysegül","Savas",NULL
-93,"Lois P.","Frankel",NULL
-94,"Jake","Adelstein",NULL
-95,"various","authors",NULL
-96,"Jack","Kerouac",NULL
-97,"Geoff","Dyer",NULL
-98,"Tessa","Hadley",NULL
-99,"David","McRaney",NULL
-100,"Ichiro","Kishimi",NULL
-101,"Tommy","Orange",NULL
-102,"Harper","Lee",NULL
-103,"Sarah","Bakewell",NULL
-104,"James","McBride",NULL
-105,"Philip","Pullman",NULL
-106,"Darius","Foroux",NULL
-107,"Perry","Klebahn",NULL
-108,"Amy","Poeppel",NULL
-109,"Mark","Bergen",NULL
-110,"Grace","Coddington",NULL
-111,"Sarah","Thornton",NULL
-112,"Howard Scott","Warshaw",NULL
-113,"Tsitsi","Dangarembga",NULL
-114,"Matthew","Perry",NULL
-115,"Alan","Rickman",NULL
-116,"Britney","Spears",NULL
-117,"Felipe","Furentes Cruz",NULL
-118,"Stieg","Larsson",NULL
-119,"Phoebe","Waller-Bridge",NULL
-120,"Alex","Garland",NULL
-121,"Bill","Bryson",NULL
-122,"Alex","Kerr",NULL
-123,"Nick","Bradley",NULL
-124,"Tom","Feiling",NULL
-125,"Pallavi","Aiyar",NULL
-126,"Michael","Pronko",NULL
-127,"Malcolm","Harris",NULL
-128,"Beth","Kempton",NULL
-129,"Emma","Cline","American novelist and short story writer."
-130,"Taylor","Jenkins Reid",NULL
-131,"Emma","Mclaughlin",NULL
-132,"Steven","Levy",NULL
-133,"Jonathan","Rosenberg",NULL
-134,"Scott","Galloway",NULL
-135,"Ashley","Elston",NULL
-136,"Jasmin","Iolani Hakes",NULL
-137,"Matt","Haig",NULL
-138,"Blake J.","Harris",NULL
-139,"Emily","Nagoski",NULL
-140,"David","Davis",NULL
-141,"Shelby","Van Pelt",NULL
-142,"Curtis","Sittenfeld",NULL
-143,"Suzanne","Collins",NULL
-144,"Claire L.","Evans",NULL
-145,"Amy","Tan",NULL
-146,"Chris","Miller",NULL
-147,"Brian","Mccullough",NULL
-148,"Lori","Gottlieb",NULL
-149,"Walter","Isaacson",NULL
-150,"Damon","Galgut",NULL
-151,"Trevor","Noah",NULL
-152,"Barack","Obama",NULL
-153,"B. K. S.","Iyengar",NULL
-154,"Sally","Thorne",NULL
-155,"Jimmy","Soni",NULL
-156,"Mike","Isaac",NULL
-157,"Valeria","Luiselli",NULL
-158,"Yosha","Gunasekera",NULL
-159,"Stephen","Chbosky",NULL
-160,"Madeline","Miller",NULL
-161,"Megan","Lally",NULL
-162,"Abby","Jimenez",NULL
-163,"Sally","Hepworth",NULL
-164,"John","Green",NULL
-165,"Agatha","Christie",NULL
-166,"Andy","Clark",NULL
-167,"Gilbert","Adair",NULL
-168,"Steve","Estes",NULL
-169,"Steve","McGinnes",NULL
-170,"Angie","Kim",NULL
-171,"Delia","Owens",NULL
-172,"various","Various",NULL
-173,"Lonely","Planet",NULL
-174,"Bonnie","Tsui",NULL
-175,"Becca","Mann",NULL
-176,"MJ","FitzGerald",NULL
-177,"Howard","Means",NULL
-178,"Nina","Freudenberger",NULL
-179,"Clark","Little",NULL
-180,"Lauren","Liess",NULL
-181,"Matt","Titone",NULL
-182,"Gill","Hutchison",NULL
-183,"Lara","Einzig",NULL
-184,"Carolina","Amell",NULL
-185,"Christopher","Beanland",NULL
-186,"Stefanie","Waldek",NULL
-187,"Tessa","Wardley",NULL
-188,"Mariel","Hawley",NULL
-189,"Patricia","Hanlon",NULL
-190,"Carissa","Moore",NULL
-191,"Kelly","Slater",NULL
-192,"Ximo","Abadia",NULL
-193,"Veerle","Helsen",NULL
-194,"Jane","Lamberth",NULL
-195,"Shaun","Tomson",NULL
-196,"Ryland","Peters",NULL
-197,"Kainoa","Daines",NULL
-198,"Alana","Kysar",NULL
-199,"Penguin","Books",NULL
-200,"Kyoko","Nakajima",NULL
-201,"Suzanne","Kamata",NULL
-202,"Yu","Miri",NULL
-203,"John","Burnham Schwartz",NULL
-204,"Han","Ong",NULL
-205,"Virginia","Evans",NULL
-206,"Vanessa","Hua",NULL
-207,"Rae","Alexandra",NULL
-208,"Kate","Schatz",NULL
-209,"Susan","Casey",NULL
-210,"Allan","Weisbecker",NULL
-211,"Kem","Nunn",NULL
-212,"Jaimal","Yogis",NULL
-213,"Tembi","Locke",NULL
-214,"Sarah","Haywood",NULL
-215,"Chandler","Baker",NULL
-216,"Megan","Miranda",NULL
-217,"Eve","Rodsky",NULL
-218,"Kiley","Reid",NULL
-219,"Maria","Amparo Escandón",NULL
-220,"Chibundu","Onuzo",NULL
-221,"Elif","Shafak",NULL
-222,"Marissa","Stapley",NULL
-223,"Nina","De Gramont",NULL
-224,"Yulin","Kuang",NULL
-225,"Baek","Seungyeon",NULL
-226,"Giddens","Ko",NULL
-227,"Giovana","Madalosso",NULL
-228,"Nilima","Rao",NULL
-229,"Cecile","Tlili",NULL
-230,"Edwidge","Danticat",NULL
-231,"Mariam","Rahmani",NULL
-232,"Nussaibah","Younis",NULL
-233,"Saou","Ichikawa",NULL
-234,"Souvankham","Thammavongsa",NULL
-235,"Dahlia","de la Cerda",NULL
-236,"Hala","Alyan",NULL
-237,"Sharlene","Teo",NULL
-238,"Beatriz","Serrano",NULL
-239,"Emily","Nemens",NULL
-240,"Kristi","Coulter",NULL
-241,"Jennifer","Romolini",NULL
-242,"Michelle","Zauner",NULL
-243,"Hwang","Bo-Reum",NULL
-244,"Kim","Ho-Yeon",NULL
-245,"Cho","Nam-Joo",NULL
-246,"Bora","Chung",NULL
-247,"Choi","Eunyoung",NULL
-248,"Leanne","Shapton",NULL
-249,"Lillian","Li",NULL
-250,"Grant","Ginder",NULL
-251,"Naomi","Hirahara",NULL
-252,"B.K.","Borison",NULL
-253,"Elizabeth","Day",NULL
-254,"Sophie","Wan",NULL
-255,"David","Poque",NULL
-256,"Geoffrey","Cain",NULL
-257,"Brent","Schlender",NULL
-258,"Keza","MacDonald",NULL
-259,"Laine","Nooney",NULL
-260,"Margaret","O'Mara",NULL
-261,"Walter","Isaac",NULL
-262,"Leslie","Berlin",NULL
-263,"Adam","Fisher",NULL
-264,"Emily","Chang",NULL
-265,"Stephen","Witt",NULL
-266,"Tae","Kim",NULL
-267,"Laura","Baker",NULL
-268,"Simon","Richmond",NULL
-269,"Rick","Steves",NULL
-270,"Pirkko","Saisio",NULL
-271,"Lena","Dunham",NULL
-272,"Xochitl","Gonzalez",NULL
-273,"Janelle","Brown",NULL
-274,"Alan","Booth",NULL
-275,"Charmaine","Wilkerson",NULL
-276,"Asha Ashanti","Bromfield",NULL
-277,"Ishi","Robinson",NULL
-278,"Mark","Ranson",NULL
-279,"Fab","Freddy",NULL
-280,"Emma","Edwards",NULL
-281,"Michiko","Aoyama",NULL
-282,"David","Ellis",NULL
-283,"Tiffany","Crum",NULL
-284,"Tayari","Jones","American author and professor."
-285,"Patmeena","Sabit",NULL
-286,"Natalie","Haynes",NULL
-287,"Polly","Samson",NULL
-288,"Amanda Eyre","Ward",NULL
-289,"Meghan","Quinn",NULL
-290,"Emily","Sullivan",NULL
-291,"Alex","Michaelides",NULL
-292,"Kazuo","Ishiguro",NULL
-293,"Nao-Cola","Yamazaki","Acclaimed Japanese novelist and essayist."
-294,"Rebecca","Solnit",NULL
-295,"Kim","Hana",NULL
-296,"Sunwoo","Lim",NULL
-297,"Kang","Jiyoung",NULL
-298,"Minyoung","Kang",NULL
-299,"Yoon","Ina",NULL
-300,"Canwen","Xu",NULL
-301,"Kirsten","Perrin",NULL
-302,"Heide","Island",NULL
-303,"Kristin","Hannah",NULL
-304,"Rufi","Thorpe",NULL
-305,"Jenny","Lawson",NULL
-306,"Sebastian","Mallaby",NULL
-307,"Dolly","Alderton",NULL
-308,"Caroline","O'Donoghue",NULL
-309,"Adeena","Sussman",NULL
-310,"Sherin","Kneifl",NULL
-311,"Anne","Sijmonsbergen",NULL
-312,"Jeff","Koehler",NULL
-313,"Carolina","Doriti",NULL
-314,"Maria","Koutsogiannis",NULL
-315,"Vefa","Alexiadou",NULL
-316,"Per Oscar","Brekell",NULL
-317,"Meera","Sodha",NULL
-318,"Cassie","Johnston",NULL
-319,"Marie","Kacouchia",NULL
-320,"Tim","Anderson",NULL
-321,"Yang","Liu",NULL
-322,"Sandie","Jones",NULL
-323,"Ally","Condie",NULL
-324,"Rainbow","Rowell",NULL
-325,"Sara","Novic",NULL
-326,"Asako","Yuzuki",NULL
-327,"Jess","Cannon",NULL
-328,"Carley","Fortune",NULL
-329,"Simon","Rogers",NULL
-330,"David","Epstein",NULL
-331,"Sonoko","Machida",NULL
-333,"Willow","Hurst",NULL
-334,"Kei","Aono",NULL
-335,"Mai","Mochizuki",NULL
-336,"Hiro","Arikawa",NULL
-337,"Imogen","Binnie",NULL
-338,"Kenji","Ueda",NULL
-339,"Nelio","Biedermann",NULL
-340,"Shida","Bazyar",NULL
-341,"Minnie","Driver",NULL
-342,"Alyssa","Milano",NULL
-343,"Rene","Karabash",NULL
-344,"Daniel","Kehlmann",NULL
-345,"Marie","NDiaye",NULL
-346,"Jefferson","Fisher",NULL
-347,"Theo","Baker",NULL
-348,"Yu-Mei","Balasingamchow",NULL
-349,"Jet","Li",NULL
-350,"Annie","Macmanus",NULL
-351,"Rupi","Kaur",NULL
-352,"Jodie","Chapman",NULL
-353,"Kate","Ascher",NULL
-354,"Stefano","Mancuso",NULL
-355,"Alexandra","Elle",NULL
-356,"Helen","Scales",NULL
-357,"Ric","Bucher",NULL
-358,"Tom","Mustill",NULL
-359,"Drew","Harvell",NULL
-360,"Helen","Czerski",NULL
-361,"Adam","Nicolson",NULL
-362,"David","Attenborough",NULL
-363,"Natalie","Sanders",NULL
-364,"Kristina","Kahakauwila",NULL
-365,"Megan","Kamalei Kakimoto",NULL
-366,"Kirsty","Capes",NULL
-367,"Jenny","Jackson",NULL
-368,"Percival","Everett",NULL
-369,"Sarah","Winman",NULL
-370,"Emma","Brodie",NULL
-371,"Caleb Azumah","Nelson",NULL
-372,"Irvine","Welsh",NULL
-373,"Douglas","Adams",NULL
-374,"Jeanine","Donofrio",NULL
-375,"Letitia","Clark",NULL
-376,"Katie","Caldesi",NULL
-377,"Ben","Tish",NULL
-378,"Lynn","Brunelle",NULL
-379,"Kate","Myers",NULL
-380,"Katy","Hays",NULL
-381,"Hal","Whitehead",NULL
-382,"Mark","Carwardine",NULL
-383,"Zen","Cho",NULL
-384,"Benjamin","Hardy",NULL
-385,"Annie","Duke",NULL
-386,"Douglas","Hubbard",NULL
-387,"Simon","Sinek",NULL
-388,"Angela","Duckworth",NULL
-389,"Timothy","Ferriss",NULL
-390,"Alice","Vincent",NULL
-391,"Mikael","Krogerus",NULL
-392,"Denise","Duffield-Thomas",NULL
-393,"Robin","Sharma",NULL
-394,"Matt","FitzGerald",NULL
-395,"Julie","Otsuka",NULL
-396,"Andrew","Foote",NULL
-397,"Liam","McClintock",NULL
-398,"Tessa","Yang",NULL
-399,"Debra","Fine",NULL
-400,"Nicole","Vignola",NULL
-401,"Deborah","Levy",NULL
-402,"Iris","Murdoch",NULL
-403,"Romesh","Gunesekera",NULL
-404,"Fredrik","Backman",NULL
-405,"Gail","Honeyman",NULL
-406,"Jenny","Odell",NULL
-407,"Adam","Aleksic",NULL
-408,"Adrienne","Buller",NULL
-409,"Robin","Wall Kimmerer",NULL
-410,"Don","Thompson",NULL
-411,"Magnus","Resch",NULL
-412,"George","Newman",NULL
-413,"Josh","Tyrangiel",NULL
-414,"Han","Kang",NULL
-415,"Ruth","Rogers",NULL
-416,"Jerry","Saltz",NULL
-417,"David","Salle",NULL
-418,"Paul","Waley",NULL
-419,"Ryushun","Kusanagi",NULL
-420,"Ryunosuke","Koike",NULL
-421,"Henry","Shukman",NULL
-422,"Cal","Flyn",NULL
-423,"Julian","Shapiro-Barnum",NULL
-424,"Afia","Amoako",NULL
-425,"Kwon","Yeo-Sun",NULL
-426,"Ito","Ogawa",NULL
-427,"Whitney","Hanson",NULL
-428,"Angelica","Glass",NULL
-429,"Yukio","Mishima",NULL
-430,"Candace","Bushnell",NULL
-431,"Lauren","Weisberger",NULL
-432,"Sharon","Palmer",NULL
-433,"Eleanor","Maidment",NULL
-434,"David","Castro Hussong",NULL
-435,"Katherine","Cobbs",NULL
-436,"Sorens","Books",NULL
-437,"Georgia","Grace",NULL
-438,"Mallanaga","Vatsyayana",NULL
-439,"Allison","Moon",NULL
-440,"Emily","Morse",NULL
-441,"Ian","Kerner",NULL
-442,"Yotam","Ottolenghi",NULL
-443,"Junichiro","Tanizaki",NULL
-444,"Noriko","Morishita",NULL
-445,"Ashley","Winstead",NULL
-446,"Elizabeth","Castellano",NULL
-447,"Madhulika","Liddle",NULL
-448,"Hika","Harada",NULL
-449,"Tove","Jansson",NULL
-450,"Michael","Shaikh",NULL
-451,"Barbara","Eden",NULL
-452,"Lidija","Hilje",NULL
-453,"Angela","Hui",NULL
-454,"David","Byrne",NULL
-455,"Rick","Rubin",NULL
-456,"Krista","Diamond",NULL
-457,"Kyleigh","Leddy",NULL
-458,"Annie","Lord",NULL
-459,"Dana","Arnold",NULL
-460,"Hugh","Bowden",NULL
-461,"Graham","Priest",NULL
-462,"Robert","Segal",NULL
-463,"Simon","Blackburn",NULL
-464,"John","Holland",NULL
-465,"Jennifer","Nagel",NULL
-466,"Jill","Lepore",NULL
-467,"Amos","Winter",NULL
-468,"Roopika","Risam","Digital humanities scholar and author."
-469,"Carissa","Veliz",NULL
-470,"Julian","Hoffman",NULL
-471,"Morgan","Dick",NULL
-472,"Slutty","Cheff",NULL
-473,"Christine","Lehnen",NULL
-474,"Emily","Wilson",NULL
-475,"Mark","Kurlansky",NULL
-476,"Dolly","Parton",NULL
-477,"Kelly","Anderson",NULL
-478,"Alexandra","Andrews",NULL
-479,"Beck","Dorey-Stein",NULL
-480,"Allison","King",NULL
-481,"Emily","Everett",NULL
-482,"Anne-Laure","Le Cunff","Neuroscientist and founder of Ness Labs."
-483,"Chris","Voss","Former FBI hostage negotiator and author."
-484,"Roland","Allen","Author and publisher specializing in history and design."
-485,"Eleanor","Dooks","Co-author and memoirist."
-486,"George","Mumford","Mindfulness coach and sports performance expert."
-488,"Antoinette","Lattouf","Journalist, broadcaster, and author."
-490,"Tharik","Hussain","Travel writer, journalist, and broadcaster."
-491,"John","Baxter","Paris-based author and travel writer."
-492,"Matt","Kepnes","Travel writer known as Nomadic Matt."
-493,"Seth","Kugel","Travel journalist and former NYT columnist."
-494,"Monisha","Rajesh","Travel journalist and author."
-495,"Scott M.","Curran","Social impact strategist and lawyer."
-496,"Dee","Salmin","Radio presenter, podcaster, and author."
-497,"Hannah","Ferguson","Co-founder of Cheek Media Co. and writer."
-498,"Simran","Kaur","Financial educator and founder of Girls That Invest."
-499,"Chang-rae","Lee","Award-winning Korean-American novelist."
-500,"Cal","Newport","Computer science professor and productivity author."
-501,"Rachel","Barr","Neuroscientist and mental health advocate."
-502,"Vanessa","Druskat","Organizational psychologist and researcher."
-503,"Jennifer","Shahade","Chess grandmaster, poker player, and author."
-504,"Susan MacKenty","Brady","Leadership expert and executive coach."
-505,"Soetsu","Yanagi","Philosopher and founder of the Mingei movement."
-506,"Emily","Hauser","Classicist and author."
-507,"Emily","St. James","Cultural critic, journalist, and author."
-508,"Salma","El-Wardany","Writer, presenter, and poet."
-509,"Arthur C.","Brooks","Harvard professor, columnist, and author."
-510,"Duraid","Jalili","Lecturer in defense studies and security analysis."
-511,"Gil","Durán","Journalist and former editorial page editor."
-512,"Nikita","Desai","Yoga instructor and researcher."
-513,"Kazumasa","Hayami","Japanese novelist and award-winning author."
-514,"Robert","Kanigel","Biographer and science writer."
-515,"Sadhguru","Jaggi Vasudev","Yogi, mystic, and founder of Isha Foundation."
-516,"Om","Swami","Monk, entrepreneur, and author."
-517,"James","Nestor","Science journalist and author."
-518,"Marcus","Aurelius","Roman Emperor and Stoic philosopher."
-519,"René","Mauborgne","INSEAD professor and business strategist."
-520,"Chiyo","Uno","Iconic Japanese author and kimono designer."
-521,"Marie","Aubert","Norwegian author and short story writer."
-522,"Banine","Daghestani","French-Azerbaijani memoirist and novelist."
-523,"Francesca Maria","Benvenuto","Italian novelist and lawyer."
-524,"Meg","Tanaka","Chef and cookbook author."
-525,"Carl","Marci","Neuroscientist and doctor."
-526,"Samantha","Harvey","Buker Prize-winning novelist."
-531,"Chloe","Aridjis","Mexican-American novelist and writer."
-533,"Makenna","Goodman","American author and editor."
-534,"M. John","Harrison","English science fiction and fantasy author."
-535,"Marlon","James","Jamaican novelist and Booker Prize winner."
-536,"Luke","Kennard","British poet and novelist."
-537,"Kenan","Orhan","Turkish-American author and short story writer."
-538,"Rebecca","Perry","British poet and writer."
-539,"Gwendoline","Riley","English novelist and academic."
-540,"Elizabeth","Strout","Pulitzer Prize-winning American novelist."
-541,"Douglas","Stuart","Scottish-American author and Booker Prize winner."
-542,"Djamel","White","Contemporary novelist and writer."
-543,"Missouri","Williams","British writer and editor."
-545,"Michael","Pollan","American author, journalist, and activist."
-546,"Ann","Patchett","American author and bookstore owner."
-547,"Beverly","Gage","American historian and professor."
-549,"Camille","Bordas","French author writing in English."
-550,"Vincent","Yu","Contemporary writer and essayist."
-552,"Ben","Lerner","American poet, novelist, and essayist."
-553,"Colson","Whitehead","Pulitzer Prize-winning American novelist."
-554,"Islam","Issa",NULL
-555,"Bettany","Hughes",NULL
-556,"Tia","Williams",NULL
-557,"Lloyd","Llewellyn-Jones",NULL
-558,"Lucius","Seneca",NULL
+647,"Saeko","Himuro","Japanese novelist and essayist best known for Ocean Waves."
+646,"Dan","Koeppel","American journalist and author focusing on food history and culture."
+645,"Sarah","Rose","Journalist and author writing on history and global trade."
+644,"Mark","Pendergrast","American independent scholar and journalist."
+642,"James","Davidson","British classicist and cultural historian."
+641,"Robert","Knapp","Classicist and historian focusing on everyday life in ancient Rome."
+640,"Amanda H.","Podany","Professor Emerita of History specializing in the ancient Near East."
+639,"Barbara","Mertz","American Egyptologist and bestselling author."
+638,"Philip","Matyszak","British historian and author specializing in ancient Greece and Rome."
+637,"Hwang","Sok-yong","Renowned South Korean novelist and essayist."
+636,"Sophie","Blackall","Australian-born illustrator and author."
+635,"Matthew","Teller","British writer, journalist, and documentary maker focusing on the Middle East."
+634,"Usagi","Tsuchiya","Japanese writer and food essayist."
+633,"Mika","Waltari","Finnish author famous for historical novels."
+632,"Arto","Paasilinna","Finnish novelist known for humorous and satirical fiction."
+631,"Rosa","Liksom","Finnish author and visual artist."
+629,"Robert","Greene","American author known for books on strategy, power, and human nature."
+628,"AJ","Ayers","Certified financial planner and co-founder of Brooklyn FI."
+627,"Danica","Nava","Chickasaw author of contemporary romance fiction."
+626,"Jennifer","Ackerman","Award-winning science and nature writer."
+625,"Uma","Naidoo","Harvard-trained nutritional psychiatrist, chef, and author."
+624,"Karen Joy","Fowler","American author of literary and speculative fiction."
+623,"Jared","Henderson","Writer, philosopher, and educator."
+622,"Sawako","Natori","Japanese novelist and scriptwriter."
+621,"Namita","Gokhale","Indian writer, publisher, and co-founder of the Jaipur Literature Festival."
+620,"Jacqueline","Rose","British academic, feminist thinker, and author."
+619,"Hiroko","Oyamada","Akutagawa Prize-winning Japanese novelist."
+618,"Tom","McCarthy","English novelist and visual artist."
+617,"Harriet","Clark","Author of literary and historical fiction."
+616,"Emily","Crane","Writer and researcher exploring memory and cognition."
+615,"Mary H.K.","Choi","Korean-American writer and author of contemporary novels."
+614,"Evan","Brooke","Contemporary fiction author."
+613,"Tiago","Forte","Productivity expert and author known for Building a Second Brain."
+612,"Ian P.","Collins","Organizational wellbeing specialist and author."
+611,"Sha-En","Yeo","Positive psychology practitioner, speaker, and author."
+610,"Ong Chin","Huat","Malaysian writer, journalist, and cultural commentator."
+609,"Michele","Sagan","Leadership strategist and organizational transformation consultant."
+608,"Jason Erik","Lundberg","American-born writer, editor, and anthologist based in Singapore."
+607,"Anthony","Shieh","Author and essayist exploring modern social narratives."
+606,"Jürgen","Ingels","Belgian entrepreneur, venture capitalist, and author."
+605,"Ryan","Devereaux","Investigative journalist covering border politics, policing, and human rights."
+604,"Brandie","Smith","Conservation biologist and director of the Smithsonian National Zoo."
+603,"Jor-El","Caraballo","Licensed therapist, writer, and mental health educator."
+602,"John","Burrows","Organizational researcher and author focusing on workplace trust and social capital."
+601,"Avni","Doshi","American novelist shortlisted for the Booker Prize."
+600,"Sofia","Franklyn","Podcaster, media personality, and author."
+599,"Dustin","Hoffman","Academy Award-winning American actor and filmmaker."
+598,"Ian","Morris","British archaeologist, historian, and professor at Stanford University."
+597,"Adrienne","Mayor","Historian of ancient science and classical folklorist at Stanford University."
+596,"Anne","Lawrence-Mathers","Professor of Medieval History at the University of Reading."
+595,"Tim","Flannery","Australian mammalogist, palaeontologist, and environmentalist."
+593,"Toshio","Suzuki","Japanese film producer and co-founder of Studio Ghibli."
+592,"Kirstin","Chen","Singaporean-born American novelist."
+591,"Ethan","Tapper","Forester, writer, and conservationist."
+590,"Jessica","Hernandez","Indigenous scholar, scientist, and environmental advocate."
+589,"Tsuyoshi","Sekihara","Japanese author and advocate for regional revitalization and rural culture."
+588,"Harry G.","Frankfurt","American moral philosopher and professor emeritus at Princeton University."
+587,"Carlo","Rovelli","Italian theoretical physicist and bestselling science writer."
+586,"Leo","Tolstoy","Russian master of realistic fiction and philosophical writing."
+585,"Lucius Annaeus","Seneca","Roman Stoic philosopher, statesman, and dramatist."
+584,"Dava","Sobel","American science writer and biographer."
+583,"Mark","Bowen","Physicist and author writing about science and polar exploration."
+582,"Richard","Panek","Science writer specializing in astronomy and cosmology."
+581,"Shehan","Karunatilaka","Sri Lankan author and winner of the 2022 Booker Prize."
+580,"Mohammed","Hanif","British-Pakistani writer, journalist, and satirical novelist."
+579,"Orhan","Pamuk","Turkish novelist and recipient of the 2006 Nobel Prize in Literature."
+577,"Toby","Wilkinson","English Egyptologist and academic."
+576,"Eckart","Frahm","Professor of Assyriology at Yale University."
+575,"Paul","Kriwaczek","Author, journalist, and BBC producer focusing on ancient civilizations."
+573,"Philip","Freeman","American classicist and author of biographies on ancient leaders."
+572,"Tom","Holland","British historian and author of bestselling works on the ancient world."
+571,"Barry","Cunliffe","Emeritus Professor of European Archaeology at the University of Oxford."
+569,"Rob","Walker","Journalist and author exploring design, technology, and everyday observation."
+568,"Richard","Cooke","Australian journalist, essayist, and author."
+567,"Ratna Damayanti","Taha","Author and commentator focusing on social dynamics and cultural perspectives."
+566,"Shigehiko","Toyama","Japanese scholar of English literature, essayist, and linguist."
+565,"Eileen","Buckholtz","Former NSA mathematician, computer scientist, and author."
+564,"Ellie","Bruce","Writer and researcher exploring history, archaeology, and human stories."
+563,"Paul","Theroux","Acclaimed American travel writer and novelist."
+562,"Sharon","Weinberger","National security journalist and author covering defense technology and intelligence."
+561,"Martin","Williams","Writer, conservationist, and environmental journalist based in Hong Kong."
+560,"Judith Hanson","Lasater","American yoga teacher, physical therapist, and author specializing in restorative yoga."
 559,"Lady","Murasaki",NULL
+558,"Lucius","Seneca",NULL
+557,"Lloyd","Llewellyn-Jones",NULL
+556,"Tia","Williams",NULL
+555,"Bettany","Hughes",NULL
+554,"Islam","Issa",NULL
+553,"Colson","Whitehead","Pulitzer Prize-winning American novelist."
+552,"Ben","Lerner","American poet, novelist, and essayist."
+550,"Vincent","Yu","Contemporary writer and essayist."
+549,"Camille","Bordas","French author writing in English."
+547,"Beverly","Gage","American historian and professor."
+546,"Ann","Patchett","American author and bookstore owner."
+545,"Michael","Pollan","American author, journalist, and activist."
+543,"Missouri","Williams","British writer and editor."
+542,"Djamel","White","Contemporary novelist and writer."
+541,"Douglas","Stuart","Scottish-American author and Booker Prize winner."
+540,"Elizabeth","Strout","Pulitzer Prize-winning American novelist."
+539,"Gwendoline","Riley","English novelist and academic."
+538,"Rebecca","Perry","British poet and writer."
+537,"Kenan","Orhan","Turkish-American author and short story writer."
+536,"Luke","Kennard","British poet and novelist."
+535,"Marlon","James","Jamaican novelist and Booker Prize winner."
+534,"M. John","Harrison","English science fiction and fantasy author."
+533,"Makenna","Goodman","American author and editor."
+531,"Chloe","Aridjis","Mexican-American novelist and writer."
+526,"Samantha","Harvey","Buker Prize-winning novelist."
+525,"Carl","Marci","Neuroscientist and doctor."
+524,"Meg","Tanaka","Chef and cookbook author."
+523,"Francesca Maria","Benvenuto","Italian novelist and lawyer."
+522,"Banine","Daghestani","French-Azerbaijani memoirist and novelist."
+521,"Marie","Aubert","Norwegian author and short story writer."
+520,"Chiyo","Uno","Iconic Japanese author and kimono designer."
+519,"René","Mauborgne","INSEAD professor and business strategist."
+518,"Marcus","Aurelius","Roman Emperor and Stoic philosopher."
+517,"James","Nestor","Science journalist and author."
+516,"Om","Swami","Monk, entrepreneur, and author."
+515,"Sadhguru","Jaggi Vasudev","Yogi, mystic, and founder of Isha Foundation."
+514,"Robert","Kanigel","Biographer and science writer."
+513,"Kazumasa","Hayami","Japanese novelist and award-winning author."
+512,"Nikita","Desai","Yoga instructor and researcher."
+511,"Gil","Durán","Journalist and former editorial page editor."
+510,"Duraid","Jalili","Lecturer in defense studies and security analysis."
+509,"Arthur C.","Brooks","Harvard professor, columnist, and author."
+508,"Salma","El-Wardany","Writer, presenter, and poet."
+507,"Emily","St. James","Cultural critic, journalist, and author."
+506,"Emily","Hauser","Classicist and author."
+505,"Soetsu","Yanagi","Philosopher and founder of the Mingei movement."
+504,"Susan MacKenty","Brady","Leadership expert and executive coach."
+503,"Jennifer","Shahade","Chess grandmaster, poker player, and author."
+502,"Vanessa","Druskat","Organizational psychologist and researcher."
+501,"Rachel","Barr","Neuroscientist and mental health advocate."
+500,"Cal","Newport","Computer science professor and productivity author."
+499,"Chang-rae","Lee","Award-winning Korean-American novelist."
+498,"Simran","Kaur","Financial educator and founder of Girls That Invest."
+497,"Hannah","Ferguson","Co-founder of Cheek Media Co. and writer."
+496,"Dee","Salmin","Radio presenter, podcaster, and author."
+495,"Scott M.","Curran","Social impact strategist and lawyer."
+494,"Monisha","Rajesh","Travel journalist and author."
+493,"Seth","Kugel","Travel journalist and former NYT columnist."
+492,"Matt","Kepnes","Travel writer known as Nomadic Matt."
+491,"John","Baxter","Paris-based author and travel writer."
+490,"Tharik","Hussain","Travel writer, journalist, and broadcaster."
+488,"Antoinette","Lattouf","Journalist, broadcaster, and author."
+486,"George","Mumford","Mindfulness coach and sports performance expert."
+485,"Eleanor","Dooks","Co-author and memoirist."
+484,"Roland","Allen","Author and publisher specializing in history and design."
+483,"Chris","Voss","Former FBI hostage negotiator and author."
+482,"Anne-Laure","Le Cunff","Neuroscientist and founder of Ness Labs."
+481,"Emily","Everett",NULL
+480,"Allison","King",NULL
+479,"Beck","Dorey-Stein",NULL
+478,"Alexandra","Andrews",NULL
+477,"Kelly","Anderson",NULL
+476,"Dolly","Parton",NULL
+475,"Mark","Kurlansky",NULL
+474,"Emily","Wilson",NULL
+473,"Christine","Lehnen",NULL
+472,"Slutty","Cheff",NULL
+471,"Morgan","Dick",NULL
+470,"Julian","Hoffman",NULL
+469,"Carissa","Veliz",NULL
+468,"Roopika","Risam","Digital humanities scholar and author."
+467,"Amos","Winter",NULL
+466,"Jill","Lepore",NULL
+465,"Jennifer","Nagel",NULL
+464,"John","Holland",NULL
+463,"Simon","Blackburn",NULL
+462,"Robert","Segal",NULL
+461,"Graham","Priest",NULL
+460,"Hugh","Bowden",NULL
+459,"Dana","Arnold",NULL
+458,"Annie","Lord",NULL
+457,"Kyleigh","Leddy",NULL
+456,"Krista","Diamond",NULL
+455,"Rick","Rubin",NULL
+454,"David","Byrne",NULL
+453,"Angela","Hui",NULL
+452,"Lidija","Hilje",NULL
+451,"Barbara","Eden",NULL
+450,"Michael","Shaikh",NULL
+449,"Tove","Jansson",NULL
+448,"Hika","Harada",NULL
+447,"Madhulika","Liddle",NULL
+446,"Elizabeth","Castellano",NULL
+445,"Ashley","Winstead",NULL
+444,"Noriko","Morishita",NULL
+443,"Junichiro","Tanizaki",NULL
+442,"Yotam","Ottolenghi",NULL
+441,"Ian","Kerner",NULL
+440,"Emily","Morse",NULL
+439,"Allison","Moon",NULL
+438,"Mallanaga","Vatsyayana",NULL
+437,"Georgia","Grace",NULL
+436,"Sorens","Books",NULL
+435,"Katherine","Cobbs",NULL
+434,"David","Castro Hussong",NULL
+433,"Eleanor","Maidment",NULL
+432,"Sharon","Palmer",NULL
+431,"Lauren","Weisberger",NULL
+430,"Candace","Bushnell",NULL
+429,"Yukio","Mishima",NULL
+428,"Angelica","Glass",NULL
+427,"Whitney","Hanson",NULL
+426,"Ito","Ogawa",NULL
+425,"Kwon","Yeo-Sun",NULL
+424,"Afia","Amoako",NULL
+423,"Julian","Shapiro-Barnum",NULL
+422,"Cal","Flyn",NULL
+421,"Henry","Shukman",NULL
+420,"Ryunosuke","Koike",NULL
+419,"Ryushun","Kusanagi",NULL
+418,"Paul","Waley",NULL
+417,"David","Salle",NULL
+416,"Jerry","Saltz",NULL
+415,"Ruth","Rogers",NULL
+414,"Han","Kang",NULL
+413,"Josh","Tyrangiel",NULL
+412,"George","Newman",NULL
+411,"Magnus","Resch",NULL
+410,"Don","Thompson",NULL
+409,"Robin","Wall Kimmerer",NULL
+408,"Adrienne","Buller",NULL
+407,"Adam","Aleksic",NULL
+406,"Jenny","Odell",NULL
+405,"Gail","Honeyman",NULL
+404,"Fredrik","Backman",NULL
+403,"Romesh","Gunesekera",NULL
+402,"Iris","Murdoch",NULL
+401,"Deborah","Levy",NULL
+400,"Nicole","Vignola",NULL
+399,"Debra","Fine",NULL
+398,"Tessa","Yang",NULL
+397,"Liam","McClintock",NULL
+396,"Andrew","Foote",NULL
+395,"Julie","Otsuka",NULL
+394,"Matt","FitzGerald",NULL
+393,"Robin","Sharma",NULL
+392,"Denise","Duffield-Thomas",NULL
+391,"Mikael","Krogerus",NULL
+390,"Alice","Vincent",NULL
+389,"Timothy","Ferriss",NULL
+388,"Angela","Duckworth",NULL
+387,"Simon","Sinek",NULL
+386,"Douglas","Hubbard",NULL
+385,"Annie","Duke",NULL
+384,"Benjamin","Hardy",NULL
+383,"Zen","Cho",NULL
+382,"Mark","Carwardine",NULL
+381,"Hal","Whitehead",NULL
+380,"Katy","Hays",NULL
+379,"Kate","Myers",NULL
+378,"Lynn","Brunelle",NULL
+377,"Ben","Tish",NULL
+376,"Katie","Caldesi",NULL
+375,"Letitia","Clark",NULL
+374,"Jeanine","Donofrio",NULL
+373,"Douglas","Adams",NULL
+372,"Irvine","Welsh",NULL
+371,"Caleb Azumah","Nelson",NULL
+370,"Emma","Brodie",NULL
+369,"Sarah","Winman",NULL
+368,"Percival","Everett",NULL
+367,"Jenny","Jackson",NULL
+366,"Kirsty","Capes",NULL
+365,"Megan","Kamalei Kakimoto",NULL
+364,"Kristina","Kahakauwila",NULL
+363,"Natalie","Sanders",NULL
+362,"David","Attenborough",NULL
+361,"Adam","Nicolson",NULL
+360,"Helen","Czerski",NULL
+359,"Drew","Harvell",NULL
+358,"Tom","Mustill",NULL
+357,"Ric","Bucher",NULL
+356,"Helen","Scales",NULL
+355,"Alexandra","Elle",NULL
+354,"Stefano","Mancuso",NULL
+353,"Kate","Ascher",NULL
+352,"Jodie","Chapman",NULL
+351,"Rupi","Kaur",NULL
+350,"Annie","Macmanus",NULL
+349,"Jet","Li",NULL
+348,"Yu-Mei","Balasingamchow",NULL
+347,"Theo","Baker",NULL
+346,"Jefferson","Fisher",NULL
+345,"Marie","NDiaye",NULL
+344,"Daniel","Kehlmann",NULL
+343,"Rene","Karabash",NULL
+342,"Alyssa","Milano",NULL
+341,"Minnie","Driver",NULL
+340,"Shida","Bazyar",NULL
+339,"Nelio","Biedermann",NULL
+338,"Kenji","Ueda",NULL
+337,"Imogen","Binnie",NULL
+336,"Hiro","Arikawa",NULL
+335,"Mai","Mochizuki",NULL
+334,"Kei","Aono",NULL
+333,"Willow","Hurst",NULL
+331,"Sonoko","Machida",NULL
+330,"David","Epstein",NULL
+329,"Simon","Rogers",NULL
+328,"Carley","Fortune",NULL
+327,"Jess","Cannon",NULL
+326,"Asako","Yuzuki",NULL
+325,"Sara","Novic",NULL
+324,"Rainbow","Rowell",NULL
+323,"Ally","Condie",NULL
+322,"Sandie","Jones",NULL
+321,"Yang","Liu",NULL
+320,"Tim","Anderson",NULL
+319,"Marie","Kacouchia",NULL
+318,"Cassie","Johnston",NULL
+317,"Meera","Sodha",NULL
+316,"Per Oscar","Brekell",NULL
+315,"Vefa","Alexiadou",NULL
+314,"Maria","Koutsogiannis",NULL
+313,"Carolina","Doriti",NULL
+312,"Jeff","Koehler",NULL
+311,"Anne","Sijmonsbergen",NULL
+310,"Sherin","Kneifl",NULL
+309,"Adeena","Sussman",NULL
+308,"Caroline","O'Donoghue",NULL
+307,"Dolly","Alderton",NULL
+306,"Sebastian","Mallaby",NULL
+305,"Jenny","Lawson",NULL
+304,"Rufi","Thorpe",NULL
+303,"Kristin","Hannah",NULL
+302,"Heide","Island",NULL
+301,"Kirsten","Perrin",NULL
+300,"Canwen","Xu",NULL
+299,"Yoon","Ina",NULL
+298,"Minyoung","Kang",NULL
+297,"Kang","Jiyoung",NULL
+296,"Sunwoo","Lim",NULL
+295,"Kim","Hana",NULL
+294,"Rebecca","Solnit",NULL
+293,"Nao-Cola","Yamazaki","Acclaimed Japanese novelist and essayist."
+292,"Kazuo","Ishiguro",NULL
+291,"Alex","Michaelides",NULL
+290,"Emily","Sullivan",NULL
+289,"Meghan","Quinn",NULL
+288,"Amanda Eyre","Ward",NULL
+287,"Polly","Samson",NULL
+286,"Natalie","Haynes",NULL
+285,"Patmeena","Sabit",NULL
+284,"Tayari","Jones","American author and professor."
+283,"Tiffany","Crum",NULL
+282,"David","Ellis",NULL
+281,"Michiko","Aoyama",NULL
+280,"Emma","Edwards",NULL
+279,"Fab","Freddy",NULL
+278,"Mark","Ranson",NULL
+277,"Ishi","Robinson",NULL
+276,"Asha Ashanti","Bromfield",NULL
+275,"Charmaine","Wilkerson",NULL
+274,"Alan","Booth",NULL
+273,"Janelle","Brown",NULL
+272,"Xochitl","Gonzalez",NULL
+271,"Lena","Dunham",NULL
+270,"Pirkko","Saisio",NULL
+269,"Rick","Steves",NULL
+268,"Simon","Richmond",NULL
+267,"Laura","Baker",NULL
+266,"Tae","Kim",NULL
+265,"Stephen","Witt",NULL
+264,"Emily","Chang",NULL
+263,"Adam","Fisher",NULL
+262,"Leslie","Berlin",NULL
+261,"Walter","Isaac",NULL
+260,"Margaret","O'Mara",NULL
+259,"Laine","Nooney",NULL
+258,"Keza","MacDonald",NULL
+257,"Brent","Schlender",NULL
+256,"Geoffrey","Cain",NULL
+255,"David","Poque",NULL
+254,"Sophie","Wan",NULL
+253,"Elizabeth","Day",NULL
+252,"B.K.","Borison",NULL
+251,"Naomi","Hirahara",NULL
+250,"Grant","Ginder",NULL
+249,"Lillian","Li",NULL
+248,"Leanne","Shapton",NULL
+247,"Choi","Eunyoung",NULL
+246,"Bora","Chung",NULL
+245,"Cho","Nam-Joo",NULL
+244,"Kim","Ho-Yeon",NULL
+243,"Hwang","Bo-Reum",NULL
+242,"Michelle","Zauner",NULL
+241,"Jennifer","Romolini",NULL
+240,"Kristi","Coulter",NULL
+239,"Emily","Nemens",NULL
+238,"Beatriz","Serrano",NULL
+237,"Sharlene","Teo",NULL
+236,"Hala","Alyan",NULL
+235,"Dahlia","de la Cerda",NULL
+234,"Souvankham","Thammavongsa",NULL
+233,"Saou","Ichikawa",NULL
+232,"Nussaibah","Younis",NULL
+231,"Mariam","Rahmani",NULL
+230,"Edwidge","Danticat",NULL
+229,"Cecile","Tlili",NULL
+228,"Nilima","Rao",NULL
+227,"Giovana","Madalosso",NULL
+226,"Giddens","Ko",NULL
+225,"Baek","Seungyeon",NULL
+224,"Yulin","Kuang",NULL
+223,"Nina","De Gramont",NULL
+222,"Marissa","Stapley",NULL
+221,"Elif","Shafak",NULL
+220,"Chibundu","Onuzo",NULL
+219,"Maria","Amparo Escandón",NULL
+218,"Kiley","Reid",NULL
+217,"Eve","Rodsky",NULL
+216,"Megan","Miranda",NULL
+215,"Chandler","Baker",NULL
+214,"Sarah","Haywood",NULL
+213,"Tembi","Locke",NULL
+212,"Jaimal","Yogis",NULL
+211,"Kem","Nunn",NULL
+210,"Allan","Weisbecker",NULL
+209,"Susan","Casey",NULL
+208,"Kate","Schatz",NULL
+207,"Rae","Alexandra",NULL
+206,"Vanessa","Hua",NULL
+205,"Virginia","Evans",NULL
+204,"Han","Ong",NULL
+203,"John","Burnham Schwartz",NULL
+202,"Yu","Miri",NULL
+201,"Suzanne","Kamata",NULL
+200,"Kyoko","Nakajima",NULL
+199,"Penguin","Books",NULL
+198,"Alana","Kysar",NULL
+197,"Kainoa","Daines",NULL
+196,"Ryland","Peters",NULL
+195,"Shaun","Tomson",NULL
+194,"Jane","Lamberth",NULL
+193,"Veerle","Helsen",NULL
+192,"Ximo","Abadia",NULL
+191,"Kelly","Slater",NULL
+190,"Carissa","Moore",NULL
+189,"Patricia","Hanlon",NULL
+188,"Mariel","Hawley",NULL
+187,"Tessa","Wardley",NULL
+186,"Stefanie","Waldek",NULL
+185,"Christopher","Beanland",NULL
+184,"Carolina","Amell",NULL
+183,"Lara","Einzig",NULL
+182,"Gill","Hutchison",NULL
+181,"Matt","Titone",NULL
+180,"Lauren","Liess",NULL
+179,"Clark","Little",NULL
+178,"Nina","Freudenberger",NULL
+177,"Howard","Means",NULL
+176,"MJ","FitzGerald",NULL
+175,"Becca","Mann",NULL
+174,"Bonnie","Tsui",NULL
+173,"Lonely","Planet",NULL
+172,"various","Various",NULL
+171,"Delia","Owens",NULL
+170,"Angie","Kim",NULL
+169,"Steve","McGinnes",NULL
+168,"Steve","Estes",NULL
+167,"Gilbert","Adair",NULL
+166,"Andy","Clark",NULL
+165,"Agatha","Christie",NULL
+164,"John","Green",NULL
+163,"Sally","Hepworth",NULL
+162,"Abby","Jimenez",NULL
+161,"Megan","Lally",NULL
+160,"Madeline","Miller",NULL
+159,"Stephen","Chbosky",NULL
+158,"Yosha","Gunasekera",NULL
+157,"Valeria","Luiselli",NULL
+156,"Mike","Isaac",NULL
+155,"Jimmy","Soni",NULL
+154,"Sally","Thorne",NULL
+153,"B. K. S.","Iyengar",NULL
+152,"Barack","Obama",NULL
+151,"Trevor","Noah",NULL
+150,"Damon","Galgut",NULL
+149,"Walter","Isaacson",NULL
+148,"Lori","Gottlieb",NULL
+147,"Brian","Mccullough",NULL
+146,"Chris","Miller",NULL
+145,"Amy","Tan",NULL
+144,"Claire L.","Evans",NULL
+143,"Suzanne","Collins",NULL
+142,"Curtis","Sittenfeld",NULL
+141,"Shelby","Van Pelt",NULL
+140,"David","Davis",NULL
+139,"Emily","Nagoski",NULL
+138,"Blake J.","Harris",NULL
+137,"Matt","Haig",NULL
+136,"Jasmin","Iolani Hakes",NULL
+135,"Ashley","Elston",NULL
+134,"Scott","Galloway",NULL
+133,"Jonathan","Rosenberg",NULL
+132,"Steven","Levy",NULL
+131,"Emma","Mclaughlin",NULL
+130,"Taylor","Jenkins Reid",NULL
+129,"Emma","Cline","American novelist and short story writer."
+128,"Beth","Kempton",NULL
+127,"Malcolm","Harris",NULL
+126,"Michael","Pronko",NULL
+125,"Pallavi","Aiyar",NULL
+124,"Tom","Feiling",NULL
+123,"Nick","Bradley",NULL
+122,"Alex","Kerr",NULL
+121,"Bill","Bryson",NULL
+120,"Alex","Garland",NULL
+119,"Phoebe","Waller-Bridge",NULL
+118,"Stieg","Larsson",NULL
+117,"Felipe","Furentes Cruz",NULL
+116,"Britney","Spears",NULL
+115,"Alan","Rickman",NULL
+114,"Matthew","Perry",NULL
+113,"Tsitsi","Dangarembga",NULL
+112,"Howard Scott","Warshaw",NULL
+111,"Sarah","Thornton",NULL
+110,"Grace","Coddington",NULL
+109,"Mark","Bergen",NULL
+108,"Amy","Poeppel",NULL
+107,"Perry","Klebahn",NULL
+106,"Darius","Foroux",NULL
+105,"Philip","Pullman",NULL
+104,"James","McBride",NULL
+103,"Sarah","Bakewell",NULL
+102,"Harper","Lee",NULL
+101,"Tommy","Orange",NULL
+100,"Ichiro","Kishimi",NULL
+99,"David","McRaney",NULL
+98,"Tessa","Hadley",NULL
+97,"Geoff","Dyer",NULL
+96,"Jack","Kerouac",NULL
+95,"various","authors",NULL
+94,"Jake","Adelstein",NULL
+93,"Lois P.","Frankel",NULL
+92,"Aysegül","Savas",NULL
+91,"Sei","Shoagon",NULL
+90,"Karen","Hao",NULL
+89,"Samanth","Subramanian",NULL
+88,"Christina","Applegate",NULL
+87,"Brian","Goldstone",NULL
+86,"Kiran","Desai",NULL
+85,"Zadie","Smith",NULL
+84,"Mizuki","Tsujimura",NULL
+83,"Her","Taeyeon",NULL
+82,"Jungeun","Yun",NULL
+81,"Hisashi","Kashiwai",NULL
+80,"Katie","Kitamura",NULL
+79,"Lily","King",NULL
+78,"Megha","Majumdar",NULL
+77,"Takashi","Hiraide",NULL
+76,"Mieko","Kawakami",NULL
+75,"Durian","Sukegawa",NULL
+74,"Yuko","Tsushima",NULL
+73,"Banana","Yoshimoto",NULL
+72,"Atsuhiro","Yoshido",NULL
+71,"Haruki","Murakami",NULL
+70,"Natsume","Soseki",NULL
+69,"Yoko","Ogawa",NULL
+68,"Hu","AnYan",NULL
+67,"Hiromi","Kawakami",NULL
+66,"Sanaka","Hiiragi",NULL
+65,"Emi","Yagi",NULL
+64,"Benjamin","Markovits",NULL
+63,"Satoshi","Yagisawa",NULL
+62,"Cheryl","Strayed",NULL
+61,"Jordan","Ellenberg",NULL
+60,"Michael","Lewis",NULL
+59,"Yvon","Chouinard",NULL
+58,"Abdulrazak","Gurnah",NULL
+57,"Andy","Greenberg",NULL
+56,"Steve","Wozniak",NULL
+55,"Joseph","Cox",NULL
+54,"Johny","David",NULL
+53,"Rebecca","Makkai",NULL
+52,"David","Szalay",NULL
+51,"Fumio","Sasaki",NULL
+50,"William","Finnegan",NULL
+49,"Lucy","Clarke",NULL
+48,"Diane","Cardwell",NULL
+47,"Yamada","Koun",NULL
+46,"Barbara","Streisand",NULL
+45,"Cher","Cher",NULL
+44,"Hector","Garcia",NULL
+43,"Liz","Pelly",NULL
+41,"Elizabeth","Gilbert",NULL
+40,"Jacinda","Ardern",NULL
+39,"Tori","Eldridge",NULL
+38,"George","Saunders","American writer and university professor."
+37,"Pamela","Redmond Satran",NULL
+36,"Kevin","Kwan",NULL
+35,"Lauren","Graham",NULL
+34,"Emily","Henry",NULL
+33,"Freida","Harris",NULL
+32,"Dan","Harris",NULL
+31,"Gabrielle","Zevin",NULL
+30,"Hannah","Fry",NULL
+29,"Musa","Okwonga",NULL
+28,"Illaria","Bernardini",NULL
+27,"Claire","Keegan",NULL
+26,"Zz","Packer",NULL
+25,"Alan","Watts",NULL
+24,"Sayaka","Murata",NULL
+23,"Siri","Hustvedt",NULL
+22,"Sally","Rooney",NULL
+21,"Nanoko","Hanada",NULL
+20,"Sue","Monk Kidd",NULL
+19,"Nick","Hornby",NULL
+18,"Walter","Travis",NULL
+17,"Rolf","Potts",NULL
+16,"Monica","Ali",NULL
+15,"Stephanie","Land",NULL
+14,"Osamu","Dazai",NULL
+13,"Naomi","Klein",NULL
+12,"Toby","Neal",NULL
+11,"DK","Travel",NULL
+10,"Toshikazu","Kawaguchi",NULL
+9,"David","Foster Wallace",NULL
+8,"John","Steinbeck",NULL
+7,"Don","DeLillo",NULL
+6,"Raymond","Carver",NULL
+5,"Patti","Smith",NULL
+4,"Michael","Chabon",NULL
+3,"Dave","Eggers",NULL
+2,"Neil","Gaiman",NULL
+1,"Jhumpa","Lahiri",NULL
