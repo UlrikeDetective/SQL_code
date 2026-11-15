@@ -10,6 +10,7 @@ SELECT * FROM authors order by id desc;
 SELECT * FROM books ORDER BY id desc;
 SELECT * FROM customers ORDER BY id DESC;
 SELECT * FROM orders ORDER BY id DESC;
+SELECT * FROM orders where customer_id = 658 ORDER BY id DESC;
 Select * from order_items order by id desc;
 Select * from genres order by id;
 select * from events order by event_date;
@@ -18,12 +19,12 @@ select * from reviews order by id desc;
 select * from business_costs;
 
 select * from authors where last_name = 'Milano';
-SELECT * FROM books where title LIKE '%Swing%';
+SELECT * FROM books where title LIKE '%Joy%';
 select * from books where author_id = 105;
 SELECT * FROM customers where last_name = 'Müller';
 select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
-Select * from order_items where book_id = 389 order by id desc;
+Select * from order_items where book_id = 248 order by id desc;
 SELECT * FROM books where hashtags iLike '%#reese%';
 
 -- 2. CUSTOMER METRICS
@@ -269,13 +270,22 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%Ideaflow%'
+-- WHERE b.title LIKE '%Ideaflow%'
+where b.id = 248
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 299
+        AND er.event_id = 194
   );
+
+  SELECT DISTINCT *
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN books b ON oi.book_id = b.id
+where b.id = 248;
+
 
 SELECT DISTINCT c.first_name, c.last_name, c.email
 FROM customers c

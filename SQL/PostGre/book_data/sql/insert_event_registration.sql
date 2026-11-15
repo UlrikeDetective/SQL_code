@@ -4,19 +4,20 @@ WITH customers AS (
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
-    WHERE b.title = 'Swing Time'
+    -- WHERE b.title = 'The Joy Luck Club'
+	where b.id = 248
 	-- WHERE b.title ILIKE '%walks'
 )
 SELECT 
-    165 AS event_id,
+    194 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
 FROM customers sc
 LEFT JOIN event_registrations er 
-       ON er.event_id = 165 
+       ON er.event_id = 194 
       AND er.customer_id = sc.customer_id
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
-  AND RANDOM() < 0.95;         -- Pick roughly 50% of eligible customers
+  AND RANDOM() < 0.75;         -- Pick roughly 50% of eligible customers
 
 
 INSERT INTO event_registrations (event_id, customer_id, registered_at)
@@ -25,15 +26,16 @@ WITH customers AS (
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
-    WHERE b.hashtags ILIKE '%japan%'
+    -- WHERE b.hashtags ILIKE '%japan%' and b.genre_id = 9
+	WHERE b.hashtags ILIKE '%travel%'
 )
 SELECT 
-    317 AS event_id,
+    239 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
 FROM customers sc
 LEFT JOIN event_registrations er 
-       ON er.event_id = 317 
+       ON er.event_id = 239 
       AND er.customer_id = sc.customer_id
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
   AND RANDOM() < 0.1;         -- Pick roughly 50% of eligible customers
@@ -44,16 +46,17 @@ WITH customers AS (
     FROM orders o
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
-    -- WHERE b.title ILIKE '%Jellyfish%'
-	where b.id = 389
+    -- WHERE b.hashtags ILIKE '%poems%'
+	where b.genre_id = 35
+	-- where b.id = 389
 )
 SELECT 
-    86 AS event_id,
+    312 AS event_id,
     sc.customer_id,
     CURRENT_TIMESTAMP AS registered_at
 FROM customers sc
 LEFT JOIN event_registrations er 
-       ON er.event_id = 86 
+       ON er.event_id = 312 
       AND er.customer_id = sc.customer_id
 WHERE er.customer_id IS NULL  -- Exclude already registered customers
   AND RANDOM() < 0.75;         -- Pick roughly 50% of eligible customers
@@ -111,8 +114,8 @@ WITH selected_customers AS (
     JOIN order_items oi ON o.id = oi.order_id
     JOIN books b ON oi.book_id = b.id
     -- WHERE b.author_id = 221
-	-- where b.id = 388
-	WHERE b.hashtags ILIKE '%reese%'
+	where b.id = 248
+	-- WHERE b.hashtags ILIKE '%reese%'
 ),
 eligible_customers AS (
     -- 2. Exclude customers who already bought book 389 and pick ~50%
@@ -123,7 +126,7 @@ eligible_customers AS (
         FROM orders o_past
         JOIN order_items oi_past ON o_past.id = oi_past.order_id
         WHERE o_past.customer_id = sc.customer_id
-          AND oi_past.book_id = 390
+          AND oi_past.book_id = 29
     )
     AND RANDOM() < 0.15
 ),
@@ -136,7 +139,7 @@ new_orders AS (
         b.price
     FROM eligible_customers ec
     CROSS JOIN books b
-    WHERE b.id = 388 AND b.stock_quantity >= 1 -- Ensure book is in stock
+    WHERE b.id = 248 AND b.stock_quantity >= 1 -- Ensure book is in stock
     RETURNING id AS order_id
 ),
 inserted_items AS (
@@ -144,12 +147,12 @@ inserted_items AS (
     INSERT INTO order_items (order_id, book_id, quantity, unit_price)
     SELECT 
         no.order_id,
-        388 AS book_id,
+        248 AS book_id,
         1 AS quantity,
         b.price AS unit_price
     FROM new_orders no
     CROSS JOIN books b
-    WHERE b.id = 388
+    WHERE b.id = 248
     RETURNING book_id, quantity
 )
 -- 5. Deduct stock_quantity in the books table for the purchased items

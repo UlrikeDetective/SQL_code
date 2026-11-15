@@ -6,10 +6,11 @@
 -- 1. QUICK SYSTEM CHECKS (Basic Table Dumps)
 -- ==========================================================
 -- These help verify data integrity at a glance
-SELECT * FROM authors order by id;
+SELECT * FROM authors order by id desc;
 SELECT * FROM books ORDER BY id desc;
 SELECT * FROM customers ORDER BY id DESC;
 SELECT * FROM orders ORDER BY id DESC;
+SELECT * FROM orders where customer_id = 658 ORDER BY id DESC;
 Select * from order_items order by id desc;
 Select * from genres order by id;
 select * from events order by event_date;
@@ -18,11 +19,13 @@ select * from reviews order by id desc;
 select * from business_costs;
 
 select * from authors where last_name = 'Milano';
-SELECT * FROM books where title LIKE '%Love%';
-select * from books where author_id = 209;
+SELECT * FROM books where title LIKE '%Joy%';
+select * from books where author_id = 105;
 SELECT * FROM customers where last_name = 'Müller';
 select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
+Select * from order_items where book_id = 248 order by id desc;
+SELECT * FROM books where hashtags iLike '%#reese%';
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
@@ -50,7 +53,7 @@ INSERT INTO business_costs (month_year, helpers, ss_helpers) VALUES
   ('2026-05-01', 1200.00, 384.00);
 
 INSERT INTO business_costs (month_year, rent, utilities, helpers, ss_helpers, autonomo, misc) VALUES 
-('2026-10-01', 200.00, 75.00, 1800.00, 576.00, 310.00, 100.00);
+('2026-1-01', 200.00, 75.00, 1800.00, 576.00, 310.00, 100.00);
 
 -- 3. SALES PERFORMANCE
 -- ==========================================================
@@ -171,7 +174,7 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Normal People';
+WHERE b.title = 'The Jellyfish Problem';
 
  -- Customers who bought books with hashtag 'tech':
 
@@ -180,7 +183,19 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%Matcha%';
+WHERE b.hashtags LIKE '%before%';
+
+SELECT DISTINCT ON (c.id) 
+    c.first_name, 
+    c.last_name, 
+    c.email, 
+    b.title
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN books b ON oi.book_id = b.id
+WHERE b.hashtags ILIKE '%career%'
+ORDER BY c.id, o.order_date DESC; -- Nimmt das zuletzt gekaufte Buch
 
 SELECT * FROM books where title = 'Barbarian - Days A Surfing Life';
 
@@ -221,14 +236,14 @@ JOIN order_items oi ON b.id = oi.book_id
 WHERE b.title = 'Palo Alto'
 GROUP BY b.id, b.title;
 
-  select * from events order by event_date;
+select * from events order by event_date;
 
   SELECT DISTINCT c.first_name, c.last_name, c.email
 FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'A Long Way Down'
+WHERE b.title Like 'Before'
   -- Filter out customers who ARE registered for event 12
   AND NOT EXISTS (
       SELECT 1 
@@ -237,17 +252,17 @@ WHERE b.title = 'A Long Way Down'
         AND er.event_id = 91
   );
 
-    SELECT DISTINCT c.first_name, c.last_name, c.email
+SELECT DISTINCT c.first_name, c.last_name, c.email
 FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.hashtags LIKE '%movie%'
+WHERE b.hashtags LIKE '%swimming%'
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 279
+        AND er.event_id = 221
   );
 
 SELECT DISTINCT c.first_name, c.last_name, c.email
@@ -255,56 +270,32 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title LIKE '%Wired%'
+-- WHERE b.title LIKE '%Ideaflow%'
+where b.id = 248
   AND NOT EXISTS (
       SELECT 1 
       FROM event_registrations er 
       WHERE er.customer_id = c.id 
-        AND er.event_id = 38
+        AND er.event_id = 194
   );
 
- SELECT DISTINCT c.first_name, c.last_name, c.email
+  SELECT DISTINCT *
 FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 JOIN books b ON oi.book_id = b.id
-WHERE b.title = 'Wild';
-
-  INSERT INTO event_registrations (event_id, customer_id, registered_at)
-WITH movie_customers AS (
-    SELECT DISTINCT o.customer_id
-    FROM orders o
-    JOIN order_items oi ON o.id = oi.order_id
-    JOIN books b ON oi.book_id = b.id
-    WHERE b.hashtags ILIKE '%movie%'
-)
-SELECT 
-    279 AS event_id,
-    sc.customer_id,
-    CURRENT_TIMESTAMP AS registered_at
-FROM movie_customers sc
-LEFT JOIN event_registrations er 
-       ON er.event_id = 279 
-      AND er.customer_id = sc.customer_id
-WHERE er.customer_id IS NULL  -- Exclude already registered customers
-  AND RANDOM() < 0.4;         -- Pick roughly 50% of eligible customers
+where b.id = 248;
 
 
- INSERT INTO event_registrations (event_id, customer_id, registered_at)
-WITH wanderlust_customers AS (
-    SELECT DISTINCT o.customer_id
-    FROM orders o
-    JOIN order_items oi ON o.id = oi.order_id
-    JOIN books b ON oi.book_id = b.id
-    WHERE b.title Ilike '%Wired%'
-)
-SELECT 
-    38 AS event_id,
-    sc.customer_id,
-    CURRENT_TIMESTAMP AS registered_at
-FROM wanderlust_customers sc
-LEFT JOIN event_registrations er 
-       ON er.event_id = 38 
-      AND er.customer_id = sc.customer_id
-WHERE er.customer_id IS NULL  -- Exclude already registered customers
-  AND RANDOM() < 0.8;         -- Pick roughly 50% of eligible customers
+SELECT DISTINCT c.first_name, c.last_name, c.email
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN books b ON oi.book_id = b.id
+WHERE b.title LIKE '%Greek%'
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM event_registrations er 
+      WHERE er.customer_id = c.id 
+        AND er.event_id = 111
+  );
