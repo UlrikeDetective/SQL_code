@@ -8,7 +8,7 @@ django.setup()
 
 from core.models import Lesson
 
-def seed_2026_lessons():
+def seed_2027_lessons():
     start_date = date(2027, 1, 1)
     end_date = date(2027, 12, 31)
     
@@ -32,11 +32,11 @@ def seed_2026_lessons():
             )
             lessons_created += 1
             
-        # Meditation Sessions: Monday and Wednesday at 19:00 (7 PM)
-        if current_date.weekday() in [0, 2]: # 0=Monday, 2=Wednesday
+        # Meditation Sessions: Monday, Wednesday and Thursday at 19:15 (7:15 PM)
+        if current_date.weekday() in [0, 2, 3]: # 0=Monday, 2=Wednesday, 3=Thursday
             Lesson.objects.get_or_create(
                 date=current_date,
-                time='19:00',
+                time='19:15',
                 lesson_type='MEDITATION',
                 defaults={
                     'max_students': 20,
@@ -45,11 +45,11 @@ def seed_2026_lessons():
             )
             meditation_created += 1
         
-                # Yoga Lessons: Wednesday at 17:00 
-        if current_date.weekday() in [0, 2]: # 2=Wednesday
+        # Yoga Lessons: Monday, Wednesday and Thursday at 18:00
+        if current_date.weekday() in [0, 2, 3]: # 0=Monday, 2=Wednesday, 3=Thursday
             Lesson.objects.get_or_create(
                 date=current_date,
-                time='17:00',
+                time='18:00',
                 lesson_type='YOGA',
                 defaults={
                     'max_students': 20,
@@ -61,9 +61,9 @@ def seed_2026_lessons():
         current_date += timedelta(days=1)
             
     
-    print(f"Successfully created {lessons_created} Yoga lessons for 2026.")
-    print(f"Successfully created {meditation_created} Meditation sessions for 2026.")
-    print(f"Successfully created {lessons_evening_created} evening Yoga lessons for 2026.")
+    print(f"Successfully created {lessons_created} Yoga lessons for 2027.")
+    print(f"Successfully created {meditation_created} Meditation sessions for 2027.")
+    print(f"Successfully created {lessons_evening_created} evening Yoga lessons for 2027.")
 
 if __name__ == "__main__":
-    seed_2026_lessons()
+    seed_2027_lessons()
