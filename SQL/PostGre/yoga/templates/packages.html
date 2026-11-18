@@ -1,148 +1,47 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<style>
+    .packages-title { margin-bottom: 0.5rem; }
+    .packages-intro { margin-bottom: 2rem; }
+    .package-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+    .package-price {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .package-form p {
+        margin-bottom: 1rem;
+    }
+    .package-form .input,
+    .package-form .btn {
+        width: 80%;
+    }
+    .package-form .input {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .package-form .input[type="email"] {
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h2 style="text-align: center; color: var(--deep-atlantic); margin-bottom: 0.5rem; font-family: 'Space Mono', monospace;">Yoga Packages & Lesson Packs</h2>
-<p style="text-align: center; margin-bottom: 2rem;">
-    Already have a pack? <a href="{% url 'check_balance' %}" style="color: var(--med-teal); font-weight: bold;">Check your remaining lessons</a>
+<h2 class="page-title packages-title text-center">Yoga Packages &amp; Lesson Packs</h2>
+<p class="packages-intro text-center">
+    Already have a pack? <a href="{% url 'check_balance' %}" class="text-teal link-strong">Check your remaining lessons</a>
 </p>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-    <!-- Single Lesson -->
-    <div class="card" style="border-top-color: var(--lagoon); text-align: center;">
-        <h3>Single Lesson</h3>
-        <p style="font-size: 2rem; font-weight: bold; color: var(--med-teal);">15€</p>
-        <p>Drop-in session. Perfect for a one-time experience.</p>
-        <form action="{% url 'buy_package' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="total_lessons" value="1">
-            <input type="hidden" name="package_type" value="YOGA">
-            
-            {% if session_email %}
-                <p style="font-size: 0.8rem; margin-bottom: 1rem;">Zen: <strong>{{ session_email }}</strong></p>
-                <input type="hidden" name="email" value="{{ session_email }}">
-            {% else %}
-                <input type="text" name="name" placeholder="Your Name" style="width: 80%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-                <input type="email" name="email" required placeholder="Your Email" 
-                       style="width: 80%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-            {% endif %}
-            
-            <button type="submit" class="btn" style="width: 80%;">Buy Now</button>
-        </form>
-    </div>
-    
-    <!-- 3 Lessons -->
-    <div class="card" style="border-top-color: var(--med-teal); text-align: center;">
-        <h3>3 Lessons</h3>
-        <p style="font-size: 2rem; font-weight: bold; color: var(--med-teal);">40€</p>
-        <p>Short stay package. Experience the beach vibe.</p>
-        <form action="{% url 'buy_package' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="total_lessons" value="3">
-            <input type="hidden" name="package_type" value="YOGA">
-            
-            {% if session_email %}
-                <p style="font-size: 0.8rem; margin-bottom: 1rem;">Zen: <strong>{{ session_email }}</strong></p>
-                <input type="hidden" name="email" value="{{ session_email }}">
-            {% else %}
-                <input type="text" name="name" placeholder="Your Name" style="width: 80%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-                <input type="email" name="email" required placeholder="Your Email" 
-                       style="width: 80%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-            {% endif %}
-            
-            <button type="submit" class="btn" style="width: 80%;">Buy Now</button>
-        </form>
-    </div>
-
-    <!-- 5 Lessons -->
-    <div class="card" style="border-top-color: var(--deep-atlantic); text-align: center;">
-        <h3>5 Lessons</h3>
-        <p style="font-size: 2rem; font-weight: bold; color: var(--med-teal);">55€</p>
-        <p>A week of yoga. Deepen your practice on the sand.</p>
-        <form action="{% url 'buy_package' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="total_lessons" value="5">
-            <input type="hidden" name="package_type" value="YOGA">
-            
-            {% if session_email %}
-                <p style="font-size: 0.8rem; margin-bottom: 1rem;">Zen: <strong>{{ session_email }}</strong></p>
-                <input type="hidden" name="email" value="{{ session_email }}">
-            {% else %}
-                <input type="text" name="name" placeholder="Your Name" style="width: 80%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-                <input type="email" name="email" required placeholder="Your Email" 
-                       style="width: 80%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-            {% endif %}
-            
-            <button type="submit" class="btn" style="width: 80%;">Buy Now</button>
-        </form>
-    </div>
-
-    <!-- 10 Lessons -->
-    <div class="card" style="border-top-color: var(--strait-night); text-align: center;">
-        <h3>10 Lessons</h3>
-        <p style="font-size: 2rem; font-weight: bold; color: var(--med-teal);">100€</p>
-        <p>Best for locals & long stays. Join our community.</p>
-        <form action="{% url 'buy_package' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="total_lessons" value="10">
-            <input type="hidden" name="package_type" value="YOGA">
-            
-            {% if session_email %}
-                <p style="font-size: 0.8rem; margin-bottom: 1rem;">Zen: <strong>{{ session_email }}</strong></p>
-                <input type="hidden" name="email" value="{{ session_email }}">
-            {% else %}
-                <input type="text" name="name" placeholder="Your Name" style="width: 80%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-                <input type="email" name="email" required placeholder="Your Email" 
-                       style="width: 80%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-            {% endif %}
-            
-            <button type="submit" class="btn" style="width: 80%;">Buy Now</button>
-        </form>
-    </div>
-
-    <!-- 1 Meditation Session-->
-    <div class="card" style="border-top-color: var(--strait-night); text-align: center;">
-        <h3>1 Meditation Session</h3>
-        <p style="font-size: 2rem; font-weight: bold; color: var(--strait-night);">5€</p>
-        <p>Wind down at the beach in a sunset meditation session.</p>
-        <form action="{% url 'buy_package' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="total_lessons" value="1">
-            <input type="hidden" name="package_type" value="MEDITATION">
-            
-            {% if session_email %}
-                <p style="font-size: 0.8rem; margin-bottom: 1rem;">Zen: <strong>{{ session_email }}</strong></p>
-                <input type="hidden" name="email" value="{{ session_email }}">
-            {% else %}
-                <input type="text" name="name" placeholder="Your Name" style="width: 80%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-                <input type="email" name="email" required placeholder="Your Email" 
-                       style="width: 80%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-            {% endif %}
-            
-            <button type="submit" class="btn" style="width: 80%;">Buy Now</button>
-        </form>
-    </div>
-
-    <!-- 5 Meditation Sessions -->
-    <div class="card" style="border-top-color: var(--strait-night); text-align: center;">
-        <h3>5 Meditation Sessions</h3>
-        <p style="font-size: 2rem; font-weight: bold; color: var(--strait-night);">20€</p>
-        <p> Five wind down at the beach in a sunset meditation session..</p>
-        <form action="{% url 'buy_package' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="total_lessons" value="5">
-            <input type="hidden" name="package_type" value="MEDITATION">
-            
-            {% if session_email %}
-                <p style="font-size: 0.8rem; margin-bottom: 1rem;">Zen: <strong>{{ session_email }}</strong></p>
-                <input type="hidden" name="email" value="{{ session_email }}">
-            {% else %}
-                <input type="text" name="name" placeholder="Your Name" style="width: 80%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-                <input type="email" name="email" required placeholder="Your Email" 
-                       style="width: 80%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px;">
-            {% endif %}
-            
-            <button type="submit" class="btn" style="width: 80%;">Buy Now</button>
-        </form>
-    </div>
+<div class="package-grid">
+    {% include 'partials/package_card.html' with title='Single Lesson' price='15€' lessons=1 package_type='YOGA' accent='accent-lagoon' description='Drop-in session. Perfect for a one-time experience.' %}
+    {% include 'partials/package_card.html' with title='3 Lessons' price='40€' lessons=3 package_type='YOGA' accent='accent-teal' description='Short stay package. Experience the beach vibe.' %}
+    {% include 'partials/package_card.html' with title='5 Lessons' price='55€' lessons=5 package_type='YOGA' accent='accent-atlantic' description='A week of yoga. Deepen your practice on the sand.' %}
+    {% include 'partials/package_card.html' with title='10 Lessons' price='100€' lessons=10 package_type='YOGA' accent='accent-night' description='Best for locals & long stays. Join our community.' %}
+    {% include 'partials/package_card.html' with title='1 Meditation Session' price='5€' lessons=1 package_type='MEDITATION' accent='accent-night' price_class='text-night' description='Wind down at the beach in a sunset meditation session.' %}
+    {% include 'partials/package_card.html' with title='5 Meditation Sessions' price='20€' lessons=5 package_type='MEDITATION' accent='accent-night' price_class='text-night' description='Five wind down at the beach in a sunset meditation session..' %}
 </div>
 {% endblock %}

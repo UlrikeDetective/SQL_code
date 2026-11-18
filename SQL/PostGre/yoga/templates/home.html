@@ -1,25 +1,38 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<style>
+    .hero-lead { font-size: 1.2rem; }
+    .hero-actions {
+        margin-top: 2rem;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card" style="text-align: center; border-top-color: var(--golden-sun);">
-    <h2 style="color: var(--deep-atlantic);">The Strait is Calling</h2>
-    <p style="font-size: 1.2rem;">Join us for morning yoga sessions on the sun-bleached shores of Tarifa.</p>
-    <div style="margin-top: 2rem;">
+<div class="card text-center accent-gold">
+    <h2 class="text-atlantic">The Strait is Calling</h2>
+    <p class="hero-lead">Join us for morning yoga sessions on the sun-bleached shores of Tarifa.</p>
+    <div class="hero-actions">
         <a href="{% url 'lessons' %}" class="btn">Book a Lesson</a>
-        <a href="{% url 'packages' %}" class="btn" style="background-color: var(--terra-cotta); margin-left: 10px;">Buy a Package</a>
+        <a href="{% url 'packages' %}" class="btn btn-terracotta">Buy a Package</a>
     </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+<div class="card-grid">
     <div class="card">
         <h3>Local Residents</h3>
         <p>Regular practice for the Tarifa community. Join our weekly flow.</p>
-        <span style="color: var(--med-teal); font-weight: bold;">Special Residents Packs Available</span>
+        <span class="text-teal bold">Special Residents Packs Available</span>
     </div>
-    <div class="card" style="border-top-color: var(--dune-sand);">
+    <div class="card accent-sand">
         <h3>Visitors</h3>
         <p>Staying for a week? Our 3 and 5 lesson packs are perfect for your stay.</p>
-        <span style="color: var(--terra-cotta); font-weight: bold;">Drop-ins Welcome</span>
+        <span class="text-terracotta bold">Drop-ins Welcome</span>
     </div>
 </div>
 {% endblock %}

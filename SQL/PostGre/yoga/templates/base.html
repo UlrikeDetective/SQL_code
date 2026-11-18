@@ -33,7 +33,7 @@
         }
 
         body {
-            font-family: 'IBM+Plex+Mono', monospace;
+            font-family: 'IBM Plex Mono', monospace;
             background-color: var(--salt-spray);
             color: var(--strait-night);
             margin: 0;
@@ -69,6 +69,7 @@
         nav a.logout-link {
             color: var(--spanish-red);
             font-size: 0.8rem;
+            margin-left: 10px;
         }
 
         .user-status {
@@ -86,37 +87,185 @@
             padding: 0 1rem;
         }
 
-        .card {
-            background: var(--pueblo-blanco);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-top: 5px solid var(--med-teal);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--med-teal);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--deep-atlantic);
-        }
-
         .footer {
             text-align: center;
             padding: 2rem;
             color: var(--ancient-cobblestone);
             font-size: 0.8rem;
         }
+
+        /* ---------- Typography & text utilities ---------- */
+        .page-title {
+            color: var(--deep-atlantic);
+            font-family: 'Space Mono', monospace;
+        }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .bold { font-weight: bold; }
+        .small { font-size: 0.8rem; }
+        .muted { color: var(--ancient-cobblestone); }
+        .text-teal { color: var(--med-teal); }
+        .text-atlantic { color: var(--deep-atlantic); }
+        .text-night { color: var(--strait-night); }
+        .text-red { color: var(--spanish-red); }
+        .text-terracotta { color: var(--terra-cotta); }
+
+        .link-strong { font-weight: bold; }
+        .back-link {
+            color: var(--kitesurf-blue);
+            text-decoration: none;
+        }
+        .page-links {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* ---------- Cards ---------- */
+        .card {
+            background: var(--pueblo-blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-top: 5px solid var(--card-accent, var(--med-teal));
+        }
+        .card-narrow { max-width: 500px; margin: 2rem auto; }
+        .card-medium { max-width: 600px; margin: 2rem auto; }
+        .card-column { display: flex; flex-direction: column; }
+        .grow { flex-grow: 1; }
+
+        /* Card accent colours (top border) */
+        .accent-lagoon { --card-accent: var(--lagoon); }
+        .accent-teal { --card-accent: var(--med-teal); }
+        .accent-atlantic { --card-accent: var(--deep-atlantic); }
+        .accent-night { --card-accent: var(--strait-night); }
+        .accent-gold { --card-accent: var(--golden-sun); }
+        .accent-sand { --card-accent: var(--dune-sand); }
+        .accent-red { --card-accent: var(--spanish-red); }
+        .accent-kite { --card-accent: var(--kitesurf-blue); }
+
+        /* ---------- Layout ---------- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .row-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-bg, var(--med-teal));
+            color: var(--btn-color, white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+        }
+        .btn:hover {
+            background-color: var(--btn-hover, var(--deep-atlantic));
+        }
+        .btn-atlantic { --btn-bg: var(--deep-atlantic); --btn-hover: var(--strait-night); }
+        .btn-terracotta { --btn-bg: var(--terra-cotta); --btn-hover: color-mix(in srgb, var(--terra-cotta) 80%, black); }
+        .btn-danger { --btn-bg: var(--spanish-red); --btn-hover: color-mix(in srgb, var(--spanish-red) 80%, black); }
+        .btn-secondary { --btn-bg: var(--salt-spray); --btn-hover: var(--ancient-cobblestone); --btn-color: var(--strait-night); }
+        .btn-block { width: 100%; text-align: center; }
+        .btn-small { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+
+        /* ---------- Forms ---------- */
+        .label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--ancient-cobblestone);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .field { margin-bottom: 1.5rem; }
+
+        /* ---------- Flash messages & status banners ---------- */
+        .flash {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        .flash-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+        .flash-error { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+
+        .status {
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        .status-warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .status-full { background-color: var(--spanish-red); color: white; }
+        .status-booked { background-color: var(--lagoon); color: var(--strait-night); border: 1px solid var(--med-teal); }
+        .status-closed { background-color: var(--ancient-cobblestone); color: white; }
+        .status-note { background-color: var(--salt-spray); color: var(--ancient-cobblestone); font-size: 0.8rem; font-weight: normal; }
+
+        .empty-state {
+            color: var(--ancient-cobblestone);
+            padding: 1rem;
+            background: var(--salt-spray);
+            border-radius: 4px;
+        }
+
+        .divider {
+            border: 0;
+            border-top: 1px solid var(--ancient-cobblestone);
+            margin: 1.5rem 0;
+        }
+
+        /* ---------- Modal dialogs ---------- */
+        .confirm-dialog {
+            border: none;
+            border-top: 5px solid var(--spanish-red);
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: min(90vw, 420px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: var(--strait-night);
+        }
+        .confirm-dialog h3 {
+            margin-top: 0;
+            font-family: 'Space Mono', monospace;
+        }
+        .dialog-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .dialog-actions form { margin: 0; }
+        /* Keep scroll gestures from reaching the page behind an open modal */
+        dialog:modal {
+            overscroll-behavior: contain;
+        }
+        dialog::backdrop {
+            background-color: rgb(0 18 25 / 0.5);
+            overflow: hidden;
+            overscroll-behavior: contain;
+        }
+
+        /* Utilities last so they win over component defaults */
+        .mt-2 { margin-top: 2rem; }
     </style>
     {% block extra_css %}{% endblock %}
 </head>
@@ -135,7 +284,7 @@
             {% if request.session.customer_email %}
                 <span class="user-status">
                     🪷 <strong>{{ request.session.customer_name }}</strong>
-                    <a href="{% url 'logout' %}" class="logout-link" style="margin-left: 10px;">(Logout)</a>
+                    <a href="{% url 'logout' %}" class="logout-link">(Logout)</a>
                 </span>
             {% endif %}
         </nav>
@@ -144,10 +293,7 @@
     <div class="container">
         {% if messages %}
             {% for message in messages %}
-                <div style="padding: 1rem; margin-bottom: 1rem; border-radius: 4px; 
-                    {% if message.tags == 'success' %} background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;
-                    {% elif message.tags == 'error' %} background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;
-                    {% else %} background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; {% endif %}">
+                <div class="flash{% if message.tags == 'success' %} flash-success{% elif message.tags == 'error' %} flash-error{% endif %}">
                     {{ message }}
                 </div>
             {% endfor %}
@@ -158,5 +304,6 @@
     <div class="footer">
         &copy; 2026 Tarifa Beach Yoga - Wind, Whitewash, and the Strait.
     </div>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

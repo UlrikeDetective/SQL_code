@@ -1,28 +1,61 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<style>
+    .balance-form { margin-bottom: 2rem; }
+    .balance-form .row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .balance-form .input {
+        flex: 1 1 250px;
+        width: auto;
+    }
+    .balance-form .btn { flex-grow: 1; }
+    .section-heading {
+        border-bottom: 1px solid var(--salt-spray);
+        padding-bottom: 0.5rem;
+    }
+    .package-balance {
+        background-color: var(--salt-spray);
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--med-teal);
+    }
+    .package-balance.depleted { border-left-color: var(--ancient-cobblestone); }
+    .package-balance .remaining {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--deep-atlantic);
+    }
+    .package-balance .purchased { margin-top: 0.5rem; }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card" style="max-width: 600px; margin: 2rem auto; border-top-color: var(--kitesurf-blue);">
-    <h2 style="color: var(--deep-atlantic); font-family: 'Space Mono', monospace;">Check Your Balance</h2>
+<div class="card card-medium accent-kite">
+    <h2 class="page-title">Check Your Balance</h2>
     <p>Enter your email to see your active yoga packages and remaining lessons.</p>
 
-    <form method="post" style="margin-bottom: 2rem;">
+    <form method="post" class="balance-form">
         {% csrf_token %}
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <input type="email" name="email" required placeholder="e.g. tarifeño@example.com" value="{{ email }}"
-                   style="flex-grow: 1; min-width: 250px; padding: 0.8rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px; font-family: inherit;">
-            <button type="submit" class="btn" style="flex-grow: 1;">Check Now</button>
+        <div class="row">
+            <input type="email" name="email" required placeholder="e.g. tarifeño@example.com" aria-label="Your Email" value="{{ email }}" class="input">
+            <button type="submit" class="btn">Check Now</button>
         </div>
     </form>
 
     {% if packages %}
-        <h3 style="border-bottom: 1px solid var(--salt-spray); padding-bottom: 0.5rem;">Your Packages</h3>
+        <h3 class="section-heading">Your Packages</h3>
         {% for package in packages %}
-            <div style="background-color: var(--salt-spray); padding: 1rem; border-radius: 4px; margin-bottom: 1rem; border-left: 4px solid {% if package.remaining_lessons > 0 %}var(--med-teal){% else %}var(--ancient-cobblestone){% endif %};">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="package-balance{% if package.remaining_lessons <= 0 %} depleted{% endif %}">
+                <div class="row-between">
                     <strong>{{ package.total_lessons }} {{ package.get_package_type_display }} Session(s)</strong>
-                    <span style="font-size: 1.2rem; font-weight: bold; color: var(--deep-atlantic);">{{ package.remaining_lessons }} left</span>
+                    <span class="remaining">{{ package.remaining_lessons }} left</span>
                 </div>
-                <div style="font-size: 0.8rem; color: var(--ancient-cobblestone); margin-top: 0.5rem;">
+                <div class="purchased small muted">
                     Purchased on: {{ package.purchase_date }}
                 </div>
             </div>
@@ -31,9 +64,9 @@
         <!-- No packages found message is handled by Django messages in base.html -->
     {% endif %}
 
-    <div style="margin-top: 2rem; text-align: center;">
-        <p>Need more lessons? <a href="{% url 'packages' %}" style="color: var(--terra-cotta); font-weight: bold;">Buy a new Pack</a></p>
-        <a href="{% url 'home' %}" style="color: var(--kitesurf-blue); text-decoration: none;">&larr; Back to Home</a>
+    <div class="page-links mt-2">
+        <p>Need more lessons? <a href="{% url 'packages' %}" class="text-terracotta link-strong">Buy a new Pack</a></p>
+        <a href="{% url 'home' %}" class="back-link">&larr; Back to Home</a>
     </div>
 </div>
 {% endblock %}

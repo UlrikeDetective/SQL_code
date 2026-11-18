@@ -85,17 +85,28 @@
         align-items: center;
         margin-bottom: 1.5rem;
     }
+    .calendar-nav h2 { margin: 0; }
     .today-marker {
         border: 2px solid var(--golden-sun) !important;
     }
+    .lesson-link { text-decoration: none; }
+    .legend {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    .swatch { font-weight: bold; }
+    .text-kite { color: var(--kitesurf-blue); }
+    .text-gold { color: var(--golden-sun); }
+    .swatch.faded { opacity: 0.6; }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="calendar-nav">
-    <a href="?year={{ prev_year }}&month={{ prev_month }}" class="btn" style="background-color: var(--deep-atlantic);">&laquo; Previous Month</a>
-    <h2 style="margin: 0;">{{ month_name }} {{ year }}</h2>
-    <a href="?year={{ next_year }}&month={{ next_month }}" class="btn" style="background-color: var(--deep-atlantic);">Next Month &raquo;</a>
+    <a href="?year={{ prev_year }}&month={{ prev_month }}" class="btn btn-atlantic">&laquo; Previous Month</a>
+    <h2>{{ month_name }} {{ year }}</h2>
+    <a href="?year={{ next_year }}&month={{ next_month }}" class="btn btn-atlantic">Next Month &raquo;</a>
 </div>
 
 <div class="calendar-container">
@@ -118,7 +129,7 @@
                         {% for lesson in lessons_by_day.items %}
                             {% if lesson.0 == day %}
                                 {% for l in lesson.1 %}
-                                    <a href="{% url 'book_lesson' l.id %}" style="text-decoration: none;">
+                                    <a href="{% url 'book_lesson' l.id %}" class="lesson-link">
                                         <div class="lesson-item {% if l.lesson_type == 'MEDITATION' %}meditation{% endif %} {% if not l.is_in_future %}past{% elif l.id in booked_lesson_ids %}booked{% elif l.is_cancelled %}cancelled{% elif l.is_full %}full{% elif l.is_almost_full %}almost-full{% endif %}">
                                             <span>{% if l.id in booked_lesson_ids %}🪷 {% endif %}{% if l.lesson_type == 'MEDITATION' %}🧘 {% endif %}{{ l.time|time:"H:i" }}</span>
                                             <span class="spots-count">{{ l.attendee_count }}/{{ l.max_students }}</span>
@@ -134,17 +145,17 @@
     {% endfor %}
 </div>
 
-<div class="card" style="margin-top: 2rem;">
+<div class="card mt-2">
     <h3>Legend</h3>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-        <p><span style="color: var(--med-teal); font-weight: bold;">■</span> Morning Yoga (Open)</p>
-        <p><span style="color: var(--kitesurf-blue); font-weight: bold;">■</span> 🧘 Meditation (Open)</p>
+    <div class="legend">
+        <p><span class="swatch text-teal">■</span> Morning Yoga (Open)</p>
+        <p><span class="swatch text-kite">■</span> 🧘 Meditation (Open)</p>
         <p>🪷 <strong>Booked Session</strong></p>
-        <p><span style="color: var(--terra-cotta); font-weight: bold;">■</span> Almost Full (3 or fewer spots)</p>
-        <p><span style="color: var(--spanish-red); font-weight: bold;">■</span> Full Session</p>
-        <p><span style="color: var(--ancient-cobblestone); font-weight: bold; opacity: 0.6;">■</span> Past Lesson (Closed)</p>
-        <p><span style="color: var(--strait-night); font-weight: bold;">■</span> Cancelled Lesson</p>
-        <p><span style="color: var(--golden-sun); font-weight: bold;">■</span> Today's Date</p>
+        <p><span class="swatch text-terracotta">■</span> Almost Full (3 or fewer spots)</p>
+        <p><span class="swatch text-red">■</span> Full Session</p>
+        <p><span class="swatch muted faded">■</span> Past Lesson (Closed)</p>
+        <p><span class="swatch text-night">■</span> Cancelled Lesson</p>
+        <p><span class="swatch text-gold">■</span> Today's Date</p>
     </div>
 </div>
 {% endblock %}

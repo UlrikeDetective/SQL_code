@@ -1,78 +1,121 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<style>
+    .spots-box {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        border-radius: 4px;
+        background-color: var(--salt-spray);
+        text-align: center;
+    }
+    .spots-box .count {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--deep-atlantic);
+    }
+    .cancel-block {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .cancel-block p {
+        margin-top: 0.5rem;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card" style="max-width: 500px; margin: 2rem auto;">
-    <h2 style="color: var(--deep-atlantic); font-family: 'Space Mono', monospace;">Book Lesson</h2>
+<div class="card card-narrow">
+    <h2 class="page-title">Book Lesson</h2>
     <p><strong>Date:</strong> {{ lesson.date }}</p>
     <p><strong>Time:</strong> {{ lesson.time }}</p>
-    
-    <div style="margin: 1.5rem 0; padding: 1rem; border-radius: 4px; background-color: var(--salt-spray); text-align: center;">
-        <span style="font-size: 1.5rem; font-weight: bold; color: var(--deep-atlantic);">{{ lesson.attendee_count }} / {{ lesson.max_students }}</span>
-        <div style="font-size: 0.8rem; color: var(--ancient-cobblestone);">Spots Booked</div>
+
+    <div class="spots-box">
+        <span class="count">{{ lesson.attendee_count }} / {{ lesson.max_students }}</span>
+        <div class="small muted">Spots Booked</div>
     </div>
 
     {% if lesson.is_almost_full %}
-        <div style="background-color: #fff3cd; color: #856404; padding: 0.8rem; border-radius: 4px; margin-bottom: 1rem; border: 1px solid #ffeeba; text-align: center; font-weight: bold;">
+        <div class="status status-warning">
             ⚠️ Only {{ lesson.spots_left }} spots left!
         </div>
     {% endif %}
 
     {% if lesson.is_full %}
-        <div style="background-color: var(--spanish-red); color: white; padding: 0.8rem; border-radius: 4px; margin-bottom: 1rem; text-align: center; font-weight: bold;">
+        <div class="status status-full">
             🚫 This session is fully booked.
         </div>
     {% endif %}
 
     {% if is_booked %}
-        <div style="background-color: var(--lagoon); color: var(--strait-night); padding: 0.8rem; border-radius: 4px; margin-bottom: 1rem; text-align: center; font-weight: bold; border: 1px solid var(--med-teal);">
+        <div class="status status-booked">
             🪷 You are already booked for this session!
         </div>
-        
+
         {% if lesson.is_cancellable %}
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <form action="{% url 'cancel_booking' lesson.id %}" method="post" onsubmit="return confirm('Are you sure you want to cancel this booking? One lesson will be returned to your pack.');">
-                    {% csrf_token %}
-                    <button type="submit" class="btn" style="background-color: var(--spanish-red); width: 100%;">Cancel Booking</button>
-                </form>
-                <p style="font-size: 0.8rem; color: var(--ancient-cobblestone); margin-top: 0.5rem;">Cancellations are allowed until 24 hours before the lesson.</p>
+            <div class="cancel-block">
+                <button type="button" class="btn btn-danger btn-block" command="show-modal" commandfor="cancel-dialog">Cancel Booking</button>
+                <p class="small muted">Cancellations are allowed until 24 hours before the lesson.</p>
             </div>
+
+            <dialog id="cancel-dialog" class="confirm-dialog" closedby="any" aria-labelledby="cancel-dialog-title">
+                <h3 id="cancel-dialog-title">Cancel this booking?</h3>
+                <p>{{ lesson.date }} at {{ lesson.time }}. One lesson will be returned to your pack.</p>
+                <div class="dialog-actions">
+                    <button type="button" class="btn btn-secondary" commandfor="cancel-dialog" command="close" autofocus>Keep Booking</button>
+                    <form action="{% url 'cancel_booking' lesson.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Yes, Cancel</button>
+                    </form>
+                </div>
+            </dialog>
         {% else %}
-            <div style="background-color: var(--salt-spray); color: var(--ancient-cobblestone); padding: 0.8rem; border-radius: 4px; margin-bottom: 1rem; text-align: center; font-size: 0.8rem;">
+            <div class="status status-note">
                 ⌛ This booking can no longer be cancelled (less than 24h remaining).
             </div>
         {% endif %}
     {% endif %}
 
     {% if not lesson.is_in_future %}
-        <div style="background-color: var(--ancient-cobblestone); color: white; padding: 0.8rem; border-radius: 4px; margin-bottom: 1rem; text-align: center; font-weight: bold;">
+        <div class="status status-closed">
             ⌛ This lesson has already passed.
         </div>
     {% endif %}
 
-    <hr style="border: 0; border-top: 1px solid var(--ancient-cobblestone); margin: 1.5rem 0;">
+    <hr class="divider">
 
     <form method="post">
         {% csrf_token %}
-        <div style="margin-bottom: 1.5rem;">
+        <div class="field">
             {% if session_email %}
                 <p>Booking as: <strong>{{ session_email }}</strong></p>
                 <input type="hidden" name="email" value="{{ session_email }}">
-                <p style="font-size: 0.8rem;"><a href="{% url 'logout' %}" style="color: var(--spanish-red);">Not you? Logout</a></p>
+                <p class="small"><a href="{% url 'logout' %}" class="text-red">Not you? Logout</a></p>
             {% else %}
-                <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Your Email:</label>
-                <input type="email" id="email" name="email" required placeholder="e.g. penguin@example.com" 
-                       style="width: 100%; padding: 0.8rem; border: 1px solid var(--ancient-cobblestone); border-radius: 4px; font-family: inherit;">
-                <small style="color: var(--ancient-cobblestone);">Use the email associated with your account.</small>
+                <label for="email" class="label">Your Email:</label>
+                <input type="email" id="email" name="email" required placeholder="e.g. penguin@example.com" class="input">
+                <small class="muted">Use the email associated with your account.</small>
             {% endif %}
         </div>
-        
+
         {% if lesson.is_in_future and not lesson.is_full and not lesson.is_cancelled and not is_booked %}
-            <button type="submit" class="btn" style="width: 100%;">Confirm Booking</button>
+            <button type="submit" class="btn btn-block">Confirm Booking</button>
         {% endif %}
     </form>
-    
-    <div style="margin-top: 1rem; text-align: center;">
-        <a href="{% url 'lessons' %}" style="color: var(--kitesurf-blue); text-decoration: none;">&larr; Back to Calendar</a>
+
+    <div class="page-links">
+        <a href="{% url 'lessons' %}" class="back-link">&larr; Back to Calendar</a>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+{% if is_booked and lesson.is_cancellable %}
+<script type="module">
+    // Invoker Commands (command/commandfor) are Baseline 2025; load the polyfill only where missing.
+    if (!('commandForElement' in HTMLButtonElement.prototype)) {
+        import('https://esm.run/invokers-polyfill');
+    }
+</script>
+{% endif %}
 {% endblock %}

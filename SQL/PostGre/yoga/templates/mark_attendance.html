@@ -1,38 +1,52 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<style>
+    .attendees { margin: 1.5rem 0; }
+    .attendee-list {
+        list-style: none;
+        padding: 0;
+    }
+    .attendee-list li {
+        padding: 1rem;
+        border-bottom: 1px solid var(--salt-spray);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card" style="max-width: 600px; margin: 2rem auto;">
-    <h2 style="color: var(--strait-night); font-family: 'Space Mono', monospace;">Attendance: {{ lesson.time|time:"H:i" }}</h2>
+<div class="card card-medium">
+    <h2 class="page-title text-night">Attendance: {{ lesson.time|time:"H:i" }}</h2>
     <p><strong>Date:</strong> {{ lesson.date|date:"D d M Y" }}</p>
 
-    <div style="margin: 1.5rem 0;">
+    <div class="attendees">
         <h3>Booked Students ({{ lesson.attendee_count }})</h3>
         {% if attendees %}
-            <ul style="list-style: none; padding: 0;">
+            <ul class="attendee-list">
                 {% for customer in attendees %}
-                    <li style="padding: 1rem; border-bottom: 1px solid var(--salt-spray); display: flex; justify-content: space-between; align-items: center;">
+                    <li class="row-between">
                         <div>
                             <strong>{{ customer.name }}</strong>
-                            <div style="font-size: 0.8rem; color: var(--ancient-cobblestone);">{{ customer.get_customer_type_display }}</div>
+                            <div class="small muted">{{ customer.get_customer_type_display }}</div>
                         </div>
-                        <div style="color: var(--med-teal); font-weight: bold;">
+                        <div class="text-teal bold">
                             ✓ Booked
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p style="color: var(--ancient-cobblestone); padding: 1rem; background: var(--salt-spray); border-radius: 4px;">No students booked for this lesson.</p>
+            <p class="empty-state">No students booked for this lesson.</p>
         {% endif %}
     </div>
 
-    <form method="post" style="margin-top: 2rem;">
+    <form method="post" class="mt-2">
         {% csrf_token %}
-        <button type="submit" class="btn" style="width: 100%; background-color: var(--med-teal);">Confirm All Present</button>
+        <button type="submit" class="btn btn-block">Confirm All Present</button>
     </form>
 
-    <div style="margin-top: 1rem; text-align: center;">
-        <a href="{% url 'dashboard' %}" style="color: var(--kitesurf-blue); text-decoration: none;">&larr; Back to Dashboard</a>
+    <div class="page-links">
+        <a href="{% url 'dashboard' %}" class="back-link">&larr; Back to Dashboard</a>
     </div>
 </div>
 {% endblock %}

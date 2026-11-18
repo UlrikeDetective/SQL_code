@@ -1,28 +1,27 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<h2 style="color: var(--strait-night); font-family: 'Space Mono', monospace;">Owner Dashboard: Beach Mode</h2>
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-    <div class="card" style="border-top-color: var(--med-teal); text-align: center; padding: 1rem;">
-        <h4 style="margin: 0; color: var(--ancient-cobblestone);">Customers</h4>
-        <p style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">{{ customers_count }}</p>
-    </div>
-    <div class="card" style="border-top-color: var(--deep-atlantic); text-align: center; padding: 1rem;">
-        <h4 style="margin: 0; color: var(--ancient-cobblestone);">Lessons</h4>
-        <p style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">{{ lessons_count }}</p>
-    </div>
-    <div class="card" style="border-top-color: var(--golden-sun); text-align: center; padding: 1rem;">
-        <h4 style="margin: 0; color: var(--ancient-cobblestone);">Total Income</h4>
-        <p style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0; color: var(--med-teal);">{{ total_income }}€</p>
-    </div>
-    <div class="card" style="border-top-color: var(--spanish-red); text-align: center; padding: 1rem;">
-        <h4 style="margin: 0; color: var(--ancient-cobblestone);">Expenses</h4>
-        <p style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0; color: var(--spanish-red);">{{ total_expenses }}€</p>
-    </div>
-</div>
-
+{% block extra_css %}
 <style>
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .stat-card {
+        text-align: center;
+        padding: 1rem;
+    }
+    .stat-card h4 {
+        margin: 0;
+        color: var(--ancient-cobblestone);
+    }
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+    }
+
     .dashboard-grid {
         display: grid;
         grid-template-columns: 1fr 1.5fr 1fr;
@@ -33,42 +32,128 @@
             grid-template-columns: 1fr;
         }
     }
+    .dashboard-grid .card > .btn {
+        margin-top: 1.5rem;
+    }
+
+    .today-lesson {
+        background: var(--lagoon);
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+    }
+    .today-lesson .meta { color: var(--deep-atlantic); }
+    .today-lesson.meditation {
+        background: var(--kitesurf-blue);
+        color: white;
+    }
+    .today-lesson.meditation .meta { color: var(--salt-spray); }
+
+    .intro-note { margin-bottom: 1rem; }
+    .scroll-list {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+    .local-item {
+        padding: 0.8rem 0.5rem;
+        border-bottom: 1px solid var(--salt-spray);
+    }
+    .local-item .email {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+    }
+    .tag {
+        font-size: 0.75rem;
+        background: var(--dune-sand);
+        color: var(--strait-night);
+        padding: 2px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        border: 1px solid var(--ancient-cobblestone);
+    }
+
+    .finance-title { margin-bottom: 1rem; }
+    .table-scroll { overflow-x: auto; }
+    .finance-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+    .finance-table th,
+    .finance-table td {
+        padding: 0.8rem;
+    }
+    .finance-table th {
+        background-color: var(--deep-atlantic);
+        color: white;
+        text-align: left;
+    }
+    .finance-table .num { text-align: right; }
+    .finance-table tbody tr { border-bottom: 1px solid var(--salt-spray); }
+    .finance-table .empty-row {
+        padding: 1rem;
+        text-align: center;
+        color: var(--ancient-cobblestone);
+    }
 </style>
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title text-night">Owner Dashboard: Beach Mode</h2>
+
+<div class="stat-grid">
+    <div class="card stat-card accent-teal">
+        <h4>Customers</h4>
+        <p class="stat-value">{{ customers_count }}</p>
+    </div>
+    <div class="card stat-card accent-atlantic">
+        <h4>Lessons</h4>
+        <p class="stat-value">{{ lessons_count }}</p>
+    </div>
+    <div class="card stat-card accent-gold">
+        <h4>Total Income</h4>
+        <p class="stat-value text-teal">{{ total_income }}€</p>
+    </div>
+    <div class="card stat-card accent-red">
+        <h4>Expenses</h4>
+        <p class="stat-value text-red">{{ total_expenses }}€</p>
+    </div>
+</div>
 
 <div class="dashboard-grid">
-    <div class="card" style="display: flex; flex-direction: column;">
+    <div class="card card-column">
         <h3>Today's Lessons</h3>
-        <div style="flex-grow: 1;">
+        <div class="grow">
             {% if today_lessons %}
                 {% for l in today_lessons %}
-                    <div style="background: {% if l.lesson_type == 'MEDITATION' %}var(--kitesurf-blue){% else %}var(--lagoon){% endif %}; color: {% if l.lesson_type == 'MEDITATION' %}white{% else %}inherit{% endif %}; padding: 1rem; border-radius: 4px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div class="today-lesson row-between{% if l.lesson_type == 'MEDITATION' %} meditation{% endif %}">
                         <div>
                             <strong>{{ l.get_lesson_type_display }}: {{ l.time|time:"H:i" }}</strong>
-                            <div style="font-size: 0.8rem; color: {% if l.lesson_type == 'MEDITATION' %}var(--salt-spray){% else %}var(--deep-atlantic){% endif %};">{{ l.attendee_count }}/{{ l.max_students }} Students</div>
+                            <div class="meta small">{{ l.attendee_count }}/{{ l.max_students }} Students</div>
                         </div>
-                        <a href="{% url 'mark_attendance' l.id %}" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.8rem; background-color: var(--deep-atlantic);">Mark Attendance</a>
+                        <a href="{% url 'mark_attendance' l.id %}" class="btn btn-small btn-atlantic">Mark Attendance</a>
                     </div>
                 {% endfor %}
             {% else %}
-                <p style="color: var(--ancient-cobblestone);">No lessons scheduled for today.</p>
+                <p class="muted">No lessons scheduled for today.</p>
             {% endif %}
         </div>
-        <a href="{% url 'lessons' %}" class="btn" style="width: 100%; text-align: center; margin-top: 1.5rem;">View Full Calendar</a>
+        <a href="{% url 'lessons' %}" class="btn btn-block">View Full Calendar</a>
     </div>
-    <div class="card" style="display: flex; flex-direction: column;">
+    <div class="card card-column">
         <h3>Tarifa Locals: Last Booking</h3>
-        <p style="font-size: 0.8rem; color: var(--ancient-cobblestone); margin-bottom: 1rem;">
+        <p class="intro-note small muted">
             Customers living in Tarifa and the date of their furthest booked lesson.
         </p>
-        <div style="flex-grow: 1;">
+        <div class="grow">
             {% if active_tarifa_locals %}
-                <div style="max-height: 250px; overflow-y: auto;">
+                <div class="scroll-list">
                     {% for customer in active_tarifa_locals %}
-                        <div style="padding: 0.8rem 0.5rem; border-bottom: 1px solid var(--salt-spray);">
-                            <div style="font-weight: bold; color: var(--strait-night);">{{ customer.name }}</div>
-                            <div style="font-size: 0.75rem; color: var(--ancient-cobblestone); margin-bottom: 0.4rem;">{{ customer.email }}</div>
+                        <div class="local-item">
+                            <div class="bold text-night">{{ customer.name }}</div>
+                            <div class="email muted">{{ customer.email }}</div>
                             <div>
-                                <span style="font-size: 0.75rem; background: var(--dune-sand); color: var(--strait-night); padding: 2px 8px; border-radius: 4px; display: inline-block; border: 1px solid var(--ancient-cobblestone);">
+                                <span class="tag">
                                     Last booking: {{ customer.furthest_lesson_date|date:"D d M Y" }}
                                 </span>
                             </div>
@@ -76,54 +161,54 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <p style="color: var(--ancient-cobblestone);">No Tarifa locals with bookings found.</p>
+                <p class="muted">No Tarifa locals with bookings found.</p>
             {% endif %}
         </div>
     </div>
-    <div class="card" style="display: flex; flex-direction: column;">
+    <div class="card card-column">
         <h3>Log Expense</h3>
-        <div style="flex-grow: 1;">
+        <div class="grow">
             <p>Gas, Car, Ads, or Mat purchase.</p>
         </div>
-        <a href="/admin/core/expense/add/" class="btn" style="background-color: var(--terra-cotta); width: 100%; text-align: center; margin-top: 1.5rem;">Add Expense</a>
+        <a href="/admin/core/expense/add/" class="btn btn-terracotta btn-block">Add Expense</a>
     </div>
 </div>
 
-<div class="card" style="margin-top: 2rem;">
-    <h3 style="margin-bottom: 1rem;">Monthly Financial Overview ({{ current_year }})</h3>
-    <p style="font-size: 0.8rem; color: var(--ancient-cobblestone); margin-bottom: 1rem;">
-        Estimates based on Freelancer (Autónomo) status in Spain. 
+<div class="card mt-2">
+    <h3 class="finance-title">Monthly Financial Overview ({{ current_year }})</h3>
+    <p class="intro-note small muted">
+        Estimates based on Freelancer (Autónomo) status in Spain.
         <br>IVA calculated as 21% of Gross. IRPF calculated as 20% of Operating Profit.
     </p>
-    <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+    <div class="table-scroll">
+        <table class="finance-table">
             <thead>
-                <tr style="background-color: var(--deep-atlantic); color: white;">
-                    <th style="padding: 0.8rem; text-align: left;">Month</th>
-                    <th style="padding: 0.8rem; text-align: right;">Gross Inc.</th>
-                    <th style="padding: 0.8rem; text-align: right;">IVA (21%)</th>
-                    <th style="padding: 0.8rem; text-align: right;">Expenses</th>
-                    <th style="padding: 0.8rem; text-align: right;">Soc. Sec.</th>
-                    <th style="padding: 0.8rem; text-align: right;">IRPF (20%)</th>
-                    <th style="padding: 0.8rem; text-align: right;">Net Profit</th>
+                <tr>
+                    <th>Month</th>
+                    <th class="num">Gross Inc.</th>
+                    <th class="num">IVA (21%)</th>
+                    <th class="num">Expenses</th>
+                    <th class="num">Soc. Sec.</th>
+                    <th class="num">IRPF (20%)</th>
+                    <th class="num">Net Profit</th>
                 </tr>
             </thead>
             <tbody>
                 {% for m in monthly_overview %}
-                <tr style="border-bottom: 1px solid var(--salt-spray);">
-                    <td style="padding: 0.8rem;"><strong>{{ m.month_name }}</strong></td>
-                    <td style="padding: 0.8rem; text-align: right; color: var(--med-teal);">{{ m.gross_income }}€</td>
-                    <td style="padding: 0.8rem; text-align: right; color: var(--ancient-cobblestone);">{{ m.iva }}€</td>
-                    <td style="padding: 0.8rem; text-align: right; color: var(--spanish-red);">{{ m.expenses }}€</td>
-                    <td style="padding: 0.8rem; text-align: right; color: var(--spanish-red);">{{ m.social_security }}€</td>
-                    <td style="padding: 0.8rem; text-align: right; color: var(--spanish-red);">{{ m.irpf }}€</td>
-                    <td style="padding: 0.8rem; text-align: right; font-weight: bold; color: {% if m.final_profit > 0 %}var(--med-teal){% else %}var(--spanish-red){% endif %};">
+                <tr>
+                    <td><strong>{{ m.month_name }}</strong></td>
+                    <td class="num text-teal">{{ m.gross_income }}€</td>
+                    <td class="num muted">{{ m.iva }}€</td>
+                    <td class="num text-red">{{ m.expenses }}€</td>
+                    <td class="num text-red">{{ m.social_security }}€</td>
+                    <td class="num text-red">{{ m.irpf }}€</td>
+                    <td class="num bold {% if m.final_profit > 0 %}text-teal{% else %}text-red{% endif %}">
                         {{ m.final_profit }}€
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="7" style="padding: 1rem; text-align: center; color: var(--ancient-cobblestone);">No financial data available for this year yet.</td>
+                    <td colspan="7" class="empty-row">No financial data available for this year yet.</td>
                 </tr>
                 {% endfor %}
             </tbody>
