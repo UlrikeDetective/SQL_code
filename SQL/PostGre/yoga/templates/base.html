@@ -296,6 +296,28 @@
             border-radius: 12px;
         }
 
+        /* ---------- Booked-lesson dots (colour picked per lesson) ---------- */
+        .dot {
+            display: inline-block;
+            width: 0.7em;
+            height: 0.7em;
+            border-radius: 50%;
+            vertical-align: 0.05em;
+            flex: none;
+            background: var(--dot);
+            /* Ring keeps the dot visible on any background */
+            box-shadow: 0 0 0 2px var(--surface);
+        }
+        .dot-0 { --dot: #E07A5F; }  /* coral */
+        .dot-1 { --dot: #E8A92E; }  /* sun */
+        .dot-2 { --dot: #2F9E89; }  /* sea green */
+        .dot-3 { --dot: #9474D6; }  /* lilac */
+        .dot-4 { --dot: #E0679C; }  /* pink */
+        .dot-5 { --dot: #3E9BE0; }  /* sky */
+        @media (forced-colors: active) {
+            .dot { background: CanvasText; }
+        }
+
         .divider {
             border: 0;
             border-top: 1px solid var(--line);

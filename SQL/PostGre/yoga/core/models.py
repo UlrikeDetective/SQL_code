@@ -102,6 +102,14 @@ class Lesson(models.Model):
             return False
         return spots_left <= 3 or (self.attendee_count / self.max_students) >= 0.85
 
+    # Number of colours in the "booked" dot palette (.dot-0 … .dot-5 in lessons.html)
+    BOOKED_DOT_COLOURS = 6
+
+    @property
+    def dot_index(self):
+        """Colour of the booked-lesson dot: looks random, but stays the same for a lesson."""
+        return (self.id * 7) % self.BOOKED_DOT_COLOURS
+
 class Expense(models.Model):
     CATEGORIES = [
         ('GAS', 'Gas'),

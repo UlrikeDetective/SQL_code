@@ -59,11 +59,6 @@
         gap: 4px;
     }
     .lesson-link:hover .lesson-item { filter: brightness(0.96); }
-    /* Type first, so availability states below win when both apply */
-    .lesson-item.meditation {
-        background-color: var(--calm-soft);
-        border-left-color: var(--calm);
-    }
     .lesson-item.almost-full {
         background-color: var(--sun-soft);
         border-left-color: var(--sun);
@@ -87,7 +82,41 @@
     .lesson-item.past {
         background-color: var(--surface-soft);
         border-left-color: var(--line);
-        opacity: 0.6;
+    }
+
+    /* Meditation: always deep blue, so it stands out from yoga at a glance.
+       Availability shows on the left edge in light tints that read on dark blue. */
+    :root {
+        --meditation:      light-dark(#274A78, #4274B0);
+        --on-meditation:   #FFFFFF;
+        --meditation-edge: light-dark(#16304F, #8DC0E8);
+    }
+    .lesson-item.meditation {
+        background-color: var(--meditation);
+        color: var(--on-meditation);
+        border-left-color: var(--meditation-edge);
+    }
+    .lesson-item.meditation.almost-full { border-left-color: #F5D58A; }
+    .lesson-item.meditation.full { border-left-color: #FFC9C2; }
+    .lesson-item.meditation.booked { border-color: #F5D58A; }
+    .lesson-item.meditation.cancelled { color: rgb(255 255 255 / 0.75); }
+
+    .lesson-item.past { opacity: 0.6; }
+
+    .lesson-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .lesson-item .dot { box-shadow: 0 0 0 1.5px var(--surface); }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
     }
     .spots-count {
         font-weight: 700;
@@ -104,6 +133,8 @@
     .swatch { font-weight: 700; }
     .swatch.faded { opacity: 0.6; }
     .text-sun { color: var(--sun); }
+    .text-meditation { color: var(--meditation); }
+    .legend-dots { display: inline-flex; gap: 3px; margin-right: 4px; }
 
     @media (max-width: 640px) {
         .calendar-container { gap: 3px; }
@@ -142,7 +173,7 @@
                                 {% for l in lesson.1 %}
                                     <a href="{% url 'book_lesson' l.id %}" class="lesson-link">
                                         <div class="lesson-item {% if l.lesson_type == 'MEDITATION' %}meditation{% endif %} {% if not l.is_in_future %}past{% elif l.id in booked_lesson_ids %}booked{% elif l.is_cancelled %}cancelled{% elif l.is_full %}full{% elif l.is_almost_full %}almost-full{% endif %}">
-                                            <span>{% if l.id in booked_lesson_ids %}🪷 {% endif %}{% if l.lesson_type == 'MEDITATION' %}🧘 {% endif %}{{ l.time|time:"H:i" }}</span>
+                                            <span class="lesson-time">{% if l.id in booked_lesson_ids %}<span class="dot dot-{{ l.dot_index }}" aria-hidden="true"></span><span class="visually-hidden">Booked: </span>{% endif %}{% if l.lesson_type == 'MEDITATION' %}<span class="visually-hidden">Meditation </span>{% endif %}{{ l.time|time:"H:i" }}</span>
                                             <span class="spots-count">{{ l.attendee_count }}/{{ l.max_students }}</span>
                                         </div>
                                     </a>
@@ -160,8 +191,8 @@
     <h3>Legend</h3>
     <div class="legend">
         <p><span class="swatch text-primary" aria-hidden="true">■</span> Morning Yoga (Open)</p>
-        <p><span class="swatch text-calm" aria-hidden="true">■</span> 🧘 Meditation (Open)</p>
-        <p>🪷 <strong>Booked Session</strong></p>
+        <p><span class="swatch text-meditation" aria-hidden="true">■</span> Meditation (Open)</p>
+        <p><span class="legend-dots" aria-hidden="true"><span class="dot dot-0"></span><span class="dot dot-2"></span><span class="dot dot-3"></span></span> <strong>Booked Session</strong> (each gets its own colour)</p>
         <p><span class="swatch text-sun" aria-hidden="true">■</span> Almost Full (3 or fewer spots)</p>
         <p><span class="swatch text-danger" aria-hidden="true">■</span> Full Session</p>
         <p><span class="swatch muted faded" aria-hidden="true">■</span> Past Lesson (Closed)</p>

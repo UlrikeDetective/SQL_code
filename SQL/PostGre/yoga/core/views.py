@@ -2,9 +2,15 @@ import calendar
 from decimal import Decimal
 from datetime import date, datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from django.db.models import Max
 from .models import Lesson, Customer, Package, Expense
+
+def lessons_month_url(lesson):
+    """URL of the calendar page showing the month of the given lesson."""
+    return f"{reverse('lessons')}?year={lesson.date.year}&month={lesson.date.month}"
+
 
 def home(request):
     return render(request, 'home.html')
@@ -113,12 +119,13 @@ def book_lesson(request, lesson_id):
                     type_display = "Yoga" if lesson.lesson_type == "YOGA" else "Meditation"
                     messages.error(request, f"No active {type_display} package found. Please buy a package first.")
                     return redirect('packages')
-            return redirect('lessons')
+            return redirect(lessons_month_url(lesson))
         except Customer.DoesNotExist:
             messages.error(request, "Customer with this email not found. Please ask the admin to add you.")
     
     return render(request, 'book_lesson.html', {
-        'lesson': lesson, 
+        'lesson': lesson,
+        'calendar_url': lessons_month_url(lesson),
         'session_email': session_email,
         'is_booked': is_booked
     })
@@ -129,14 +136,14 @@ def cancel_booking(request, lesson_id):
     
     if not session_email:
         messages.error(request, "You must be logged in to cancel a booking.")
-        return redirect('lessons')
+        return redirect(lessons_month_url(lesson))
         
     try:
         customer = Customer.objects.get(email__iexact=session_email)
         
         if not lesson.attendees.filter(id=customer.id).exists():
             messages.error(request, "You don't have a booking for this lesson.")
-            return redirect('lessons')
+            return redirect(lessons_month_url(lesson))
             
         if not lesson.is_cancellable:
             messages.error(request, "Lessons can only be cancelled more than 24 hours in advance.")
@@ -159,11 +166,11 @@ def cancel_booking(request, lesson_id):
             lesson.attendees.remove(customer)
             messages.success(request, "Booking cancelled.")
             
-        return redirect('lessons')
+        return redirect(lessons_month_url(lesson))
         
     except Customer.DoesNotExist:
         messages.error(request, "Customer not found.")
-        return redirect('lessons')
+        return redirect(lessons_month_url(lesson))
 
 def packages(request):
     return render(request, 'packages.html', {'session_email': request.session.get('customer_email')})
