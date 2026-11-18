@@ -14,10 +14,11 @@
     }
     .stat-card h4 {
         margin: 0;
-        color: var(--ancient-cobblestone);
+        color: var(--text-muted);
+        font-weight: 600;
     }
     .stat-value {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         font-weight: bold;
         margin: 0.5rem 0;
     }
@@ -37,18 +38,16 @@
     }
 
     .today-lesson {
-        background: var(--lagoon);
-        padding: 1rem;
-        border-radius: 4px;
+        background: var(--primary-soft);
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
         margin-bottom: 0.5rem;
     }
-    .today-lesson .meta { color: var(--deep-atlantic); }
+    .today-lesson .meta { color: var(--text-muted); }
     .today-lesson.meditation {
-        background: var(--kitesurf-blue);
-        color: white;
+        background: var(--calm-soft);
     }
-    .today-lesson.meditation .meta { color: var(--salt-spray); }
-
+    
     .intro-note { margin-bottom: 1rem; }
     .scroll-list {
         max-height: 250px;
@@ -56,7 +55,7 @@
     }
     .local-item {
         padding: 0.8rem 0.5rem;
-        border-bottom: 1px solid var(--salt-spray);
+        border-bottom: 1px solid var(--line);
     }
     .local-item .email {
         font-size: 0.75rem;
@@ -64,12 +63,11 @@
     }
     .tag {
         font-size: 0.75rem;
-        background: var(--dune-sand);
-        color: var(--strait-night);
-        padding: 2px 8px;
-        border-radius: 4px;
+        background: var(--sun-soft);
+        color: var(--warn-text);
+        padding: 2px 10px;
+        border-radius: 999px;
         display: inline-block;
-        border: 1px solid var(--ancient-cobblestone);
     }
 
     .finance-title { margin-bottom: 1rem; }
@@ -84,39 +82,39 @@
         padding: 0.8rem;
     }
     .finance-table th {
-        background-color: var(--deep-atlantic);
-        color: white;
+        background-color: var(--surface-soft);
+        color: var(--text);
         text-align: left;
     }
     .finance-table .num { text-align: right; }
-    .finance-table tbody tr { border-bottom: 1px solid var(--salt-spray); }
+    .finance-table tbody tr { border-bottom: 1px solid var(--line); }
     .finance-table .empty-row {
         padding: 1rem;
         text-align: center;
-        color: var(--ancient-cobblestone);
+        color: var(--text-muted);
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<h2 class="page-title text-night">Owner Dashboard: Beach Mode</h2>
+<h2 class="page-title text-strong">Owner Dashboard: Beach Mode</h2>
 
 <div class="stat-grid">
-    <div class="card stat-card accent-teal">
+    <div class="card stat-card">
         <h4>Customers</h4>
         <p class="stat-value">{{ customers_count }}</p>
     </div>
-    <div class="card stat-card accent-atlantic">
+    <div class="card stat-card">
         <h4>Lessons</h4>
         <p class="stat-value">{{ lessons_count }}</p>
     </div>
-    <div class="card stat-card accent-gold">
+    <div class="card stat-card">
         <h4>Total Income</h4>
-        <p class="stat-value text-teal">{{ total_income }}€</p>
+        <p class="stat-value text-primary">{{ total_income }}€</p>
     </div>
-    <div class="card stat-card accent-red">
+    <div class="card stat-card">
         <h4>Expenses</h4>
-        <p class="stat-value text-red">{{ total_expenses }}€</p>
+        <p class="stat-value text-danger">{{ total_expenses }}€</p>
     </div>
 </div>
 
@@ -131,7 +129,7 @@
                             <strong>{{ l.get_lesson_type_display }}: {{ l.time|time:"H:i" }}</strong>
                             <div class="meta small">{{ l.attendee_count }}/{{ l.max_students }} Students</div>
                         </div>
-                        <a href="{% url 'mark_attendance' l.id %}" class="btn btn-small btn-atlantic">Mark Attendance</a>
+                        <a href="{% url 'mark_attendance' l.id %}" class="btn btn-small btn-secondary">Mark Attendance</a>
                     </div>
                 {% endfor %}
             {% else %}
@@ -150,7 +148,7 @@
                 <div class="scroll-list">
                     {% for customer in active_tarifa_locals %}
                         <div class="local-item">
-                            <div class="bold text-night">{{ customer.name }}</div>
+                            <div class="bold text-strong">{{ customer.name }}</div>
                             <div class="email muted">{{ customer.email }}</div>
                             <div>
                                 <span class="tag">
@@ -170,7 +168,7 @@
         <div class="grow">
             <p>Gas, Car, Ads, or Mat purchase.</p>
         </div>
-        <a href="/admin/core/expense/add/" class="btn btn-terracotta btn-block">Add Expense</a>
+        <a href="/admin/core/expense/add/" class="btn btn-secondary btn-block">Add Expense</a>
     </div>
 </div>
 
@@ -197,12 +195,12 @@
                 {% for m in monthly_overview %}
                 <tr>
                     <td><strong>{{ m.month_name }}</strong></td>
-                    <td class="num text-teal">{{ m.gross_income }}€</td>
+                    <td class="num text-primary">{{ m.gross_income }}€</td>
                     <td class="num muted">{{ m.iva }}€</td>
-                    <td class="num text-red">{{ m.expenses }}€</td>
-                    <td class="num text-red">{{ m.social_security }}€</td>
-                    <td class="num text-red">{{ m.irpf }}€</td>
-                    <td class="num bold {% if m.final_profit > 0 %}text-teal{% else %}text-red{% endif %}">
+                    <td class="num text-danger">{{ m.expenses }}€</td>
+                    <td class="num text-danger">{{ m.social_security }}€</td>
+                    <td class="num text-danger">{{ m.irpf }}€</td>
+                    <td class="num bold {% if m.final_profit > 0 %}text-primary{% else %}text-danger{% endif %}">
                         {{ m.final_profit }}€
                     </td>
                 </tr>

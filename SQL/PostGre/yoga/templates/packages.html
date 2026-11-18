@@ -9,9 +9,16 @@
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 1rem;
     }
+    .package-grid .card h3 { margin-bottom: 0.25rem; }
     .package-price {
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 700;
+        margin: 0;
+    }
+    .package-desc {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin: 0.5rem 0 1rem;
     }
     .package-form p {
         margin-bottom: 1rem;
@@ -33,15 +40,15 @@
 {% block content %}
 <h2 class="page-title packages-title text-center">Yoga Packages &amp; Lesson Packs</h2>
 <p class="packages-intro text-center">
-    Already have a pack? <a href="{% url 'check_balance' %}" class="text-teal link-strong">Check your remaining lessons</a>
+    Already have a pack? <a href="{% url 'check_balance' %}" class="text-primary link-strong">Check your remaining lessons</a>
 </p>
 
 <div class="package-grid">
-    {% include 'partials/package_card.html' with title='Single Lesson' price='15€' lessons=1 package_type='YOGA' accent='accent-lagoon' description='Drop-in session. Perfect for a one-time experience.' %}
-    {% include 'partials/package_card.html' with title='3 Lessons' price='40€' lessons=3 package_type='YOGA' accent='accent-teal' description='Short stay package. Experience the beach vibe.' %}
-    {% include 'partials/package_card.html' with title='5 Lessons' price='55€' lessons=5 package_type='YOGA' accent='accent-atlantic' description='A week of yoga. Deepen your practice on the sand.' %}
-    {% include 'partials/package_card.html' with title='10 Lessons' price='100€' lessons=10 package_type='YOGA' accent='accent-night' description='Best for locals & long stays. Join our community.' %}
-    {% include 'partials/package_card.html' with title='1 Meditation Session' price='5€' lessons=1 package_type='MEDITATION' accent='accent-night' price_class='text-night' description='Wind down at the beach in a sunset meditation session.' %}
-    {% include 'partials/package_card.html' with title='5 Meditation Sessions' price='20€' lessons=5 package_type='MEDITATION' accent='accent-night' price_class='text-night' description='Five wind down at the beach in a sunset meditation session..' %}
+    {% include 'partials/package_card.html' with title='Single Lesson' price='15€' lessons=1 package_type='YOGA' description='Drop-in session. Perfect for a one-time experience.' %}
+    {% include 'partials/package_card.html' with title='3 Lessons' price='40€' lessons=3 package_type='YOGA' description='Short stay package. Experience the beach vibe.' %}
+    {% include 'partials/package_card.html' with title='5 Lessons' price='55€' lessons=5 package_type='YOGA' description='A week of yoga. Deepen your practice on the sand.' %}
+    {% include 'partials/package_card.html' with title='10 Lessons' price='100€' lessons=10 package_type='YOGA' description='Best for locals & long stays. Join our community.' %}
+    {% include 'partials/package_card.html' with title='1 Meditation Session' price='5€' lessons=1 package_type='MEDITATION' price_class='text-calm' description='Wind down at the beach in a sunset meditation session.' %}
+    {% include 'partials/package_card.html' with title='5 Meditation Sessions' price='20€' lessons=5 package_type='MEDITATION' price_class='text-calm' description='Five wind down at the beach in a sunset meditation session..' %}
 </div>
 {% endblock %}

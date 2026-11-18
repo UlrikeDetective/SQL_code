@@ -5,14 +5,14 @@
     .spots-box {
         margin: 1.5rem 0;
         padding: 1rem;
-        border-radius: 4px;
-        background-color: var(--salt-spray);
+        border-radius: 12px;
+        background-color: var(--surface-soft);
         text-align: center;
     }
     .spots-box .count {
         font-size: 1.5rem;
         font-weight: bold;
-        color: var(--deep-atlantic);
+        color: var(--primary);
     }
     .cancel-block {
         text-align: center;
@@ -90,7 +90,7 @@
             {% if session_email %}
                 <p>Booking as: <strong>{{ session_email }}</strong></p>
                 <input type="hidden" name="email" value="{{ session_email }}">
-                <p class="small"><a href="{% url 'logout' %}" class="text-red">Not you? Logout</a></p>
+                <p class="small"><a href="{% url 'logout' %}" class="text-danger">Not you? Logout</a></p>
             {% else %}
                 <label for="email" class="label">Your Email:</label>
                 <input type="email" id="email" name="email" required placeholder="e.g. penguin@example.com" class="input">

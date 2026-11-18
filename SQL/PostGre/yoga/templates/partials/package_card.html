@@ -1,7 +1,7 @@
-<div class="card text-center {{ accent }}">
+<div class="card text-center">
     <h3>{{ title }}</h3>
-    <p class="package-price {{ price_class|default:'text-teal' }}">{{ price }}</p>
-    <p>{{ description }}</p>
+    <p class="package-price {{ price_class|default:'text-primary' }}">{{ price }}</p>
+    <p class="package-desc">{{ description }}</p>
     <form action="{% url 'buy_package' %}" method="post" class="package-form">
         {% csrf_token %}
         <input type="hidden" name="total_lessons" value="{{ lessons }}">

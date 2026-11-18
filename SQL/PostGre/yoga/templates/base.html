@@ -3,117 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>{% block title %}Tarifa Beach Yoga{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ==========================================================
+           Design tokens: soft sea blues, light + dark
+           light-dark() picks the value for the user's colour scheme.
+           ========================================================== */
         :root {
-            /* Pueblo Blanco */
-            --pueblo-blanco: #FFFFFF;
-            --salt-spray: #F2F2F2;
-            --ancient-cobblestone: #D1CCC0;
-            
-            /* The Two Seas */
-            --deep-atlantic: #005F73;
-            --med-teal: #0A9396;
-            --lagoon: #94D2BD;
-            
-            /* The Dunes */
-            --dune-sand: #E9D8A6;
-            --golden-sun: #EE9B00;
-            --terra-cotta: #CA6702;
-            
-            /* Levante Energy */
-            --spanish-red: #AE2012;
-            --kitesurf-blue: #3D5A80;
-            --strait-night: #001219;
+            color-scheme: light dark;
+
+            --bg:            light-dark(#F3F8FC, #0E1B25);
+            --surface:       light-dark(#FFFFFF, #152736);
+            --surface-soft:  light-dark(#E7F1F9, #1C3245);
+            --line:          light-dark(#D6E5F0, #284257);   /* decorative dividers */
+            --line-strong:   light-dark(#6E8EA8, #6F90AD);   /* input borders, >= 3:1 */
+            --text:          light-dark(#1D3445, #E2EDF5);
+            --text-muted:    light-dark(#526C80, #A2B9CA);
+
+            --primary:       light-dark(#3D6D93, #8DC0E8);
+            --primary-hover: light-dark(#2D5677, #B3D6F2);
+            --on-primary:    light-dark(#FFFFFF, #0E1B25);
+            --primary-soft:  light-dark(#DCEBF7, #1F3B54);
+
+            --calm:          light-dark(#5F63A8, #B4B7EE);   /* meditation */
+            --calm-soft:     light-dark(#E9E9F8, #2A2C4D);
+
+            --sun:           light-dark(#B8821C, #F0C66B);   /* today / booked */
+            --sun-soft:      light-dark(#FDF3DC, #3A3120);
+            --warn-text:     light-dark(#6E5100, #F3D58C);
+
+            --danger:        light-dark(#B0463E, #F0968D);
+            --danger-hover:  light-dark(#8F362F, #F6B6AF);
+            --on-danger:     light-dark(#FFFFFF, #1E0E0C);
+            --danger-soft:   light-dark(#F8E3E1, #3D2120);
+            --danger-text:   light-dark(#8F362F, #F6B6AF);
+
+            --success-soft:  light-dark(#E1F2EA, #1C3A2E);
+            --success-text:  light-dark(#25614A, #9FDCBF);
+
+            --flower-petal:   light-dark(#9CC3E6, #4F86B3);
+            --flower-petal-2: light-dark(#C5DDF1, #35628A);
+            --flower-center:  light-dark(#F5D58A, #F0C66B);
+            --flower-dot:     light-dark(#3D6D93, #0E1B25);
+
+            --shadow: 0 1px 2px rgb(29 52 69 / 0.06), 0 6px 20px rgb(29 52 69 / 0.06);
+            --radius: 16px;
+
+            accent-color: var(--primary);
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'IBM Plex Mono', monospace;
-            background-color: var(--salt-spray);
-            color: var(--strait-night);
+            font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 0;
             line-height: 1.6;
         }
 
-        header {
-            background-color: var(--lagoon);
-            color: var(--strait-night);
-            padding: 1rem 2rem;
+        a { color: var(--primary); }
+        a:hover { color: var(--primary-hover); }
+
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        h1, h2, h3, h4 { line-height: 1.25; }
+
+        /* Holds the decorative SVG symbols without taking up space */
+        .sprite {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .flower {
+            width: 1em;
+            height: 1em;
+            flex: none;
+        }
+
+        /* ---------- Header ---------- */
+        .site-header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--line);
+            padding: 0.75rem 1.5rem;
             display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
             justify-content: space-between;
             align-items: center;
         }
-
-        header h1 {
-            color: var(--strait-night);
-            margin: 0;
-        }
-
-        nav a {
-            color: var(--deep-atlantic);
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text);
             text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
+        }
+        .brand:hover { color: var(--text); }
+        .brand .flower { font-size: 2.2rem; }
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.01em;
         }
 
-        nav a:hover {
-            color: var(--golden-sun);
+        .site-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.25rem;
         }
-
-        nav a.logout-link {
-            color: var(--spanish-red);
-            font-size: 0.8rem;
-            margin-left: 10px;
+        .site-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+        }
+        .site-nav a:hover {
+            color: var(--primary);
+            background-color: var(--surface-soft);
+        }
+        .site-nav a[aria-current="page"] {
+            color: var(--primary);
+            background-color: var(--primary-soft);
         }
 
         .user-status {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-left: 0.5rem;
+            padding-left: 0.75rem;
+            border-left: 1px solid var(--line);
+        }
+        .site-nav .user-status a.logout-link {
+            color: var(--danger-text);
             font-size: 0.8rem;
-            color: var(--deep-atlantic);
-            margin-left: 20px;
-            font-style: italic;
-            border-left: 1px solid var(--ancient-cobblestone);
-            padding-left: 10px;
+            padding: 0.2rem 0.5rem;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1040px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
         .footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--ancient-cobblestone);
-            font-size: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
+        .footer .flower { font-size: 1.25rem; }
 
         /* ---------- Typography & text utilities ---------- */
         .page-title {
-            color: var(--deep-atlantic);
-            font-family: 'Space Mono', monospace;
+            color: var(--text);
+            font-size: 1.75rem;
+            margin-top: 0;
         }
         .text-center { text-align: center; }
         .text-right { text-align: right; }
-        .bold { font-weight: bold; }
-        .small { font-size: 0.8rem; }
-        .muted { color: var(--ancient-cobblestone); }
-        .text-teal { color: var(--med-teal); }
-        .text-atlantic { color: var(--deep-atlantic); }
-        .text-night { color: var(--strait-night); }
-        .text-red { color: var(--spanish-red); }
-        .text-terracotta { color: var(--terra-cotta); }
+        .bold { font-weight: 700; }
+        .small { font-size: 0.85rem; }
+        .muted { color: var(--text-muted); }
+        .text-primary { color: var(--primary); }
+        .text-calm { color: var(--calm); }
+        .text-danger { color: var(--danger-text); }
+        .text-strong { color: var(--text); }
 
-        .link-strong { font-weight: bold; }
+        .link-strong { font-weight: 700; }
         .back-link {
-            color: var(--kitesurf-blue);
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 600;
         }
         .page-links {
             margin-top: 1rem;
@@ -122,130 +195,124 @@
 
         /* ---------- Cards ---------- */
         .card {
-            background: var(--pueblo-blanco);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-top: 5px solid var(--card-accent, var(--med-teal));
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-        .card-narrow { max-width: 500px; margin: 2rem auto; }
-        .card-medium { max-width: 600px; margin: 2rem auto; }
+        .card > :first-child { margin-top: 0; }
+        .card-narrow { max-width: 480px; margin: 1rem auto 2rem; }
+        .card-medium { max-width: 580px; margin: 1rem auto 2rem; }
         .card-column { display: flex; flex-direction: column; }
         .grow { flex-grow: 1; }
 
-        /* Card accent colours (top border) */
-        .accent-lagoon { --card-accent: var(--lagoon); }
-        .accent-teal { --card-accent: var(--med-teal); }
-        .accent-atlantic { --card-accent: var(--deep-atlantic); }
-        .accent-night { --card-accent: var(--strait-night); }
-        .accent-gold { --card-accent: var(--golden-sun); }
-        .accent-sand { --card-accent: var(--dune-sand); }
-        .accent-red { --card-accent: var(--spanish-red); }
-        .accent-kite { --card-accent: var(--kitesurf-blue); }
-
         /* ---------- Layout ---------- */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
         .row-between {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 0.75rem;
         }
 
         /* ---------- Buttons ---------- */
         .btn {
             display: inline-block;
-            background-color: var(--btn-bg, var(--med-teal));
-            color: var(--btn-color, white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+            background-color: var(--btn-bg, var(--primary));
+            color: var(--btn-color, var(--on-primary));
+            padding: 0.7rem 1.4rem;
+            border-radius: 999px;
             text-decoration: none;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
             font: inherit;
+            font-weight: 600;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
         }
         .btn:hover {
-            background-color: var(--btn-hover, var(--deep-atlantic));
+            background-color: var(--btn-hover, var(--primary-hover));
+            color: var(--btn-color, var(--on-primary));
         }
-        .btn-atlantic { --btn-bg: var(--deep-atlantic); --btn-hover: var(--strait-night); }
-        .btn-terracotta { --btn-bg: var(--terra-cotta); --btn-hover: color-mix(in srgb, var(--terra-cotta) 80%, black); }
-        .btn-danger { --btn-bg: var(--spanish-red); --btn-hover: color-mix(in srgb, var(--spanish-red) 80%, black); }
-        .btn-secondary { --btn-bg: var(--salt-spray); --btn-hover: var(--ancient-cobblestone); --btn-color: var(--strait-night); }
+        .btn-secondary {
+            --btn-bg: var(--primary-soft);
+            --btn-hover: var(--surface-soft);
+            --btn-color: var(--primary);
+            border-color: var(--line);
+        }
+        .btn-danger {
+            --btn-bg: var(--danger);
+            --btn-hover: var(--danger-hover);
+            --btn-color: var(--on-danger);
+        }
         .btn-block { width: 100%; text-align: center; }
-        .btn-small { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+        .btn-small { padding: 0.35rem 0.85rem; font-size: 0.85rem; white-space: nowrap; }
 
         /* ---------- Forms ---------- */
         .label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
         }
         .input {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--ancient-cobblestone);
-            border-radius: 4px;
-            font-family: inherit;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 10px;
+            background-color: var(--surface);
+            color: var(--text);
+            font: inherit;
         }
         .field { margin-bottom: 1.5rem; }
 
         /* ---------- Flash messages & status banners ---------- */
         .flash {
-            padding: 1rem;
+            padding: 0.9rem 1.1rem;
             margin-bottom: 1rem;
-            border-radius: 4px;
-            background-color: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeeba;
+            border-radius: 12px;
+            background-color: var(--sun-soft);
+            color: var(--warn-text);
         }
-        .flash-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
-        .flash-error { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+        .flash-success { background-color: var(--success-soft); color: var(--success-text); }
+        .flash-error { background-color: var(--danger-soft); color: var(--danger-text); }
 
         .status {
-            padding: 0.8rem;
-            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
             margin-bottom: 1rem;
             text-align: center;
-            font-weight: bold;
+            font-weight: 600;
         }
-        .status-warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
-        .status-full { background-color: var(--spanish-red); color: white; }
-        .status-booked { background-color: var(--lagoon); color: var(--strait-night); border: 1px solid var(--med-teal); }
-        .status-closed { background-color: var(--ancient-cobblestone); color: white; }
-        .status-note { background-color: var(--salt-spray); color: var(--ancient-cobblestone); font-size: 0.8rem; font-weight: normal; }
+        .status-warning { background-color: var(--sun-soft); color: var(--warn-text); }
+        .status-full { background-color: var(--danger-soft); color: var(--danger-text); }
+        .status-booked { background-color: var(--primary-soft); color: var(--text); }
+        .status-closed { background-color: var(--surface-soft); color: var(--text-muted); }
+        .status-note { background-color: var(--surface-soft); color: var(--text-muted); font-size: 0.85rem; font-weight: normal; }
 
         .empty-state {
-            color: var(--ancient-cobblestone);
+            color: var(--text-muted);
             padding: 1rem;
-            background: var(--salt-spray);
-            border-radius: 4px;
+            background: var(--surface-soft);
+            border-radius: 12px;
         }
 
         .divider {
             border: 0;
-            border-top: 1px solid var(--ancient-cobblestone);
+            border-top: 1px solid var(--line);
             margin: 1.5rem 0;
         }
 
         /* ---------- Modal dialogs ---------- */
         .confirm-dialog {
-            border: none;
-            border-top: 5px solid var(--spanish-red);
-            border-radius: 8px;
-            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.75rem;
             max-width: min(90vw, 420px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            color: var(--strait-night);
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: 0 20px 50px rgb(14 27 37 / 0.25);
         }
-        .confirm-dialog h3 {
-            margin-top: 0;
-            font-family: 'Space Mono', monospace;
-        }
+        .confirm-dialog h3 { margin-top: 0; }
         .dialog-actions {
             display: flex;
             gap: 0.5rem;
@@ -259,7 +326,7 @@
             overscroll-behavior: contain;
         }
         dialog::backdrop {
-            background-color: rgb(0 18 25 / 0.5);
+            background-color: rgb(14 27 37 / 0.45);
             overflow: hidden;
             overscroll-behavior: contain;
         }
@@ -270,27 +337,52 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>Tarifa Beach Yoga</h1>
-        </div>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'lessons' %}">Lessons</a>
-            <a href="{% url 'packages' %}">Packages</a>
-            <a href="{% url 'check_balance' %}">Balance</a>
-            <a href="{% url 'dashboard' %}">Dashboard</a>
-            
+    <!-- Decorative flower motif, reused anywhere via <use href="#flower"> -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="flower" viewBox="-50 -50 100 100">
+            <g fill="var(--flower-petal)">
+                <ellipse cx="0" cy="-27" rx="15" ry="22"/>
+                <ellipse cx="0" cy="-27" rx="15" ry="22" transform="rotate(72)"/>
+                <ellipse cx="0" cy="-27" rx="15" ry="22" transform="rotate(144)"/>
+                <ellipse cx="0" cy="-27" rx="15" ry="22" transform="rotate(216)"/>
+                <ellipse cx="0" cy="-27" rx="15" ry="22" transform="rotate(288)"/>
+            </g>
+            <g fill="var(--flower-petal-2)">
+                <ellipse cx="0" cy="-22" rx="7" ry="12" transform="rotate(36)"/>
+                <ellipse cx="0" cy="-22" rx="7" ry="12" transform="rotate(108)"/>
+                <ellipse cx="0" cy="-22" rx="7" ry="12" transform="rotate(180)"/>
+                <ellipse cx="0" cy="-22" rx="7" ry="12" transform="rotate(252)"/>
+                <ellipse cx="0" cy="-22" rx="7" ry="12" transform="rotate(324)"/>
+            </g>
+            <circle r="15" fill="var(--flower-center)"/>
+            <circle r="5" fill="var(--flower-dot)"/>
+        </symbol>
+    </svg>
+
+    {% with current=request.resolver_match.url_name %}
+    <header class="site-header">
+        <a href="{% url 'home' %}" class="brand">
+            <svg class="flower" aria-hidden="true" focusable="false"><use href="#flower"/></svg>
+            <span class="brand-name">Tarifa Beach Yoga</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+            <a href="{% url 'home' %}"{% if current == 'home' %} aria-current="page"{% endif %}>Home</a>
+            <a href="{% url 'lessons' %}"{% if current == 'lessons' or current == 'book_lesson' %} aria-current="page"{% endif %}>Lessons</a>
+            <a href="{% url 'packages' %}"{% if current == 'packages' %} aria-current="page"{% endif %}>Packages</a>
+            <a href="{% url 'check_balance' %}"{% if current == 'check_balance' %} aria-current="page"{% endif %}>Balance</a>
+            <a href="{% url 'dashboard' %}"{% if current == 'dashboard' or current == 'mark_attendance' %} aria-current="page"{% endif %}>Dashboard</a>
+
             {% if request.session.customer_email %}
                 <span class="user-status">
-                    🪷 <strong>{{ request.session.customer_name }}</strong>
-                    <a href="{% url 'logout' %}" class="logout-link">(Logout)</a>
+                    Hi, <strong>{{ request.session.customer_name }}</strong>
+                    <a href="{% url 'logout' %}" class="logout-link">Logout</a>
                 </span>
             {% endif %}
         </nav>
     </header>
+    {% endwith %}
 
-    <div class="container">
+    <main class="container">
         {% if messages %}
             {% for message in messages %}
                 <div class="flash{% if message.tags == 'success' %} flash-success{% elif message.tags == 'error' %} flash-error{% endif %}">
@@ -299,11 +391,12 @@
             {% endfor %}
         {% endif %}
         {% block content %}{% endblock %}
-    </div>
+    </main>
 
-    <div class="footer">
-        &copy; 2026 Tarifa Beach Yoga - Wind, Whitewash, and the Strait.
-    </div>
+    <footer class="footer">
+        <svg class="flower" aria-hidden="true" focusable="false"><use href="#flower"/></svg>
+        <span>&copy; 2026 Tarifa Beach Yoga · Wind, whitewash and the Strait</span>
+    </footer>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

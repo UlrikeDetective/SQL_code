@@ -2,37 +2,202 @@
 
 {% block extra_css %}
 <style>
-    .hero-lead { font-size: 1.2rem; }
+    /* ---------- Hero ---------- */
+    .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 0 3rem;
+    }
+    .eyebrow {
+        display: inline-block;
+        margin: 0 0 0.75rem;
+        padding: 0.2rem 0.8rem;
+        border-radius: 999px;
+        background: var(--primary-soft);
+        color: var(--primary);
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    .hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin: 0 0 1rem;
+    }
+    .hero-lead {
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        max-width: 34ch;
+        margin: 0 0 1.75rem;
+    }
     .hero-actions {
-        margin-top: 2rem;
         display: flex;
-        gap: 10px;
-        justify-content: center;
+        gap: 0.75rem;
         flex-wrap: wrap;
+    }
+    .hero-note { margin-top: 1.25rem; }
+
+    /* Playful flower cluster */
+    .hero-art {
+        position: relative;
+        aspect-ratio: 1;
+        max-width: 340px;
+        width: 100%;
+        justify-self: center;
+    }
+    .hero-art::before {
+        content: "";
+        position: absolute;
+        inset: 8%;
+        border-radius: 50%;
+        background: var(--primary-soft);
+    }
+    .hero-art .flower {
+        position: absolute;
+        height: auto;
+        aspect-ratio: 1;
+    }
+    .hero-art .f1 { width: 62%; top: 4%; left: 4%; }
+    .hero-art .f2 {
+        width: 40%; bottom: 6%; right: 2%;
+        rotate: 18deg;
+        /* Deeper blue variant of the same flower */
+        --flower-petal: var(--primary);
+        --flower-petal-2: var(--flower-petal-2-deep);
+    }
+    .hero-art .f3 { width: 22%; bottom: 14%; left: 14%; rotate: -24deg; }
+    :root { --flower-petal-2-deep: light-dark(#7FAED6, #6E9FC9); }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .hero-art .f1 { animation: sway 9s ease-in-out infinite alternate; }
+        .hero-art .f2 { animation: sway 11s ease-in-out infinite alternate-reverse; }
+        @keyframes sway {
+            to { transform: rotate(14deg); }
+        }
+    }
+
+    /* ---------- Location ---------- */
+    .location {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 1.5rem;
+    }
+    .location h2 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 0.75rem;
+    }
+    .location h2 .flower { font-size: 1.6rem; }
+    .coords {
+        font-variant-numeric: tabular-nums;
+        background: var(--surface-soft);
+        border-radius: 10px;
+        padding: 0.4rem 0.8rem;
+        display: inline-block;
+    }
+    .map-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .map-frame {
+        position: relative;
+        min-height: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at 25% 30%, var(--primary-soft) 0 18%, transparent 19%),
+            radial-gradient(circle at 78% 72%, var(--calm-soft) 0 14%, transparent 15%),
+            var(--surface-soft);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        border: 1px solid var(--line);
+    }
+    .map-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    .map-placeholder .flower { font-size: 3rem; }
+    .map-placeholder p { margin: 0.5rem 0 1rem; max-width: 32ch; }
+
+    @media (max-width: 760px) {
+        .hero,
+        .location {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        .hero { padding-top: 0.5rem; }
+        .hero-art { max-width: 220px; grid-row: 1; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="card text-center accent-gold">
-    <h2 class="text-atlantic">The Strait is Calling</h2>
-    <p class="hero-lead">Join us for morning yoga sessions on the sun-bleached shores of Tarifa.</p>
-    <div class="hero-actions">
-        <a href="{% url 'lessons' %}" class="btn">Book a Lesson</a>
-        <a href="{% url 'packages' %}" class="btn btn-terracotta">Buy a Package</a>
+<section class="hero">
+    <div>
+        <p class="eyebrow">Beach yoga in Tarifa</p>
+        <h1>Breathe with the sea</h1>
+        <p class="hero-lead">Morning yoga and sunset meditation on the shore where the Atlantic meets the Mediterranean.</p>
+        <div class="hero-actions">
+            <a href="{% url 'lessons' %}" class="btn">Book a lesson</a>
+            <a href="{% url 'packages' %}" class="btn btn-secondary">See packages</a>
+        </div>
+        <p class="hero-note small muted">Already have a pack? <a href="{% url 'check_balance' %}" class="link-strong">Check your balance</a></p>
     </div>
-</div>
+    <div class="hero-art" aria-hidden="true">
+        <svg class="flower f1" focusable="false"><use href="#flower"/></svg>
+        <svg class="flower f2" focusable="false"><use href="#flower"/></svg>
+        <svg class="flower f3" focusable="false"><use href="#flower"/></svg>
+    </div>
+</section>
 
-<div class="card-grid">
-    <div class="card">
-        <h3>Local Residents</h3>
-        <p>Regular practice for the Tarifa community. Join our weekly flow.</p>
-        <span class="text-teal bold">Special Residents Packs Available</span>
+<section class="card location" aria-labelledby="where-title">
+    <div>
+        <h2 id="where-title">
+            <svg class="flower" aria-hidden="true" focusable="false"><use href="#flower"/></svg>
+            Where we practise
+        </h2>
+        <p>All lessons take place on the beach in Tarifa, right here:</p>
+        <p class="coords small">36.01163° N, 5.60891° W</p>
+        <div class="map-links">
+            <a class="btn btn-small" href="https://www.google.com/maps/search/?api=1&amp;query=36.011634285293184,-5.608907411452742" target="_blank" rel="noopener">Directions (Google Maps)</a>
+            <a class="btn btn-small btn-secondary" href="https://www.openstreetmap.org/?mlat=36.011634&amp;mlon=-5.608907#map=17/36.011634/-5.608907" target="_blank" rel="noopener">OpenStreetMap</a>
+        </div>
     </div>
-    <div class="card accent-sand">
-        <h3>Visitors</h3>
-        <p>Staying for a week? Our 3 and 5 lesson packs are perfect for your stay.</p>
-        <span class="text-terracotta bold">Drop-ins Welcome</span>
+
+    <div class="map-frame" id="map-frame">
+        <div class="map-placeholder">
+            <svg class="flower" aria-hidden="true" focusable="false"><use href="#flower"/></svg>
+            <p class="small muted">The map is loaded from OpenStreetMap only when you ask for it.</p>
+            <button type="button" class="btn" id="show-map" hidden>Show map</button>
+        </div>
     </div>
-</div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Façade: load the third-party map iframe only after the visitor asks for it.
+    (() => {
+        const button = document.getElementById('show-map');
+        const frame = document.getElementById('map-frame');
+        button.hidden = false;
+        button.addEventListener('click', () => {
+            const iframe = document.createElement('iframe');
+            iframe.title = 'Map showing the yoga spot on the beach in Tarifa';
+            iframe.src = 'https://www.openstreetmap.org/export/embed.html'
+                + '?bbox=-5.6129,36.0096,-5.6049,36.0136&layer=mapnik&marker=36.011634,-5.608907';
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            frame.replaceChildren(iframe);
+            iframe.focus();
+        });
+    })();
+</script>
 {% endblock %}

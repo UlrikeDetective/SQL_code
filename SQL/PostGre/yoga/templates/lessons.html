@@ -2,111 +2,122 @@
 
 {% block extra_css %}
 <style>
-    .calendar-container {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 2px;
-        background-color: var(--ancient-cobblestone);
-        border: 1px solid var(--ancient-cobblestone);
-    }
-    .calendar-header {
-        background-color: var(--deep-atlantic);
-        color: white;
-        padding: 0.5rem;
-        text-align: center;
-        font-weight: bold;
-    }
-    .calendar-day {
-        background-color: white;
-        min-height: 100px;
-        padding: 5px;
-        position: relative;
-    }
-    .calendar-day.empty {
-        background-color: var(--salt-spray);
-    }
-    .day-number {
-        font-weight: bold;
-        color: var(--ancient-cobblestone);
-    }
-    .lesson-item {
-        background-color: var(--lagoon);
-        font-size: 0.75rem;
-        padding: 4px;
-        margin-top: 3px;
-        border-radius: 3px;
-        cursor: pointer;
-        color: var(--strait-night);
-        border-left: 3px solid var(--med-teal);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .lesson-item.cancelled {
-        text-decoration: line-through;
-        background-color: var(--ancient-cobblestone);
-        border-left-color: var(--strait-night);
-    }
-    .lesson-item.almost-full {
-        border-left-color: var(--terra-cotta);
-        background-color: var(--dune-sand);
-    }
-    .lesson-item.full {
-        border-left-color: var(--spanish-red);
-        background-color: var(--ancient-cobblestone);
-    }
-    .lesson-item.past {
-        background-color: var(--salt-spray);
-        border-left-color: var(--ancient-cobblestone);
-        opacity: 0.6;
-        cursor: default;
-    }
-    .lesson-item.booked {
-        border-left-color: var(--golden-sun);
-        background-color: var(--pueblo-blanco);
-        font-weight: bold;
-        box-shadow: 0 0 5px rgba(238, 155, 0, 0.3);
-    }
-    .lesson-item.meditation {
-        border-left-color: var(--kitesurf-blue);
-        background-color: var(--salt-spray);
-    }
-    .spots-count {
-        font-weight: bold;
-        background-color: rgba(255, 255, 255, 0.3);
-        padding: 1px 4px;
-        border-radius: 2px;
-        margin-left: 4px;
-        white-space: nowrap;
-    }
     .calendar-nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1.5rem;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
     }
     .calendar-nav h2 { margin: 0; }
-    .today-marker {
-        border: 2px solid var(--golden-sun) !important;
+
+    .calendar-container {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 6px;
     }
+    .calendar-header {
+        color: var(--text-muted);
+        padding: 0.25rem;
+        text-align: center;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    .calendar-day {
+        background-color: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        min-height: 96px;
+        padding: 6px;
+    }
+    .calendar-day.empty {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    .day-number {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+    }
+    .today-marker {
+        border: 2px solid var(--sun);
+    }
+    .today-marker .day-number { color: var(--text); }
+
     .lesson-link { text-decoration: none; }
+    .lesson-item {
+        background-color: var(--primary-soft);
+        color: var(--text);
+        font-size: 0.75rem;
+        padding: 3px 6px;
+        margin-top: 4px;
+        border-radius: 8px;
+        border-left: 3px solid var(--primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4px;
+    }
+    .lesson-link:hover .lesson-item { filter: brightness(0.96); }
+    /* Type first, so availability states below win when both apply */
+    .lesson-item.meditation {
+        background-color: var(--calm-soft);
+        border-left-color: var(--calm);
+    }
+    .lesson-item.almost-full {
+        background-color: var(--sun-soft);
+        border-left-color: var(--sun);
+    }
+    .lesson-item.full {
+        background-color: var(--danger-soft);
+        border-left-color: var(--danger);
+    }
+    .lesson-item.cancelled {
+        text-decoration: line-through;
+        background-color: var(--surface-soft);
+        border-left-color: var(--text-muted);
+        color: var(--text-muted);
+    }
+    .lesson-item.booked {
+        background-color: var(--surface);
+        border: 1px solid var(--sun);
+        border-left-width: 3px;
+        font-weight: 700;
+    }
+    .lesson-item.past {
+        background-color: var(--surface-soft);
+        border-left-color: var(--line);
+        opacity: 0.6;
+    }
+    .spots-count {
+        font-weight: 700;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+    }
+
     .legend {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0 1rem;
     }
-    .swatch { font-weight: bold; }
-    .text-kite { color: var(--kitesurf-blue); }
-    .text-gold { color: var(--golden-sun); }
+    .legend p { margin: 0.3rem 0; }
+    .swatch { font-weight: 700; }
     .swatch.faded { opacity: 0.6; }
+    .text-sun { color: var(--sun); }
+
+    @media (max-width: 640px) {
+        .calendar-container { gap: 3px; }
+        .calendar-day { min-height: 72px; padding: 3px; border-radius: 8px; }
+        .lesson-item { flex-direction: column; align-items: flex-start; padding: 2px 4px; }
+    }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="calendar-nav">
-    <a href="?year={{ prev_year }}&month={{ prev_month }}" class="btn btn-atlantic">&laquo; Previous Month</a>
+    <a href="?year={{ prev_year }}&month={{ prev_month }}" class="btn btn-secondary">&laquo; Previous Month</a>
     <h2>{{ month_name }} {{ year }}</h2>
-    <a href="?year={{ next_year }}&month={{ next_month }}" class="btn btn-atlantic">Next Month &raquo;</a>
+    <a href="?year={{ next_year }}&month={{ next_month }}" class="btn btn-secondary">Next Month &raquo;</a>
 </div>
 
 <div class="calendar-container">
@@ -148,14 +159,14 @@
 <div class="card mt-2">
     <h3>Legend</h3>
     <div class="legend">
-        <p><span class="swatch text-teal">■</span> Morning Yoga (Open)</p>
-        <p><span class="swatch text-kite">■</span> 🧘 Meditation (Open)</p>
+        <p><span class="swatch text-primary" aria-hidden="true">■</span> Morning Yoga (Open)</p>
+        <p><span class="swatch text-calm" aria-hidden="true">■</span> 🧘 Meditation (Open)</p>
         <p>🪷 <strong>Booked Session</strong></p>
-        <p><span class="swatch text-terracotta">■</span> Almost Full (3 or fewer spots)</p>
-        <p><span class="swatch text-red">■</span> Full Session</p>
-        <p><span class="swatch muted faded">■</span> Past Lesson (Closed)</p>
-        <p><span class="swatch text-night">■</span> Cancelled Lesson</p>
-        <p><span class="swatch text-gold">■</span> Today's Date</p>
+        <p><span class="swatch text-sun" aria-hidden="true">■</span> Almost Full (3 or fewer spots)</p>
+        <p><span class="swatch text-danger" aria-hidden="true">■</span> Full Session</p>
+        <p><span class="swatch muted faded" aria-hidden="true">■</span> Past Lesson (Closed)</p>
+        <p><span class="swatch muted" aria-hidden="true">■</span> Cancelled Lesson</p>
+        <p><span class="swatch text-sun" aria-hidden="true">■</span> Today's Date</p>
     </div>
 </div>
 {% endblock %}

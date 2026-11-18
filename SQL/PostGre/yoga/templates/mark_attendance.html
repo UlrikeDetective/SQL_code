@@ -9,14 +9,14 @@
     }
     .attendee-list li {
         padding: 1rem;
-        border-bottom: 1px solid var(--salt-spray);
+        border-bottom: 1px solid var(--line);
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="card card-medium">
-    <h2 class="page-title text-night">Attendance: {{ lesson.time|time:"H:i" }}</h2>
+    <h2 class="page-title text-strong">Attendance: {{ lesson.time|time:"H:i" }}</h2>
     <p><strong>Date:</strong> {{ lesson.date|date:"D d M Y" }}</p>
 
     <div class="attendees">
@@ -29,7 +29,7 @@
                             <strong>{{ customer.name }}</strong>
                             <div class="small muted">{{ customer.get_customer_type_display }}</div>
                         </div>
-                        <div class="text-teal bold">
+                        <div class="text-primary bold">
                             ✓ Booked
                         </div>
                     </li>
