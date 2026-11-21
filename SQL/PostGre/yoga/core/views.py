@@ -4,12 +4,34 @@ from datetime import date, datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 from django.db.models import Max
+from django.views.decorators.http import require_POST
 from .models import Lesson, Customer, Package, Expense
 
 def lessons_month_url(lesson):
     """URL of the calendar page showing the month of the given lesson."""
     return f"{reverse('lessons')}?year={lesson.date.year}&month={lesson.date.month}"
+
+
+# Packages offered on the packages page. The price is looked up here on purchase,
+# so the form only ever sends the key.
+PACKAGE_OPTIONS = [
+    {'key': 'yoga-1', 'label': 'Single Lesson', 'package_type': 'YOGA', 'lessons': 1, 'price': 15},
+    {'key': 'yoga-3', 'label': '3 Lessons', 'package_type': 'YOGA', 'lessons': 3, 'price': 40},
+    {'key': 'yoga-5', 'label': '5 Lessons', 'package_type': 'YOGA', 'lessons': 5, 'price': 55},
+    {'key': 'yoga-10', 'label': '10 Lessons', 'package_type': 'YOGA', 'lessons': 10, 'price': 100},
+    {'key': 'meditation-1', 'label': '1 Meditation Session', 'package_type': 'MEDITATION', 'lessons': 1, 'price': 5},
+    {'key': 'meditation-5', 'label': '5 Meditation Sessions', 'package_type': 'MEDITATION', 'lessons': 5, 'price': 20},
+]
+PACKAGES_BY_KEY = {option['key']: option for option in PACKAGE_OPTIONS}
+
+
+def log_in_customer(request, customer):
+    """Remember the customer in the session (the site identifies customers by email)."""
+    request.session['customer_email'] = customer.email
+    request.session['customer_name'] = customer.name
 
 
 def home(request):
@@ -173,56 +195,84 @@ def cancel_booking(request, lesson_id):
         return redirect(lessons_month_url(lesson))
 
 def packages(request):
-    return render(request, 'packages.html', {'session_email': request.session.get('customer_email')})
+    return render(request, 'packages.html', {
+        'session_email': request.session.get('customer_email'),
+        'yoga_options': [o for o in PACKAGE_OPTIONS if o['package_type'] == 'YOGA'],
+        'meditation_options': [o for o in PACKAGE_OPTIONS if o['package_type'] == 'MEDITATION'],
+        'form': request.session.pop('signup_form', {}),
+    })
 
-def buy_package(request):
-    if request.method == 'POST':
-        # Use session email if available and not provided in form
-        email = request.POST.get('email') or request.session.get('customer_email')
-        if not email:
-            messages.error(request, "Email is required.")
-            return redirect('packages')
-            
-        email = email.strip().lower()
-        name = request.POST.get('name', '').strip() or email.split('@')[0].capitalize()
-        total_lessons = int(request.POST.get('total_lessons', 1))
-        package_type = request.POST.get('package_type', 'YOGA')
-        
-        # Mapping prices
-        if package_type == 'MEDITATION':
-            prices = {1: 5, 5: 20}
-        else:
-            prices = {1: 15, 3: 40, 5: 55, 10: 100}
-            
-        price_paid = prices.get(total_lessons, 15)
 
-        # Get or create customer
-        customer, created = Customer.objects.get_or_create(
-            email__iexact=email,
-            defaults={'email': email, 'name': name, 'customer_type': 'VISITOR'}
-        )
-        
-        # Update session info
-        request.session['customer_email'] = email
-        request.session['customer_name'] = customer.name
-        
-        Package.objects.create(
-            customer=customer,
-            package_type=package_type,
-            total_lessons=total_lessons,
-            remaining_lessons=total_lessons,
-            price_paid=price_paid
-        )
-        
-        type_display = "Yoga" if package_type == "YOGA" else "Meditation"
-        if created:
-            messages.success(request, f"Welcome {name}! Successfully purchased {total_lessons} {type_display} session(s) for {price_paid}€.")
-        else:
-            messages.success(request, f"Successfully purchased {total_lessons} {type_display} session(s) for {price_paid}€.")
-            
-        return redirect('lessons')
-            
+@require_POST
+def customer_login(request):
+    email = request.POST.get('email', '').strip().lower()
+    customer = Customer.objects.filter(email__iexact=email).first() if email else None
+    if customer is None:
+        messages.error(request, "We couldn't find an account with this email. New here? Create an account below.")
+    else:
+        log_in_customer(request, customer)
+        messages.success(request, f"Welcome back, {customer.name}!")
     return redirect('packages')
+
+
+@require_POST
+def register(request):
+    name = request.POST.get('name', '').strip()
+    email = request.POST.get('email', '').strip().lower()
+    phone = request.POST.get('phone', '').strip()
+    city = request.POST.get('city', '').strip()
+
+    error = None
+    if not name:
+        error = "Please enter your name."
+    else:
+        try:
+            validate_email(email)
+        except ValidationError:
+            error = "Please enter a valid email address."
+    if error is None and Customer.objects.filter(email__iexact=email).exists():
+        error = "There is already an account with this email. Please log in instead."
+
+    if error:
+        messages.error(request, error)
+        # Keep what was typed so the visitor doesn't have to start over
+        request.session['signup_form'] = {'name': name, 'email': email, 'phone': phone, 'city': city}
+        return redirect('packages')
+
+    customer = Customer.objects.create(
+        name=name,
+        email=email,
+        phone=phone,
+        city=city,
+        customer_type='LOCAL' if city.lower() == 'tarifa' else 'VISITOR',
+    )
+    log_in_customer(request, customer)
+    messages.success(request, f"Welcome, {customer.name}! Your account is ready. Now choose a package.")
+    return redirect('packages')
+
+
+@require_POST
+def buy_package(request):
+    email = request.session.get('customer_email')
+    customer = Customer.objects.filter(email__iexact=email).first() if email else None
+    if customer is None:
+        messages.error(request, "Please log in or create an account before buying a package.")
+        return redirect('packages')
+
+    option = PACKAGES_BY_KEY.get(request.POST.get('package', ''))
+    if option is None:
+        messages.error(request, "Please choose a package.")
+        return redirect('packages')
+
+    Package.objects.create(
+        customer=customer,
+        package_type=option['package_type'],
+        total_lessons=option['lessons'],
+        remaining_lessons=option['lessons'],
+        price_paid=option['price'],
+    )
+    messages.success(request, f"Successfully purchased {option['label']} for {option['price']}€.")
+    return redirect('lessons')
 
 def check_balance(request):
     packages = []

@@ -61,3 +61,61 @@ class BookingViewTest(TestCase):
         # Follow redirect to check messages
         response = self.client.get(response.url)
         self.assertContains(response, "Successfully booked!")
+
+
+class PackagesAccountTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.customer = Customer.objects.create(name="Ana", email="ana@example.com")
+
+    def test_login_with_known_email_sets_session(self):
+        response = self.client.post(reverse('customer_login'), {'email': 'ANA@example.com'})
+        self.assertRedirects(response, reverse('packages'))
+        self.assertEqual(self.client.session['customer_email'], 'ana@example.com')
+
+    def test_login_with_unknown_email_fails(self):
+        self.client.post(reverse('customer_login'), {'email': 'nobody@example.com'})
+        self.assertNotIn('customer_email', self.client.session)
+
+    def test_register_creates_customer_and_logs_in(self):
+        response = self.client.post(reverse('register'), {
+            'name': 'Lucía', 'email': 'Lucia@Example.com', 'phone': '', 'city': 'Tarifa',
+        })
+        self.assertRedirects(response, reverse('packages'))
+        customer = Customer.objects.get(email='lucia@example.com')
+        self.assertEqual(customer.customer_type, 'LOCAL')
+        self.assertEqual(self.client.session['customer_email'], 'lucia@example.com')
+
+    def test_register_with_existing_email_is_rejected(self):
+        self.client.post(reverse('register'), {'name': 'Other', 'email': 'ana@example.com'})
+        self.assertEqual(Customer.objects.filter(email='ana@example.com').count(), 1)
+        self.assertNotIn('customer_email', self.client.session)
+
+    def test_register_requires_name_and_valid_email(self):
+        self.client.post(reverse('register'), {'name': '', 'email': 'x@example.com'})
+        self.client.post(reverse('register'), {'name': 'X', 'email': 'not-an-email'})
+        self.assertFalse(Customer.objects.filter(name='X').exists())
+        self.assertFalse(Customer.objects.filter(email='x@example.com').exists())
+
+    def test_buy_requires_login(self):
+        self.client.post(reverse('buy_package'), {'package': 'yoga-3'})
+        self.assertFalse(Package.objects.exists())
+
+    def test_buy_uses_server_side_price(self):
+        self.client.post(reverse('customer_login'), {'email': 'ana@example.com'})
+        response = self.client.post(reverse('buy_package'), {'package': 'meditation-5', 'price': '1'})
+        self.assertRedirects(response, reverse('lessons'))
+        package = Package.objects.get(customer=self.customer)
+        self.assertEqual((package.package_type, package.total_lessons, package.price_paid), ('MEDITATION', 5, 20))
+
+    def test_buy_rejects_unknown_package(self):
+        self.client.post(reverse('customer_login'), {'email': 'ana@example.com'})
+        self.client.post(reverse('buy_package'), {'package': 'yoga-999'})
+        self.assertFalse(Package.objects.exists())
+
+    def test_packages_page_shows_one_menu_with_prices(self):
+        response = self.client.get(reverse('packages'))
+        self.assertContains(response, 'name="package"', count=1)
+        self.assertContains(response, 'Single Lesson')
+        self.assertContains(response, '15€')
+        self.assertNotContains(response, 'Drop-in session')

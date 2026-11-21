@@ -2,53 +2,247 @@
 
 {% block extra_css %}
 <style>
-    .packages-title { margin-bottom: 0.5rem; }
-    .packages-intro { margin-bottom: 2rem; }
-    .package-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1rem;
+    .packages-page {
+        max-width: 760px;
+        margin: 0 auto;
     }
-    .package-grid .card h3 { margin-bottom: 0.25rem; }
-    .package-price {
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 0;
+    .packages-intro { margin: -0.5rem 0 1.5rem; }
+
+    .step-title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin: 0 0 1rem;
+        font-size: 1.2rem;
     }
-    .package-desc {
-        color: var(--text-muted);
+    .step-number {
+        display: inline-grid;
+        place-items: center;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        background: var(--primary-soft);
+        color: var(--primary);
         font-size: 0.95rem;
-        margin: 0.5rem 0 1rem;
+        flex: none;
     }
-    .package-form p {
-        margin-bottom: 1rem;
+
+    /* ---------- Step 1: account ---------- */
+    .account-forms {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 1.5rem;
     }
-    .package-form .input,
-    .package-form .btn {
-        width: 80%;
+    .account-forms form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
     }
-    .package-form .input {
-        padding: 0.5rem;
-        margin-bottom: 0.5rem;
+    .account-forms h4 { margin: 0; font-size: 1rem; }
+    .account-forms .login-form {
+        padding-right: 1.5rem;
+        border-right: 1px solid var(--line);
     }
-    .package-form .input[type="email"] {
-        margin-bottom: 1rem;
+    .account-forms .btn { align-self: flex-start; margin-top: 0.25rem; }
+    .account-forms .label { margin-bottom: 0.2rem; font-size: 0.9rem; }
+    .optional { font-weight: normal; color: var(--text-muted); }
+    .field-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 0.75rem;
+    }
+
+    .signed-in {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        background: var(--surface-soft);
+    }
+    .signed-in p { margin: 0; }
+
+    /* ---------- Step 2: package menu ---------- */
+    .buy-form fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+    }
+    .buy-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    .package-select {
+        flex: 1 1 280px;
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--line-strong);
+        border-radius: 10px;
+        background-color: var(--surface);
+        color: var(--text);
+        font: inherit;
+    }
+    .buy-form fieldset:disabled { opacity: 0.55; }
+    .buy-hint { margin: 0.75rem 0 0; }
+
+    /* Customizable select (progressive enhancement: other browsers show the
+       normal dropdown with "Package — price" text) */
+    @supports (appearance: base-select) {
+        .package-select,
+        .package-select::picker(select) {
+            appearance: base-select;
+        }
+        .package-select {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .package-select > button {
+            flex: 1;
+            display: flex;
+            text-align: start;
+        }
+        .package-select selectedcontent {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .package-select::picker-icon { color: var(--primary); margin-left: 0.75rem; }
+        .package-select::picker(select) {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--surface);
+            color: var(--text);
+            padding: 0.4rem;
+            box-shadow: 0 12px 30px rgb(14 27 37 / 0.15);
+            margin-top: 4px;
+        }
+        .package-select optgroup {
+            font-weight: 700;
+        }
+        .package-select option {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 0.5rem 0.6rem;
+            border-radius: 8px;
+            font-weight: normal;
+        }
+        .package-select option:hover,
+        .package-select option:focus-visible { background: var(--primary-soft); }
+        .package-select option::checkmark { color: var(--primary); }
+        .package-select option:disabled { display: none; }
+        .opt-sep { display: none; }
+        .opt-price { margin-left: auto; font-weight: 700; color: var(--primary); }
+    }
+
+    @media (max-width: 640px) {
+        .account-forms,
+        .field-row { grid-template-columns: minmax(0, 1fr); }
+        .account-forms .login-form {
+            padding: 0 0 1.5rem;
+            border-right: 0;
+            border-bottom: 1px solid var(--line);
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<h2 class="page-title packages-title text-center">Yoga Packages &amp; Lesson Packs</h2>
-<p class="packages-intro text-center">
-    Already have a pack? <a href="{% url 'check_balance' %}" class="text-primary link-strong">Check your remaining lessons</a>
-</p>
+<div class="packages-page">
+    <h2 class="page-title">Packages</h2>
+    <p class="packages-intro muted">
+        Already have a pack? <a href="{% url 'check_balance' %}" class="link-strong">Check your remaining lessons</a>
+    </p>
 
-<div class="package-grid">
-    {% include 'partials/package_card.html' with title='Single Lesson' price='15€' lessons=1 package_type='YOGA' description='Drop-in session. Perfect for a one-time experience.' %}
-    {% include 'partials/package_card.html' with title='3 Lessons' price='40€' lessons=3 package_type='YOGA' description='Short stay package. Experience the beach vibe.' %}
-    {% include 'partials/package_card.html' with title='5 Lessons' price='55€' lessons=5 package_type='YOGA' description='A week of yoga. Deepen your practice on the sand.' %}
-    {% include 'partials/package_card.html' with title='10 Lessons' price='100€' lessons=10 package_type='YOGA' description='Best for locals & long stays. Join our community.' %}
-    {% include 'partials/package_card.html' with title='1 Meditation Session' price='5€' lessons=1 package_type='MEDITATION' price_class='text-calm' description='Wind down at the beach in a sunset meditation session.' %}
-    {% include 'partials/package_card.html' with title='5 Meditation Sessions' price='20€' lessons=5 package_type='MEDITATION' price_class='text-calm' description='Five wind down at the beach in a sunset meditation session..' %}
+    <!-- Step 1: who is buying -->
+    <section class="card" aria-labelledby="account-title">
+        <h3 class="step-title" id="account-title"><span class="step-number" aria-hidden="true">1</span> Your account</h3>
+
+        {% if session_email %}
+            <div class="signed-in">
+                <p>Buying as <strong>{{ request.session.customer_name }}</strong> <span class="muted">({{ session_email }})</span></p>
+                <a href="{% url 'logout' %}" class="small text-danger">Not you? Log out</a>
+            </div>
+        {% else %}
+            <div class="account-forms">
+                <form class="login-form" action="{% url 'customer_login' %}" method="post">
+                    {% csrf_token %}
+                    <h4>I already have an account</h4>
+                    <div>
+                        <label for="login-email" class="label">Email</label>
+                        <input type="email" id="login-email" name="email" class="input" required
+                               autocomplete="email" spellcheck="false" enterkeyhint="go">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Log in</button>
+                </form>
+
+                <form class="signup-form" action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <h4>New here? Create an account</h4>
+                    <div>
+                        <label for="signup-name" class="label">Name</label>
+                        <input type="text" id="signup-name" name="name" class="input" required
+                               autocomplete="name" value="{{ form.name|default:'' }}" enterkeyhint="next">
+                    </div>
+                    <div>
+                        <label for="signup-email" class="label">Email</label>
+                        <input type="email" id="signup-email" name="email" class="input" required
+                               autocomplete="email" spellcheck="false" value="{{ form.email|default:'' }}" enterkeyhint="next">
+                    </div>
+                    <div class="field-row">
+                        <div>
+                            <label for="signup-phone" class="label">Phone <span class="optional">(optional)</span></label>
+                            <input type="tel" id="signup-phone" name="phone" class="input"
+                                   autocomplete="tel" value="{{ form.phone|default:'' }}" enterkeyhint="next">
+                        </div>
+                        <div>
+                            <label for="signup-city" class="label">City <span class="optional">(optional)</span></label>
+                            <input type="text" id="signup-city" name="city" class="input"
+                                   autocomplete="address-level2" value="{{ form.city|default:'' }}" enterkeyhint="done">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Create account</button>
+                </form>
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- Step 2: what to buy -->
+    <section class="card" aria-labelledby="package-title">
+        <h3 class="step-title" id="package-title"><span class="step-number" aria-hidden="true">2</span> Choose your package</h3>
+
+        <form class="buy-form" action="{% url 'buy_package' %}" method="post">
+            {% csrf_token %}
+            <fieldset{% if not session_email %} disabled aria-describedby="buy-hint"{% endif %}>
+                <label for="package" class="label">Package</label>
+                <div class="buy-row">
+                    <select id="package" name="package" class="package-select" required autocomplete="off">
+                        <button><selectedcontent></selectedcontent></button>
+                        <option value="" disabled selected>Choose a package…</option>
+                        <optgroup label="Yoga">
+                            {% for option in yoga_options %}
+                                <option value="{{ option.key }}"><span class="opt-label">{{ option.label }}</span><span class="opt-sep"> — </span><span class="opt-price">{{ option.price }}€</span></option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Sunset meditation">
+                            {% for option in meditation_options %}
+                                <option value="{{ option.key }}"><span class="opt-label">{{ option.label }}</span><span class="opt-sep"> — </span><span class="opt-price">{{ option.price }}€</span></option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                    <button type="submit" class="btn">Buy now</button>
+                </div>
+            </fieldset>
+            {% if not session_email %}
+                <p class="buy-hint small muted" id="buy-hint">Log in or create an account above to buy a package.</p>
+            {% endif %}
+        </form>
+    </section>
 </div>
 {% endblock %}
