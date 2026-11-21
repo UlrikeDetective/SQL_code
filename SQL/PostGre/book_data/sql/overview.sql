@@ -10,7 +10,6 @@ SELECT * FROM authors order by id desc;
 SELECT * FROM books ORDER BY id desc;
 SELECT * FROM customers ORDER BY id DESC;
 SELECT * FROM orders ORDER BY id DESC;
-SELECT * FROM orders where customer_id = 658 ORDER BY id DESC;
 Select * from order_items order by id desc;
 Select * from genres order by id;
 select * from events order by event_date;
@@ -26,6 +25,9 @@ select * from events where event_date >= current_date order by event_date;
 Select * from events WHERE name LIKE '%Before%' order by event_date;
 Select * from order_items where book_id = 248 order by id desc;
 SELECT * FROM books where hashtags iLike '%#reese%';
+SELECT * FROM books ORDER BY stock_quantity desc;
+select * from events where name like '%Book Circle%' order by event_date;
+SELECT * FROM orders where customer_id = 658 ORDER BY id DESC;
 
 -- 2. CUSTOMER METRICS
 -- ==========================================================
