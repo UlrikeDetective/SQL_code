@@ -8,9 +8,9 @@ django.setup()
 
 from core.models import Lesson
 
-def seed_2026_lessons():
-    start_date = date(2026, 8, 19)
-    end_date = date(2026, 12, 31)
+def seed_2027_lessons():
+    start_date = date(2027, 1, 1)
+    end_date = date(2027, 12, 31)
     
     current_date = start_date
     lessons_evening_created = 0
@@ -19,10 +19,10 @@ def seed_2026_lessons():
 
             
         # Yoga Lessons: Wednesday at 17:00 
-        if current_date.weekday() in [0, 2]: # 2=Wednesday
+        if current_date.weekday() in [0, 5]: # 5=saturday, 0=Monday
             Lesson.objects.get_or_create(
                 date=current_date,
-                time='17:00',
+                time='11:00',
                 lesson_type='YOGA',
                 defaults={
                     'max_students': 20,
@@ -33,7 +33,7 @@ def seed_2026_lessons():
             
         current_date += timedelta(days=1)
     
-    print(f"Successfully created {lessons_evening_created} evening Yoga lessons for 2026.")
+    print(f"Successfully created {lessons_evening_created} evening Yoga lessons for 2027.")
 
 if __name__ == "__main__":
-    seed_2026_lessons()
+    seed_2027_lessons()
