@@ -1,4 +1,5 @@
 "id","name","email","phone","customer_type","created_at","city","country","username"
+4928,"Caitlin Hodge","caitlin.hodge@tarifa.es","","LOCAL","2026-11-28 22:00:14.519996+01","Tarifa","",NULL
 4927,"Michal Vaughn","michal.vaughn@london.com","","VISITOR","2026-11-18 14:46:56.466794+01","London","United Kingdom",NULL
 4926,"Francesca Porras","francesca.porras@tarifa.es","","LOCAL","2026-09-19 20:33:15.468238+02","Tarifa","Spain",NULL
 4925,"Jose-Tomas Villena","jose-tomas.villena@tarifa.es","","LOCAL","2026-09-19 20:32:08.87126+02","Tarifa","Spain",NULL
